@@ -5,7 +5,7 @@ import MainContent from "./MainContent";
 
 const MainApp = () => {
 	return (
-		<div className="display-flex">
+		<div className="d-flex">
 			<Groups />
 			<Discover />
 			<MainContent />
