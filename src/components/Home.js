@@ -8,7 +8,7 @@ const Home = () => {
 	};
 	return (
 		<div>
-			<h1>marks aai gaya?</h1>
+			<h1>કામ ચાલુ છે.</h1>
 			<button type="button" onClick={handleClick}>
 				login
 			</button>
