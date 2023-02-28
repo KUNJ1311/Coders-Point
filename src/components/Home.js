@@ -9,7 +9,7 @@ const Home = () => {
 	return (
 		<div>
 			<h1 className="">કામ ચાલુ છે.</h1>
-			<button onClick={handleClick}>Login</button>
+			<button onClick={handleClick}>Signup</button>
 		</div>
 	);
 };
