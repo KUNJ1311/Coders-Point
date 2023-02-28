@@ -1,32 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+:root {
+	--color-white: rgb(255, 255, 255);
+	--color-black: black;
+}
 body {
 	height: 100%;
 	width: 100%;
-	background-color: rgb(255, 255, 255);
+	background-color: var(--color-white);
 }
 * {
 	margin: 0;
 	padding: 0;
 	font-family: "Roboto Slab", serif;
-	font-size: 30px;
-	color: black;
+	color: var(--color-black);
 }
+/* ------------------------------------
+							main app
+-------------------------------------*/
 .groups {
 	background-color: #1e1f22;
 	height: 100vh;
 	width: 72px;
 	flex-shrink: 0;
+	font-size: 30px;
+	position: sticky;
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	scroll-behavior: smooth;
+}
+.groups::-webkit-scrollbar {
+	display: none;
 }
 .discover {
 	background-color: #2b2d31;
 	height: 100vh;
 	width: 240px;
 	flex-shrink: 0;
+	font-size: 30px;
 }
 .maincontent {
 	background-color: #313338;
 	height: 100vh;
 	flex-grow: 1;
+	font-size: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -44,31 +61,36 @@ body {
 	background-color: #313338;
 	width: 48px;
 	height: 48px;
-	transition: background-color 0.3s ease-out, color s ease-out;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out, border-radius 0.3s ease-out;
 }
 .groups-border:hover {
 	border-radius: 30%;
 	background-color: #5865f2;
 }
-
-.d-flex {
-	display: flex;
+.object-cover {
+	object-fit: cover;
 }
-.d-block {
-	display: block;
+.groups-svg-border {
+	border-radius: 50%;
+	background-color: #313338;
+	width: 48px;
+	height: 48px;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out, border-radius 0.3s ease-out;
 }
-.align-c {
-	align-items: center;
+.groups-svg-border:hover {
+	border-radius: 30%;
+	background-color: #249c57;
 }
-.justify-c {
-	justify-content: center;
+.groups-svg-border:hover .plus-svg {
+	fill: #ffffff;
 }
-.pr-4 {
-	padding-right: 4px;
+.sm-line {
+	margin: 0 0 8px;
+	width: 72px;
 }
-.mb-8 {
-	margin-bottom: 8px;
-}
-.cursor-pointer {
-	cursor: pointer;
+.sm-line-v {
+	height: 2px;
+	width: 32px;
+	border-radius: 1px;
+	background-color: rgb(84, 82, 90);
 }
