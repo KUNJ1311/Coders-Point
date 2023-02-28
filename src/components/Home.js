@@ -8,7 +8,7 @@ const Home = () => {
 	};
 	return (
 		<div>
-			<h1 className="">ok</h1>
+			<h1 className="">okghhjg</h1>
 			<button onClick={handleClick}>Login</button>
 		</div>
 	);
