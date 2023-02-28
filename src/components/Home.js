@@ -11,8 +11,11 @@ const Home = () => {
 		<>
 		
 		<div>
-			<h1 className="">i am starting now</h1>
+
+			<h1 >i am starting now</h1>
 			<button onClick={handleClick}>Login</button>
+
+			
 		</div>
 		</>
 		
