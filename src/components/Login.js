@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import * as Components from "./Components";
+import React from "react";
 
 export default function Login() {
   const [signin, toggle] = React.useState(true);
