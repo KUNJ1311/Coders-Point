@@ -93,7 +93,7 @@ body {
 	border-radius: 30%;
 }
 .sm-line {
-	margin: 0 0 8px;
+	margin: 0 0 7px;
 	width: 72px;
 }
 .sm-line-v {
@@ -107,7 +107,7 @@ body {
 }
 .side-line {
 	position: relative;
-	left: -5px;
+	left: -6px;
 	top: 0;
 }
 .side-line-effect {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import img from "./img/icon.png";
 import img1 from "./img/test.jpg";
-
+import img2 from "./img/test.png";
 const Groups = () => {
-	const groups = [img1, img1, img1, img1, img1];
+	const groups = [img1, img2, img1, img2, img1, img2];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const handleClick = (index) => {
