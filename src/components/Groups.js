@@ -7,7 +7,7 @@ import img4 from "./img/telegram.png";
 import img5 from "./img/twitter.png";
 import img6 from "./img/instal.webp";
 const Groups = () => {
-	const groups = [img1, img2, img3, img4, img5, img6];
+	const groups = [img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const handleClick = (index) => {
@@ -65,7 +65,7 @@ const Groups = () => {
 				<div className="d-flex flex-col w-full align-c ">
 					{groups.map((group, index) => (
 						<div key={index} width="48px" height="48px" className=" cursor-pointer servers" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)}>
-							<div className="d-flex align-c justify-c mb-2" width="48px" height="48px">
+							<div className="d-flex align-c justify-c mb-2 " width="48px" height="48px">
 								<div height="48px">
 									<div className="side-line">
 										<span
@@ -76,7 +76,7 @@ const Groups = () => {
 										></span>
 									</div>
 								</div>
-								<img className="d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group} width="48px" height="48px" alt="" />
+								<img className=" d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group} width="48px" height="48px" alt="" />
 							</div>
 						</div>
 					))}

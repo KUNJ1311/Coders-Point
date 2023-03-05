@@ -27,6 +27,7 @@ body {
 	font-size: 30px;
 	position: sticky;
 	overflow: auto;
+	scroll-behavior: smooth;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	scroll-behavior: smooth;
@@ -34,6 +35,7 @@ body {
 .groups::-webkit-scrollbar {
 	display: none;
 }
+
 .discover {
 	background-color: #2b2d31;
 	height: 100vh;
@@ -294,7 +296,7 @@ body {
 .tooltip .tooltiptext {
 	visibility: hidden;
 	position: absolute;
-	z-index: 38;
+	z-index: 999;
 	top: 100%;
 	left: 50%;
 	margin-left: -20px;
@@ -326,13 +328,17 @@ body {
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	background-color: #404249;
+	background-color: #2b2d31;
 	padding: 0 8px;
 	margin-left: 8px;
 	border-radius: 4px;
 	flex-direction: row;
 	height: 34px;
 	position: relative;
+	transition: all 0.3s ease-in-out;
+}
+.chat-channels-2:hover {
+	background-color: #4042497b;
 }
 .link-channels {
 	flex: 1 1 auto;
