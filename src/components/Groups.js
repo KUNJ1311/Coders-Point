@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import img from "./img/icon.png";
 import img1 from "./img/test.jpg";
 import img2 from "./img/test.png";
+
 const Groups = () => {
-	const groups = [img1, img2, img1, img2, img1, img2];
+	const groups = [img1, img2, img1, img2, img1, img2, img1, img2];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const handleClick = (index) => {
@@ -72,7 +73,6 @@ const Groups = () => {
 										></span>
 									</div>
 								</div>
-
 								<img className="d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group} width="48px" height="48px" alt="" />
 							</div>
 						</div>
