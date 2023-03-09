@@ -101,7 +101,7 @@ body {
 	font-size: 30px;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
 	.discover {
 		display: none;
 	}
@@ -110,7 +110,7 @@ body {
 	.groups {
 		display: none;
 	}
-}
+} */
 .groups-border {
 	border-radius: 50%;
 	background-color: #313338;
