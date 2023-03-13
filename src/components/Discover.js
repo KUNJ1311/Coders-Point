@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Discover = () => {
-	const text = ["test", "fun", "run"];
+	const text = ["test", "fun", "run", "KUNJ"];
 	const vc = ["vc", "fun", "testing"];
 	const project = ["iu", "coders point"];
 	const [hiddenText, setHiddenText] = useState(false);

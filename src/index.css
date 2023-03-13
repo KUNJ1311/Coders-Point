@@ -81,7 +81,6 @@ body {
 	scroll-behavior: smooth;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
-	scroll-behavior: smooth;
 }
 .groups::-webkit-scrollbar {
 	display: none;
