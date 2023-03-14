@@ -1,7 +1,5 @@
 // import styled from 'styled-Components';
 
-
-
 // export const Container = styled.div`
 // background-color: "#ffff";
 // border-radius: 10px;
@@ -40,10 +38,7 @@
 // ${props = props.signinIn!==true?
 //     `transform:translateX(100%)`:null}
 
-
-
 // `;
-
 
 // export const Form = styled.form`
 // background:#ffffff;
@@ -55,13 +50,7 @@
 // height:100%;
 // text-align:center;
 
-
-
-
-
 // `;
-
-
 
 // export const Title=styled.h1`
 // font-weight:bold;
@@ -88,7 +77,7 @@
 // transition:transform 80ms ease-in;
 // &:active{
 //     transform:scale(0.95);
-// } 
+// }
 // &:focus{
 //     outline:none;
 // }
@@ -117,7 +106,6 @@
 // z-index:100;
 // ${props=> props.signinIn!= true? `transform:translateX(-100%);`:null}
 // `;
-
 
 // export const overlay =styled.div`
 // background:3ff426c;
@@ -154,7 +142,6 @@
 // transform:translateX(-20%);
 // ${props => props.signinIn!==true?`transform:translateX(0);`:null}
 // `;
-
 
 // export const rightoverlaypanel=styled(overlaypanel)`
 // right:0;
