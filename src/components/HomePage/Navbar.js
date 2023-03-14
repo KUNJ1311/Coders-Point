@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import coders from "./img/coders.png";
+import coders from "../img/coders.png";
 function Navbar() {
 	return (
 		<nav className="navbar" style={{ backgroundColor: "#161819" }}>
