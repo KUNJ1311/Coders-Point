@@ -4,7 +4,7 @@ import "./login.css";
 export default function Login() {
 	return (
 		<>
-			<div className="container" id="container">
+			{/* <div className="container" id="container">
 				<div className="form-container sign-up-container">
 					<form action="#">
 						<h1>Create Account</h1>
@@ -83,7 +83,7 @@ export default function Login() {
 
 			<footer>
 				<mark>working</mark>
-			</footer>
+			</footer> */}
 		</>
 	);
 }
