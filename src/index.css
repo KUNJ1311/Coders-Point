@@ -405,7 +405,13 @@ body {
 .link-channels-2::before {
 	position: relative;
 	margin-right: 6px;
-	height: 34px;
+	height: 18px;
+}
+.react-svg {
+	position: relative;
+	margin-bottom: 2px;
+	width: 18px;
+	height: 18px;
 }
 .channels-list {
 	margin-left: 10px;
