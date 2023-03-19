@@ -32,7 +32,7 @@ export default function Login() {
 							<input type="password" placeholder="Password" />
 							<label></label>
 						</div>
-						<button>Sign Up</button>
+						<button>Sign 1Up</button>
 					</form>
 				</div>
 				<div className="form-container sign-in-container">
