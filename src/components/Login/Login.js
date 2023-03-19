@@ -4,10 +4,10 @@ import "./login.css";
 export default function Login() {
 	return (
 		<>
-			<div className="container" id="container">
+			<section className="sec"><div className="container" id="container">
 				<div className="form-container sign-up-container">
 					<form action="#">
-						<h1>Create Account</h1>
+						<h1 className="h">Create Account</h1>
 						<div className="social-container">
 							<a className="social">
 								<i className="fab fa-facebook-f"></i>
@@ -37,7 +37,7 @@ export default function Login() {
 				</div>
 				<div className="form-container sign-in-container">
 					<form action="#">
-						<h1>Sign in</h1>
+						<h1 className="h">Sign in</h1>
 						<div className="social-container">
 							<a className="social">
 								<i className="fab fa-facebook-f"></i>
@@ -67,12 +67,12 @@ export default function Login() {
 				<div className="overlay-container" id="overlayCon">
 					<div className="overlay">
 						<div className="overlay-panel overlay-left">
-							<h1>Welcome Back!</h1>
+							<h1 className="h">Welcome Back!</h1>
 							<p>To keep connected with us please login with your personal info</p>
 							<button>Sign In</button>
 						</div>
 						<div className="overlay-panel overlay-right">
-							<h1>Hello, Friend!</h1>
+							<h1 className="h">Hello, Friend!</h1>
 							<p>Enter your personal details and start journey with us</p>
 							<button>Sign Up</button>
 						</div>
@@ -80,6 +80,7 @@ export default function Login() {
 					<button id="overlayBtn"></button>
 				</div>
 			</div>
+			</section>
 
 			<footer>
 				<mark>working</mark>
