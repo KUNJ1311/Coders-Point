@@ -33,7 +33,7 @@ export default function Login() {
 							<input type="password" placeholder="Password" />
 							<label></label>
 						</div>
-						<button>Sign 1Up</button>
+						<button className="robtn">Sign Up</button>
 					</form>
 				</div>
 				<div className="form-container sign-in-container">
@@ -62,20 +62,20 @@ export default function Login() {
 						<a href="#" className="forgot">
 							Forgot your password?
 						</a>
-						<button>Sign In</button>
+						<button className="robtn">Sign In</button>
 					</form>
 				</div>
 				<div className="overlay-container" id="overlayCon">
 					<div className="overlay">
 						<div className="overlay-panel overlay-left">
 							<h1 className="h">Welcome Back!</h1>
-							<p>To keep connected with us please login with your personal info</p>
-							<button>Sign In</button>
+							<p className="p">To keep connected with us please login with your personal info</p>
+							<button className="robtn">Sign In</button>
 						</div>
 						<div className="overlay-panel overlay-right">
 							<h1 className="h">Hello, Friend!</h1>
-							<p>Enter your personal details and start journey with us</p>
-							<button>Sign Up</button>
+							<p className="p">Enter your personal details and start journey with us</p>
+							<button className="robtn">Sign Up</button>
 						</div>
 					</div>
 					<button id="overlayBtn"></button>
@@ -83,9 +83,26 @@ export default function Login() {
 			</div>
 			</section>
 
-			<footer>
-				<mark>working</mark>
-			</footer>
+
+			{/* <script>
+				const container=document.getelementbyid('container')
+				const overlayCon=document.getelementbyid('overlayCon')
+				const overlayBtn=document.getelementbyid('overlayBtn')
+
+				overlaybtn.addevetnlistner('click',()=>{
+					Container.classlist.toggle('right-panel-active')
+
+				overlaybtn.classlist.remove('btnscaled);
+				window.requestanimationframe(()=>{
+					overlaybtn.classlist.add("btnscaled");
+				})
+				})
+
+			</script>
+ */}
+
+
+			
 		</>
 	);
 }
