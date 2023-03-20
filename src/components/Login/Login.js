@@ -2,13 +2,14 @@ import React from "react";
 import "./login.css";
 
 export default function Login() {
+	
 	return (
 		<>
 		
 			<section className="sec"><div className="container" id="container">
 				<div className="form-container sign-up-container">
 					<form action="#">
-						<h1 className="h">Create Account</h1>
+						<h1 className="h">Create Accdsdount</h1>
 						<div className="social-container">
 							<a className="social">
 								<i className="fab fa-facebook-f"></i>
@@ -78,7 +79,7 @@ export default function Login() {
 							<button className="robtn">Sign Up</button>
 						</div>
 					</div>
-					<button id="overlayBtn"></button>
+					<button id="overlayBtn" ></button>
 				</div>
 			</div>
 			</section>
@@ -94,7 +95,7 @@ export default function Login() {
 
 				overlaybtn.classlist.remove('btnscaled);
 				window.requestanimationframe(()=>{
-					overlaybtn.classlist.add("btnscaled"); 
+					overlaybtn.classlist.add("btnscaled");
 				})
 				})
 
