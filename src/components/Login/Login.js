@@ -94,7 +94,7 @@ export default function Login() {
 
 				overlaybtn.classlist.remove('btnscaled);
 				window.requestanimationframe(()=>{
-					overlaybtn.classlist.add("btnscaled");
+					overlaybtn.classlist.add("btnscaled"); 
 				})
 				})
 
