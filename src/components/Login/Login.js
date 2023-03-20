@@ -9,7 +9,7 @@ export default function Login() {
 			<section className="sec"><div className="container" id="container">
 				<div className="form-container sign-up-container">
 					<form action="#">
-						<h1 className="h">Create Accdsdount</h1>
+						<h1 className="h">Creasste Accdsdount</h1>
 						<div className="social-container">
 							<a className="social">
 								<i className="fab fa-facebook-f"></i>
