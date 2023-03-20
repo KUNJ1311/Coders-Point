@@ -61,7 +61,7 @@ export default function Login() {
 							<label></label>
 						</div>
 						<a href="#" className="forgot">
-							Forgot your password?
+							Forgot your l password?
 						</a>
 						<button>Sign In</button>
 					</form>
