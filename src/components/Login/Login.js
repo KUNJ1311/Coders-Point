@@ -2,7 +2,6 @@ import React from "react";
 import "./login.css";
 
 export default function Login() {
-	
 	return (
 		<>
 		
@@ -61,7 +60,7 @@ export default function Login() {
 							<label></label>
 						</div>
 						<a href="#" className="forgot">
-							Forgot your l password?
+							Forgot your password?
 						</a>
 						<button>Sign In</button>
 					</form>
@@ -84,7 +83,6 @@ export default function Login() {
 			</div>
 			</section>
 
-
 			{/* <script>
 				const container=document.getelementbyid('container')
 				const overlayCon=document.getelementbyid('overlayCon')
@@ -101,9 +99,6 @@ export default function Login() {
 
 			</script>
  */}
-
-
-			
 		</>
 	);
 }
