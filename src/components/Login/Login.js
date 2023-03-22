@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
 import "./login.css";
-
+import avatar from "./avatar.svg";
+import { Link } from "react-router-dom";
+import { RiUser3Fill } from "react-icons/ri";
+import { MdMail } from "react-icons/md";
+import { IoLockClosed } from "react-icons/io5";
 export default function Login() {
 	const [isActive, setIsActive] = useState(false);
 	const [isScaled, setIsScaled] = useState(false);
@@ -16,60 +20,50 @@ export default function Login() {
 				<div className={`container ${isActive ? "right-panel-active" : ""}`} id="container">
 					<div className="form-container sign-up-container">
 						<form action="#" className="form-login">
-							<h1 className="h">Create Account rohit</h1>
+							<h1 className="h">Create Account</h1>
+							<span className="ac-line"></span>
 							<div className="social-container">
-								<a className="social">
-									<i className="fab fa-facebook-f"></i>
-								</a>
-								<a className="social">
-									<i className="fab fa-google-plus-g"></i>
-								</a>
-								<a className="social">
-									<i className="fab fa-linkedin-in"></i>
-								</a>
+								<img src={avatar} alt="" width="100px" height="100px" />
 							</div>
-							<span>or use your email for registration</span>
 							<div className="infield">
-								<input type="text" placeholder="Name" />
+								<RiUser3Fill className="icon-login" />
+								<input type="text" placeholder="Username" />
 								<label></label>
 							</div>
 							<div className="infield">
+								<MdMail className="icon-login" />
 								<input type="email" placeholder="Email" name="email" />
 								<label></label>
 							</div>
 							<div className="infield">
+								<IoLockClosed className="icon-login" />
 								<input type="password" placeholder="Password" />
 								<label></label>
 							</div>
-							<button className="robtn">Sign Up</button>
+							<button className="robtn">Register</button>
 						</form>
 					</div>
 					<div className="form-container sign-in-container">
 						<form action="#" className="form-login">
-							<h1 className="h">Sign in</h1>
+							<h1 className="h">Welcome Back!</h1>
+							<span className="ac-line"></span>
+
 							<div className="social-container">
-								<a className="social">
-									<i className="fab fa-facebook-f"></i>
-								</a>
-								<a className="social">
-									<i className="fab fa-google-plus-g"></i>
-								</a>
-								<a className="social">
-									<i className="fab fa-linkedin-in"></i>
-								</a>
+								<img src={avatar} alt="" width="100px" height="100px" />
 							</div>
-							<span>or use your account</span>
 							<div className="infield">
+								<MdMail className="icon-login" />
 								<input type="email" placeholder="Email" name="email" />
-								<label></label>
+								<label className="lable-main"></label>
 							</div>
 							<div className="infield">
+								<IoLockClosed className="icon-login" />
 								<input type="password" placeholder="Password" />
-								<label></label>
+								<label className="lable-main"></label>
 							</div>
-							<a href="#" className="forgot">
-								Forgot your password?
-							</a>
+							<Link href="#" className="forgot">
+								Forgot Password?
+							</Link>
 							<button className="robtn">Sign In</button>
 						</form>
 					</div>
@@ -85,7 +79,7 @@ export default function Login() {
 								<div className="overlay-panel overlay-right">
 									<h1 className="h">Hello, Friend!</h1>
 									<p>Enter your personal details and start journey with us</p>
-									<button className="robtn">Sign Up</button>
+									<button className="robtn">Register</button>
 								</div>
 							)}
 						</div>
