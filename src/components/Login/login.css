@@ -145,7 +145,14 @@ h1 .h {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
-
+.overlay-panel .robtn {
+	position: relative;
+	top: 10px;
+}
+.overlay-panel p {
+	color: white;
+	margin-top: 5px;
+}
 .form-container button {
 	margin-top: 17px;
 	transition: 80ms ease-in;
@@ -171,7 +178,7 @@ h1 .h {
 	cursor: pointer;
 	position: absolute;
 	left: 50%;
-	top: 304px;
+	top: 280px;
 	transform: translateX(-50%);
 	width: 143.67px;
 	height: 40px;

@@ -82,13 +82,13 @@ export default function Login() {
 								<div className="overlay-panel overlay-left">
 									<h1 className="h">Welcome Back!</h1>
 									<p>To keep connected with us please login with your personal info</p>
-									<button>Sign In</button>
+									<button className="robtn">Sign In</button>
 								</div>
 							) : (
 								<div className="overlay-panel overlay-right">
 									<h1 className="h">Hello, Friend!</h1>
 									<p>Enter your personal details and start journey with us</p>
-									<button>Sign Up</button>
+									<button className="robtn">Sign Up</button>
 								</div>
 							)}
 						</div>
