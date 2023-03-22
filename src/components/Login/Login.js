@@ -8,7 +8,7 @@ export default function Login() {
 	function togglePanel() {
 		setIsActive(!isActive);
 		setIsScaled(!isScaled);
-		overlayBtnRef.current.classList.add("btnscaled");
+		overlayBtnRef.current.classList.add("btnScaled");
 	}
 	return (
 		<>
@@ -92,7 +92,7 @@ export default function Login() {
 								</div>
 							)}
 						</div>
-						<button ref={overlayBtnRef} className={`overlaybtn ${isScaled ? "btnscaled" : ""}`} onClick={togglePanel} id="overlayBtn"></button>
+						<button ref={overlayBtnRef} className={`overlayBtn ${isScaled ? "btnScaled" : ""}`} onClick={togglePanel} id="overlayBtn"></button>
 					</div>
 				</div>
 			</section>
