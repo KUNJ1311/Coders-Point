@@ -1,30 +1,37 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import "./login.css";
 
 export default function Login() {
 	const [clicked, setClicked] = useState(false)
+	const overlayBtnRef = useRef(null);
+
 	
 	const handleClick =()=>
 	{
 		setClicked(!clicked);
+		overlayBtnRef.current.classList.remove('btnscaled');
+
+		window.requestAnimationFrame(() => {
+			overlayBtnRef.current.classList.add('btnscaled');
+		  });
 	}
-	const container = () => {
-		document.getElementById("container");
-	  };
-	  const signUpButton = () => {
-		container.classList.add("right-panel-active");
-	  };
-	  const signInButton = () => {
-		container.classList.remove("right-panel-active");
-	  };
+	// const container = () => {
+	// 	document.getElementById("container");
+	//   };
+	//   const signUpButton = () => {
+	// 	container.classList.add("right-panel-active");
+	//   };
+	//   const signInButton = () => {
+	// 	container.classList.remove("right-panel-active");
+	//   };
 	
 	return (
 		<>
 		
 			<section className="sec">
-				<div className="container" id="container">
-				{clicked ? (
+				<div className="container {clicked?'right-panel-active':''}" id="container">
+				
 				<div className="form-container sign-up-container">
 					<form action="#">
 						<h1 className="h">Create Account</h1>
@@ -54,7 +61,7 @@ export default function Login() {
 						</div>
 						<button className="robtn" onClick={()=>console.log("rohit")}>Sign Up</button>
 					</form>
-				</div>) : (
+				</div>
 				<div className="form-container sign-in-container">
 					<form action="#">
 						<h1 className="h">Sign in</h1>
@@ -83,7 +90,7 @@ export default function Login() {
 						</a>
 						<button className="robtn" onClick={()=>console.log("rohit")}>Sign In</button>
 					</form>
-				</div>)}
+				</div>
 				<div className="overlay-container" id="overlayCon">
 					<div className="overlay">
 						<div className="overlay-panel overlay-left">
@@ -97,7 +104,7 @@ export default function Login() {
 							<button className="robtn" >Signs Up</button>
 						</div>
 					</div>
-					<button id="overlayBtn" onClick={handleClick}></button>
+					<button id="overlayBtn"  ref={overlayBtnRef} onClick={handleClick}></button>
 					</div>
 			</div>
 			</section>
@@ -108,7 +115,7 @@ export default function Login() {
 				const overlayCon=document.getelementbyid('overlayCon')
 				const overlayBtn=document.getelementbyid('overlayBtn')
 
-				overlaybtn.addevetnlistner('click',()=>{7
+				overlaybtn.addevetnlistner('click',()=>{
 					Container.classlist.toggle('right-panel-active')
 
 				overlaybtn.classlist.remove('btnscaled);
