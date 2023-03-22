@@ -110,7 +110,6 @@ export default function Login() {
 					overlaybtn.classlist.add("btnscaled");
 				})
 				})
-
 			</script>
  		*/}
 		</>

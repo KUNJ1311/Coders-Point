@@ -95,10 +95,10 @@ h1 .h {
 	left: 50%;
 	top: 100%;
 	transform: translateX(-50%);
-	width: 100%;
+	width: 0%;
 	height: 2px;
 	background: var(--linear-grad);
-	transition: 0.3s;
+	transition: 0.3s ease-in-out;
 }
 
 .form-login input:focus ~ label {
@@ -194,7 +194,7 @@ h1 .h {
 }
 
 .overlay-left {
-	right: 60%;
+	right: 10%;
 	transform: translateX(-12%);
 }
 
