@@ -42,7 +42,7 @@ export default function Login() {
 									<input type="password" placeholder="Password" />
 									<label></label>
 								</div>
-								<button>Sign 1Up</button>
+								<button className="robtn">Sign Up</button>
 							</form>
 						</div>
 					) : (
@@ -72,7 +72,7 @@ export default function Login() {
 								<a href="#" className="forgot">
 									Forgot your password?
 								</a>
-								<button>Sign In</button>
+								<button className="robtn">Sign In</button>
 							</form>
 						</div>
 					)}

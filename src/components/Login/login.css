@@ -134,7 +134,7 @@ h1 .h {
 	border-bottom: 2px solid #eee;
 }
 
-.form-login button.robtn {
+.robtn {
 	border-radius: 20px;
 	border: 1px solid var(--grad-clr1);
 	background: var(--grad-clr2);
