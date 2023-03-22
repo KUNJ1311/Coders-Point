@@ -237,7 +237,7 @@ h1 .h {
 
 .right-panel-active .sign-in-container {
 	opacity: 0;
-	transform: translateX(20%);
+	transform: translateX(66.7%);
 }
 .right-panel-active .sign-up-container {
 	transform: translateX(66.7%);
