@@ -94,7 +94,13 @@ export default function Login() {
 						</div>
 						<button ref={overlayBtnRef} className={`overlaybtn ${isScaled ? "btnscaled" : ""}`} onClick={togglePanel} id="overlayBtn"></button>
 					</div>
+<<<<<<< HEAD
 				</div>
+=======
+					<button id="overlayBtn"  ref={overlayBtnRef} onClick={handleClick}></button>
+					</div>
+			</div>
+>>>>>>> 540b2f3b004e7204ddc754f9634a783e43015f0b
 			</section>
 
 			{/* <script>
