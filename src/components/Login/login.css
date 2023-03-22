@@ -51,7 +51,7 @@ footer a {
 	width: 60%;
 	height: 100%;
 	padding: 0px 40px;
-	transition: all0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
 }
 
 .sign-up-container {
@@ -63,7 +63,7 @@ footer a {
 	z-index: 2;
 }
 
-.form-login {
+form {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -89,17 +89,19 @@ h1 .h {
 	height: 40px;
 	width: 40px;
 }
-.form-login span {
+span {
 	font-size: 12px;
 }
 
-.infield {
+.infield{
 	position: relative;
 	margin: 8px 0px;
 	width: 100%;
+
+
 }
 
-.form-login input {
+input{
 	width: 100%;
 	padding: 12px 8px;
 	background-color: #f3f3f3;
@@ -107,7 +109,7 @@ h1 .h {
 	outline: none;
 }
 
-.form-login label {
+label{
 	position: absolute;
 	left: 50%;
 	top: 100%;
@@ -118,23 +120,24 @@ h1 .h {
 	transition: 0.3s;
 }
 
-.form-login input:focus ~ label {
+input:focus~label{
 	width: 100%;
+
 }
 
-.form-login a {
+a{
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0px;
 }
 
-.form-login a.forgot {
+a.forgot{
 	padding-bottom: 3px;
 	border-bottom: 2px solid #eee;
 }
 
-.form-login button.robtn {
+button.robtn{
 	border-radius: 20px;
 	border: 1px solid var(--grad-clr1);
 	background: var(--grad-clr2);
@@ -144,19 +147,20 @@ h1 .h {
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+
 }
 
-.form-container button {
+.form-container button{
 	margin-top: 17px;
 	transition: 80ms ease-in;
 }
 
-.form-container button:hover {
+.form-container button:hover{
 	background: #fff;
 	color: var(--grad-clr1);
 }
 
-.overlay-container {
+.overlay-container{
 	position: absolute;
 	top: 0;
 	left: 60%;
@@ -167,7 +171,7 @@ h1 .h {
 	z-index: 9;
 }
 
-#overlayBtn {
+#overlayBtn{
 	cursor: pointer;
 	position: absolute;
 	left: 50%;
@@ -175,22 +179,25 @@ h1 .h {
 	transform: translateX(-50%);
 	width: 143.67px;
 	height: 40px;
-	border: 1px solid #fff;
+	border: 1px solid #FFF;
 	background: transparent;
 	border-radius: 20px;
+
+
+
 }
 
-.overlay {
+.overlay{
 	position: relative;
 	background: var(--linear-grad);
-	color: #fff;
+	color: #FFF;
 	left: -150%;
 	height: 100%;
 	width: 250%;
 	transition: transform 0.6s ease-in-out;
 }
 
-.overlay-panel {
+.overlay-panel{
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -203,80 +210,91 @@ h1 .h {
 	transition: 0.6s ease-in-out;
 }
 
-.overlay-left {
-	right: 10%;
+.overlay-left{
+	right: 60%;
 	transform: translateX(-12%);
+
 }
 
-.overlay-right {
+.overlay-right{
 	right: 0;
 	transform: translateX(0%);
+
 }
 
-.overlay-panel h1 {
-	color: #fff;
+.overlay-panel h1{
+	color: #FFF;
+
 }
 
-.p {
+.p{
 	font-size: 14px;
 	font-weight: 300;
 	line-height: 20px;
 	letter-spacing: 0.5px;
 	margin: 25px 0px 35px;
-	color: #fff;
+	color: #FFF;
 }
 
-.overlay-panel button {
+.overlay-panel button{
 	border: none;
 	background-color: transparent;
+
 }
 
-.right-panel-active .overlay-container {
+.right-panel-active .overlay-container{
 	transform: translateX(-150%);
+
 }
 
-.right-panel-active .overlay-left {
+.right-panel-active .overlay-left{
 	transform: translateX(25%);
+
 }
 
-.right-panel-active .overlay-right {
-	transform: translateX(35%);
+.right-panel-active .overlay-right{
+	transform:translateX(35%)
+
 }
 
-.right-panel-active .sign-in-container {
+.right-panel-active .sign-in-container{
 	transform: translateX(20%);
+
 }
-.right-panel-active .sign-up-container {
+.right-panel-active .sign-up-container{
 	transform: translateX(66.7%);
 	opacity: 1;
 	z-index: 5;
 	animation: show 0.6s;
 }
 @keyframes show {
-	0%,
-	50% {
+	0%,50%{
 		opacity: 0;
 		z-index: 1;
+
 	}
-	50.1%,
-	100% {
+	50.1%,100%{
 		opacity: 1;
 		z-index: 5;
+
 	}
+	
 }
 
-.btnScaled {
+.btnScaled{
 	animation: scaleBtn 0.6s;
+
 }
 
-@keyframes scaleBtn {
-	0% {
-		width: 143.67px;
-	}
-	50% {
-		width: 250px;
-	}
-	100% {
-		width: px;
-	}
+@keyframes scaleBtn 
+{
+0%{
+	width: 143.67px;
+}	
+50%{
+	width: 250px;
+}	
+100%{
+	width: px;
+}	
 }
