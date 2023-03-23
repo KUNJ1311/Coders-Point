@@ -7,14 +7,11 @@ const Home = () => {
 	const handleClick = () => {
 		navigate("/mainapp");
 	};
-	const handleClickme = () => {
-		navigate("/login");
-	};
+
 	return (
 		<>
 			<div style={{ backgroundColor: "rgb(32 35 37)", height: "100vh", width: "100vw" }}>
 				<Navbar />
-				<button onClick={handleClickme}>test</button>
 				<button onClick={handleClick}>Login</button>
 			</div>
 		</>

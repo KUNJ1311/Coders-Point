@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import { Link } from "react-router-dom";
 import coders from "../img/coders.png";
 function Navbar() {
+	let navigate = useNavigate();
+	const handleClick = () => {
+		navigate("/login");
+	};
 	return (
 		<nav className="navbar" style={{ backgroundColor: "#161819" }}>
 			<div className="navbar_logo ml-4">
@@ -10,8 +15,9 @@ function Navbar() {
 				</Link>
 			</div>
 			<div className="navbar_buttons">
-				<button className="signupButton mr-3">Sign In</button>
-				<button className="loginButton mr-4">Sign Up</button>
+				<button className="signupButton mr-3" onClick={handleClick}>
+					Get Started
+				</button>
 			</div>
 		</nav>
 	);
