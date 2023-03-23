@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import avatar from "./avatar.svg";
 import { Link } from "react-router-dom";
@@ -8,11 +8,9 @@ import { IoLockClosed } from "react-icons/io5";
 export default function Login() {
 	const [isActive, setIsActive] = useState(false);
 	const [isScaled, setIsScaled] = useState(false);
-	const overlayBtnRef = useRef(null);
 	function togglePanel() {
 		setIsActive(!isActive);
 		setIsScaled(!isScaled);
-		overlayBtnRef.current.classList.add("btnScaled");
 	}
 	return (
 		<>
@@ -47,7 +45,6 @@ export default function Login() {
 						<form action="#" className="form-login">
 							<h1 className="h">Welcome Back!</h1>
 							<span className="ac-line"></span>
-
 							<div className="social-container">
 								<img src={avatar} alt="" width="100px" height="100px" />
 							</div>
@@ -69,41 +66,21 @@ export default function Login() {
 					</div>
 					<div className="overlay-container" id="overlayCon">
 						<div className="overlay">
-							{isActive ? (
-								<div className="overlay-panel overlay-left">
-									<h1 className="h">Welcome Back!</h1>
-									<p>To keep connected with us please login with your personal info</p>
-									<button className="robtn">Sign In</button>
-								</div>
-							) : (
-								<div className="overlay-panel overlay-right">
-									<h1 className="h">Hello, Friend!</h1>
-									<p>Enter your personal details and start journey with us</p>
-									<button className="robtn">Register</button>
-								</div>
-							)}
+							<div className="overlay-panel overlay-left">
+								<h1 className="h">Welcome Back!</h1>
+								<p>To keep connected with us please login with your personal info</p>
+								<button className="robtn">Sign In</button>
+							</div>
+							<div className="overlay-panel overlay-right">
+								<h1 className="h">Hello, Friend!</h1>
+								<p>Enter your personal details and start journey with us</p>
+								<button className="robtn">Register</button>
+							</div>
 						</div>
-						<button ref={overlayBtnRef} className={`overlayBtn ${isScaled ? "btnScaled" : ""}`} onClick={togglePanel} id="overlayBtn"></button>
+						<button className="overlayBtn" onClick={togglePanel} id="overlayBtn"></button>
 					</div>
 				</div>
 			</section>
-
-			{/* <script>
-				const container=document.getelementbyid('container')
-				const overlayCon=document.getelementbyid('overlayCon')
-				const overlayBtn=document.getelementbyid('overlayBtn')
-
-				overlaybtn.addevetnlistner('click',()=>{
-					Container.classlist.toggle('right-panel-active')
-
-				overlaybtn.classlist.remove('btnscaled);
-				window.requestanimationframe(()=>{
-					overlaybtn.classlist.add("btnscaled");
-				})
-				})
-
-			</script>
- 		*/}
 		</>
 	);
 }

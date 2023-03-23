@@ -101,7 +101,7 @@ h1.h {
 	width: 0%;
 	height: 2px;
 	background: var(--linear-grad);
-	transition: 0.3s;
+	transition: 0.3s ease-in-out;
 }
 
 .form-login input:focus ~ label {
@@ -209,8 +209,8 @@ h1.h {
 }
 
 .overlay-left {
-	right: 10%;
-	transform: translateX(-12%);
+	right: 50%;
+	transform: translateX(0%);
 }
 
 .overlay-right {
@@ -239,18 +239,18 @@ h1.h {
 .right-panel-active .overlay-container {
 	transform: translateX(-150%);
 }
-
+.right-panel-active .overlay {
+	transform: translateX(50%);
+}
 .right-panel-active .overlay-left {
-	transform: translateX(25%);
+	transform: translateX(0%);
 }
-
 .right-panel-active .overlay-right {
-	transform: translateX(35%);
+	transform: translateX(0%);
 }
-
 .right-panel-active .sign-in-container {
 	opacity: 0;
-	transform: translateX(66.7%);
+	transform: translateX(20%);
 }
 .right-panel-active .sign-up-container {
 	transform: translateX(66.7%);
