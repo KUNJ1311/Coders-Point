@@ -13,7 +13,6 @@ const Home = () => {
 		title: "Welcome",
 		title_two: "To",
 		title_three: "Coders Point",
-		image: "./g8.svg",
 	});
 
 	return (
