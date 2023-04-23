@@ -19,7 +19,7 @@ const Home = () => {
 		<>
 			<div style={{ backgroundColor: "rgb(32 35 37)", height: "100vh", width: "100vw" }}>
 				<Navbar />
-				<button onClick={handleClick}>Login</button>
+				<button onClick={handleClick}>Login here</button>
 				<div className="home">
 					<div className="home-intro">
 						<h2>
