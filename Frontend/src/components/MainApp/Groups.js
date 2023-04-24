@@ -7,7 +7,7 @@ import img4 from "../Image/telegram.png";
 import img5 from "../Image/twitter.png";
 import img6 from "../Image/instal.webp";
 const Groups = () => {
-	const groups = [img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6];
+	const groups = [img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const handleClick = (index) => {
