@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Typewriter from "typewriter-effect";
 import "./Home.css";
+import coder from "./g8.svg";
 
 const Home = () => {
 	let navigate = useNavigate();
@@ -10,9 +11,8 @@ const Home = () => {
 		navigate("/mainapp");
 	};
 	const [state] = useState({
-		title: "Welcome",
-		title_two: "To",
-		title_three: "Coders Point",
+		title: "Welcome To",
+		title_two: "Coders Point",
 	});
 
 	return (
@@ -22,20 +22,25 @@ const Home = () => {
 				<button onClick={handleClick}>Login here</button>
 				<div className="home">
 					<div className="home-intro">
-						<h2>
-							<div className="title">{state.title}</div>
-							<div className="title_two">{state.title_two}</div>
-							<div className="title_three">{state.title_three}</div>
-						</h2>
-						<div className="text">
-							<Typewriter
-								options={{
-									autoStart: true,
-									loop: true,
-									delay: 40,
-									strings: ["Code", "Chat", "Contibute"],
-								}}
-							/>
+						<div>
+							<h2>
+								<div className="title">{state.title}</div>
+								<div className="title_two">{state.title_two}</div>
+								<div className="title_three">{state.title_three}</div>
+							</h2>
+							<div className="text">
+								<Typewriter
+									options={{
+										autoStart: true,
+										loop: true,
+										delay: 50,
+										strings: ["Code", "Chat", "Contibute"],
+									}}
+								/>
+							</div>
+						</div>
+						<div className="coders-image">
+							<img src={coder} width="400px" height="400px" alt="" />
 						</div>
 					</div>
 				</div>
