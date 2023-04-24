@@ -33,12 +33,12 @@
 }
 
 .container {
-	/* border-radius: 15px; */
+	border-radius: 15px;
 	position: relative;
 	width: 848px;
 	height: 500px;
 	background-color: #ffffff;
-	/* box-shadow: 25px 30px 55px #5557; */
+	box-shadow: 25px 30px 55px #5557;
 	overflow: hidden;
 }
 

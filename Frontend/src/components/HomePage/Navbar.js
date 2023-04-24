@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import { Link } from "react-router-dom";
-import coders from "../img/coders.png";
+import coders from "../Image/coders.png";
 function Navbar() {
 	let navigate = useNavigate();
 	const handleClick = () => {
