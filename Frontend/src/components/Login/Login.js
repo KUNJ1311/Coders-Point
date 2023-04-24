@@ -15,7 +15,7 @@ export default function Login({ onClose }) {
 	return (
 		<>
 			<section className="sec" onClick={onClose}>
-				<div className={`container ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
+				<div className={`container fade-in ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
 					<div className="form-container sign-up-container">
 						<form action="#" className="form-login">
 							<h1 className="h">Create Account</h1>
