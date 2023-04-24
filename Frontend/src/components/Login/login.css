@@ -13,6 +13,7 @@
 }
 
 .sec {
+	z-index: 999;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
@@ -34,8 +35,20 @@
 	height: 500px;
 	background-color: #f5f5f5;
 	overflow: hidden;
+	animation-name: grow-modal;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in-out;
 }
-
+@keyframes grow-modal {
+	0% {
+		opacity: 0;
+		left: -100px;
+	}
+	100% {
+		opacity: 1;
+		left: 0;
+	}
+}
 .form-container {
 	position: absolute;
 	width: 60%;
