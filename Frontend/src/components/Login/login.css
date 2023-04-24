@@ -11,21 +11,33 @@
 	--grad-clr1: #141e30;
 	--grad-clr2: #243b55;
 }
-
+.bcg-img {
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+}
 .sec {
+	width: 100vw;
 	height: 100vh;
-	background: #f6f5f7;
-	display: grid;
-	place-content: center;
+	/* background: #f6f5f700; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-family: "Poppins", sans-serif;
 }
 
 .container {
 	border-radius: 15px;
 	position: relative;
-	width: 850px;
+	width: 848px;
 	height: 500px;
-	background-color: #fff;
+	background-color: #ffffff;
 	box-shadow: 25px 30px 55px #5557;
 	overflow: hidden;
 }
@@ -65,15 +77,9 @@ h1.h {
 .social-container {
 	margin: 10px 0px;
 }
-.social-container a {
-	border: 1px solid #ddd;
+.social-container img {
+	border: 1px solid #396089;
 	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0px 5px;
-	height: 40px;
-	width: 40px;
 }
 .form-login span {
 	font-size: 12px;
@@ -118,6 +124,10 @@ h1.h {
 .form-login a.forgot {
 	padding-bottom: 3px;
 	border-bottom: 2px solid #eee;
+}
+.form-login a.forgot:hover {
+	color: #006aff;
+	border-color: #78a5e5;
 }
 .ac-line {
 	width: 70px;
@@ -204,7 +214,7 @@ h1.h {
 	padding: 0px 40px;
 	text-align: center;
 	height: 100%;
-	width: 340px;
+	width: 338px;
 	transition: tramsform 0.6s ease-in-out;
 }
 
@@ -242,6 +252,7 @@ h1.h {
 .right-panel-active .overlay {
 	transform: translateX(50%);
 }
+
 .right-panel-active .overlay-left {
 	transform: translateX(0%);
 }
@@ -250,7 +261,7 @@ h1.h {
 }
 .right-panel-active .sign-in-container {
 	opacity: 0;
-	transform: translateX(20%);
+	transform: translateX(66.7%);
 }
 .right-panel-active .sign-up-container {
 	transform: translateX(66.7%);
@@ -268,5 +279,20 @@ h1.h {
 	100% {
 		opacity: 1;
 		z-index: 5;
+	}
+}
+.btnScaled {
+	animation: scaleBtn 0.6s;
+}
+
+@keyframes scaleBtn {
+	0% {
+		width: 143.67px;
+	}
+	50% {
+		width: 250px;
+	}
+	100% {
+		width: px;
 	}
 }
