@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import img from "../img/icon.png";
-import img1 from "../img/test.jpg";
-import img2 from "../img/test.png";
-import img3 from "../img/facebook.png";
-import img4 from "../img/telegram.png";
-import img5 from "../img/twitter.png";
-import img6 from "../img/instal.webp";
+import img from "../Image/icon.png";
+import img1 from "../Image/test.jpg";
+import img2 from "../Image/test.png";
+import img3 from "../Image/facebook.png";
+import img4 from "../Image/telegram.png";
+import img5 from "../Image/twitter.png";
+import img6 from "../Image/instal.webp";
 const Groups = () => {
 	const groups = [img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
