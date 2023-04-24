@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { RiUser3Fill } from "react-icons/ri";
 import { MdMail } from "react-icons/md";
 import { IoLockClosed } from "react-icons/io5";
-export default function Login() {
+export default function Login({ onClose }) {
 	const [isActive, setIsActive] = useState(false);
 	const [isScaled, setIsScaled] = useState(false);
 	function togglePanel() {
@@ -14,8 +14,8 @@ export default function Login() {
 	}
 	return (
 		<>
-			<section className="sec">
-				<div className={`container ${isActive ? "right-panel-active" : ""}`} id="container">
+			<section className="sec" onClick={onClose}>
+				<div className={`container ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
 					<div className="form-container sign-up-container">
 						<form action="#" className="form-login">
 							<h1 className="h">Create Account</h1>
