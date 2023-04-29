@@ -24,9 +24,7 @@ const Discover = () => {
 			<nav className="d-flex discover-nav">
 				<div className="relative cursor-pointer">
 					<header>
-						<div className="d-flex align-c">
-							<div>Valorant</div>
-						</div>
+						<div>Thik hai!!</div>
 					</header>
 				</div>
 			</nav>
