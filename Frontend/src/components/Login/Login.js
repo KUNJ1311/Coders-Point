@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IoLockClosed } from "react-icons/io5";
 import { MdMail } from "react-icons/md";
 
-const Login = ({ OnForget, OnSend }) => {
+const Login = ({ OnForget }) => {
 	const handleForget = () => {
 		OnForget(true);
 	};
