@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import coders from "../Image/coders.png";
-import Login from "../Login/Login";
+import MainModal from "../Login/MainModal";
 function Navbar() {
 	const [showModal, setShowModal] = useState(false);
 
 	const handleClick = () => {
 		setShowModal(true);
 	};
-	const modalRef = useRef();
 
 	const handleCloseModal = () => {
 		setShowModal(false);
@@ -20,25 +19,11 @@ function Navbar() {
 				handleCloseModal();
 			}
 		};
-
-		const handleOutsideClick = (event) => {
-			if (modalRef.current && !modalRef.current.contains(event.target)) {
-				handleCloseModal();
-			}
-		};
-
 		if (showModal) {
 			document.addEventListener("keydown", handleKeyDown);
-			document.addEventListener("mousedown", handleOutsideClick);
 		} else {
 			document.removeEventListener("keydown", handleKeyDown);
-			document.removeEventListener("mousedown", handleOutsideClick);
 		}
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-			document.removeEventListener("mousedown", handleOutsideClick);
-		};
 	}, [showModal]);
 	return (
 		<>
@@ -54,7 +39,7 @@ function Navbar() {
 					</button>
 				</div>
 			</nav>
-			{showModal && <Login onClose={handleCloseModal} />}
+			{showModal && <MainModal onClose={handleCloseModal} />}
 		</>
 	);
 }

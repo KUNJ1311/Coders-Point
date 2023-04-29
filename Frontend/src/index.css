@@ -13,10 +13,31 @@ body {
 
 * {
 	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 	margin: 0;
 	padding: 0;
 	font-family: "Roboto Slab", serif;
 	color: var(--color-black);
+}
+
+/* --------------------------------------------------------
+										scroll-bar
+-----------------------------------------------------------*/
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #2b2d31;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #2b2d31;
+	border-radius: 5px;
+}
+
+.scroller-d:hover::-webkit-scrollbar-thumb {
+	background-color: #131416;
 }
 
 /* ------------------------------------
@@ -46,7 +67,7 @@ body {
 	font-weight: 500;
 	padding: 10px 16px;
 	cursor: pointer;
-	transition: background-color 0.4s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .signupButton:hover {
@@ -99,6 +120,7 @@ body {
 		display: none;
 	}
 } */
+
 .groups-border {
 	border-radius: 50%;
 	background-color: #313338;
@@ -203,7 +225,9 @@ body {
 	background-color: #35373c;
 }
 
-.discover header div div {
+.discover header div {
+	display: flex;
+	align-items: center;
 	flex: 1;
 	z-index: 1;
 	font-size: 16px;
@@ -459,24 +483,4 @@ body {
 
 .hidden {
 	display: none;
-}
-
-/* --------------------------------------------------------
-										scroll-bar
------------------------------------------------------------*/
-::-webkit-scrollbar {
-	width: 5px;
-}
-
-::-webkit-scrollbar-track {
-	background-color: #2b2d31;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: #2b2d31;
-	border-radius: 5px;
-}
-
-.scroller-d:hover::-webkit-scrollbar-thumb {
-	background-color: #131416;
 }
