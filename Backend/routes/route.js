@@ -3,25 +3,25 @@ const router = Router();
 
 //! *** all controllers *** !//
 import * as controller from "../controller/appController.js";
+import Auth, { localVariables } from "../middleware/auth.js";
 
 //? POST
 router.route("/register").post(controller.register);
 //TODO ↓↓↓↓↓↓↓↓
-// router.route("/authenticate").post();
+//* router.route("/authenticate").post();
 router.route("/registerMail").post((req, res) => {
 	res.end();
 });
-//TODO ↑↑↑↑↑↑↑↑
-router.route("/login").post(controller.login);
+router.route("/login").post(controller.verifyUser, controller.login);
 
 //? GET
 router.route("/user/:username").get(controller.getUser);
-router.route("/generateOTP").post(controller.generateOTP);
-router.route("/verifyOTP").post(controller.verifyOTP);
-router.route("/createResetSession").post(controller.createResetSession);
+router.route("/generateOTP").get(controller.verifyUser, localVariables, controller.generateOTP);
+router.route("/verifyOTP").get(controller.verifyOTP);
+router.route("/createResetSession").get(controller.createResetSession);
 
 //? PUT
-router.route("/updateuser").put(controller.updateUser);
-router.route("/resetPassword").put(controller.resetPassword);
+router.route("/updateUser").put(Auth, controller.updateUser);
+router.route("/resetPassword").put(controller.verifyUser, controller.resetPassword);
 
 export default router;

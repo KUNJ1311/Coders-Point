@@ -1,5 +1,23 @@
 import UserModal from "../model/User.modal.js";
-import bcrypt, { hash } from "bcrypt";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import ENV from "../config.js";
+
+//* middleware for verify user
+export async function verifyUser(req, res, next) {
+	try {
+		const { username } = req.method == "GET" ? req.query : req.body;
+		//* check the user existance
+		let exist = await UserModal.findOne({ username });
+		if (!exist) {
+			return res.status(404).send({ error: "Can't Find User!" });
+		}
+		next();
+	} catch (error) {
+		return res.status(404).send(error);
+	}
+}
+
 //? POST: http://localhost:8080/api/register
 export async function register(req, res) {
 	try {
@@ -37,37 +55,116 @@ export async function register(req, res) {
 
 //? POST: http://localhost:8080/api/login
 export async function login(req, res) {
-	res.json("login route");
+	const { username, password } = req.body;
+	try {
+		const user = await UserModal.findOne({ username });
+		const passwordCheck = await bcrypt.compare(password, user.password);
+		if (!passwordCheck) {
+			return res.status(400).send({ error: "Don't have Password" });
+		}
+		//* create jwt token
+		const token = jwt.sign(
+			{
+				userId: user.id,
+				username: user.username,
+			},
+			ENV.JWT_SECRET,
+			{ expiresIn: "24h" }
+		);
+		return res.status(200).send({
+			msg: "Login Successful...!",
+			username: user.username,
+			token,
+		});
+	} catch (error) {
+		return res.status(500).send({ error });
+	}
 }
 
 //? GET: http://localhost:8080/api/user/user123
 export async function getUser(req, res) {
-	res.json("getUser route");
+	try {
+		const { username } = req.params;
+
+		const user = await UserModal.findOne({ username });
+		if (!user) {
+			return res.status(500).send({ error: "Couldn't Find User" });
+		}
+		//! remove password from user JSON
+		const { password, ...rest } = Object.assign({}, user.toJSON());
+		return res.status(201).send(rest);
+	} catch (error) {
+		return res.status(404).send({ error });
+	}
 }
 
 //? PUT: http://localhost:8080/api/updateUser
 export async function updateUser(req, res) {
-	res.json("updateUser route");
+	try {
+		const { userId } = req.user;
+		console.log(userId);
+		if (userId) {
+			const body = req.body;
+			//* update the data
+			const result = await UserModal.updateOne({ _id: userId }, body);
+			if (result.nModified === 0) {
+				return res.status(404).send({ error: "User not found" });
+			}
+			return res.status(201).send({ msg: "Record Updated..!" });
+		} else {
+			return res.status(401).send({ error: "User Not Found...!" });
+		}
+	} catch (error) {
+		return res.status(401).send(error);
+	}
 }
 
 //? GET: http://localhost:8080/api/generateOTP
 export async function generateOTP(req, res) {
-	res.json("generateOTP route");
+	//* Generate a random 6-digit number
+	req.app.locals.OTP = Math.floor(100000 + Math.random() * 900000);
+	res.status(201).send({ code: req.app.locals.OTP });
 }
 
 //? GET: http://localhost:8080/api/verifyOTP
 export async function verifyOTP(req, res) {
-	res.json("verifyOTP route");
+	const { code } = req.query;
+	if (parseInt(req.app.locals.OTP) === parseInt(code)) {
+		req.app.locals.OTP = null; //* reset OTP value
+		req.app.locals.resetSession = true; //* start session for the reset password
+		return res.status(201).send({ msg: "Verify Successfully!" });
+	}
+	return res.status(400).send({ error: "Invalid OTP" });
 }
 
 //* successfully redirect user when OTP is valid
-//? GET: http://localhost:8080/api/verifyOTP
+//? GET: http://localhost:8080/api/createResetSession
 export async function createResetSession(req, res) {
-	res.json("createResetSession route");
+	if (req.app.locals) {
+		req.app.locals.resetSession = false; //* allow access to this route only once
+		return res.status(201).send({ msg: "Access Granted!" });
+	}
+	return res.status(440).send({ error: "Session Expried!" });
 }
 
 //* update the password when we have valid session
-//? PUT http://localhost:8080/api/verifyOTP
+//? PUT http://localhost:8080/api/resetPassword
 export async function resetPassword(req, res) {
-	res.json("resetPassword route");
+	try {
+		if (!req.app.locals.resetSession) {
+			return res.status(440).send({ error: "Session Expried!" });
+		}
+		const { username, password } = req.body;
+		try {
+			const user = await UserModal.findOne({ username });
+			const hashedPassword = await bcrypt.hash(password, 10);
+			await UserModal.updateOne({ username: user.username }, { password: hashedPassword });
+			req.app.locals.resetSession = false; //* reset session
+			res.status(201).send({ msg: "Record Updated Successfully" });
+		} catch (error) {
+			return res.status(404).send({ error: "Username not Found" });
+		}
+	} catch (error) {
+		return res.status(401).send({ error });
+	}
 }

@@ -6,5 +6,4 @@ const connect = async () => {
 	mongoose.set("strictQuery", true);
 	console.log("MongoDB connected");
 };
-
 export default connect;
