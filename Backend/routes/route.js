@@ -7,8 +7,7 @@ import Auth, { localVariables } from "../middleware/auth.js";
 
 //? POST
 router.route("/register").post(controller.register);
-//TODO ↓↓↓↓↓↓↓↓
-//* router.route("/authenticate").post();
+router.route("/authenticate").post();
 router.route("/registerMail").post((req, res) => {
 	res.end();
 });
