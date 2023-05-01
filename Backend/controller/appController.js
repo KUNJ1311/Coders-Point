@@ -6,9 +6,10 @@ import ENV from "../config.js";
 //* middleware for verify user
 export async function verifyUser(req, res, next) {
 	try {
-		const { username } = req.method == "GET" ? req.query : req.body;
+		const { email } = req.method == "GET" ? req.query : req.body;
+		const decodedEmail = decodeURIComponent(email);
 		//* check the user existance
-		let exist = await UserModal.findOne({ username });
+		let exist = await UserModal.findOne({ decodedEmail });
 		if (!exist) {
 			return res.status(404).send({ error: "Can't Find User!" });
 		}
@@ -55,9 +56,9 @@ export async function register(req, res) {
 
 //? POST: http://localhost:8080/api/login
 export async function login(req, res) {
-	const { username, password } = req.body;
+	const { email, password } = req.body;
 	try {
-		const user = await UserModal.findOne({ username });
+		const user = await UserModal.findOne({ email });
 		const passwordCheck = await bcrypt.compare(password, user.password);
 		if (!passwordCheck) {
 			return res.status(400).send({ error: "Don't have Password" });
@@ -66,7 +67,7 @@ export async function login(req, res) {
 		const token = jwt.sign(
 			{
 				userId: user.id,
-				username: user.username,
+				email: user.email,
 			},
 			ENV.JWT_SECRET,
 			{ expiresIn: "24h" }
@@ -74,6 +75,7 @@ export async function login(req, res) {
 		return res.status(200).send({
 			msg: "Login Successful...!",
 			username: user.username,
+			email: user.email,
 			token,
 		});
 	} catch (error) {
@@ -85,8 +87,8 @@ export async function login(req, res) {
 export async function getUser(req, res) {
 	try {
 		const { username } = req.params;
-
-		const user = await UserModal.findOne({ username });
+		const decodedUsername = decodeURIComponent(username);
+		const user = await UserModal.findOne({ decodedUsername });
 		if (!user) {
 			return res.status(500).send({ error: "Couldn't Find User" });
 		}
@@ -154,15 +156,15 @@ export async function resetPassword(req, res) {
 		if (!req.app.locals.resetSession) {
 			return res.status(440).send({ error: "Session Expried!" });
 		}
-		const { username, password } = req.body;
+		const { email, password } = req.body;
 		try {
-			const user = await UserModal.findOne({ username });
+			const user = await UserModal.findOne({ email });
 			const hashedPassword = await bcrypt.hash(password, 10);
 			await UserModal.updateOne({ username: user.username }, { password: hashedPassword });
 			req.app.locals.resetSession = false; //* reset session
 			res.status(201).send({ msg: "Record Updated Successfully" });
 		} catch (error) {
-			return res.status(404).send({ error: "Username not Found" });
+			return res.status(404).send({ error: "email not Found" });
 		}
 	} catch (error) {
 		return res.status(401).send({ error });
