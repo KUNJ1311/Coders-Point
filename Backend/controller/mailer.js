@@ -13,7 +13,7 @@ let transporter = nodemailer.createTransport(config);
 //? POST: http://localhost:8080/api/registerMail
 //* send mail from real gmail account
 export const registerMail = async (req, res) => {
-	const { username, userEmail, text, subject } = req.body;
+	const { username, userEmail, text, subject, extra } = req.body;
 	let message = {
 		from: ENV.EMAIL,
 		to: userEmail,
@@ -58,17 +58,17 @@ export const registerMail = async (req, res) => {
                     </tr>
                     <tr>
                       <td style="text-align: center; font-size: 30px; font-weight: 500; padding: 20px 0;">
-                        ${text || "Welcome to Coders Point"}
+                        ${username}, ${extra}
                       </td>
                     </tr>
                     <tr>
                       <td style="text-align: center; font-size: 20px; font-weight: 500;">
-                        ${username} : One Time Password
+                        One Time Password
                       </td>
                     </tr>
                     <tr>
                       <td style="text-align: center; font-family: 'Courier New', Courier, monospace; font-weight: 800; font-size: 40px; letter-spacing: 10px; padding: 20px 0;">
-                        123456
+                        ${text}
                       </td>
                     </tr>
                     <tr>

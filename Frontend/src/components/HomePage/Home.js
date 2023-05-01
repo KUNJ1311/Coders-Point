@@ -1,14 +1,29 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Typewriter from "typewriter-effect";
 import "./Home.css";
 import coder from "./g8.svg";
+import { validateToken } from "../helper/helper";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 	const [state] = useState({
 		title: "Welcome To",
 		title_two: "Coders Point",
+	});
+
+	const Navigate = useNavigate();
+	useEffect(() => {
+		async function checkToken() {
+			const token = localStorage.getItem("coderToken");
+			const response = await validateToken(token);
+			if (response.status === 200) {
+				Navigate("/mainapp");
+			} else {
+				localStorage.removeItem("coderToken");
+			}
+		}
+		checkToken();
 	});
 
 	return (

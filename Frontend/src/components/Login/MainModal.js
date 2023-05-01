@@ -51,7 +51,7 @@ export default function MainModal({ onClose }) {
 							<div className="overlay-panel overlay-left">
 								<h1 className="h">Welcome Back!</h1>
 								<p>To keep connected with us please login with your personal info</p>
-								<button className="robtn">Sign In</button>
+								<button className="robtn">Login In</button>
 							</div>
 							<div className="overlay-panel overlay-right">
 								<h1 className="h">Hello, Friend!</h1>

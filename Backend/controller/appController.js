@@ -19,6 +19,17 @@ export async function verifyUser(req, res, next) {
 	}
 }
 
+//* validateToken for redirect user to main app
+export async function validateToken(req, res) {
+	const token = req.body.token;
+	try {
+		jwt.verify(token, ENV.JWT_SECRET);
+		return res.status(200).send({ message: "Token is valid." });
+	} catch (error) {
+		return res.status(401).send({ error: "Token is invalid." });
+	}
+}
+
 //? POST: http://localhost:8080/api/register
 export async function register(req, res) {
 	try {
