@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const dbConnectionString = "mongodb+srv://CodersPoint:%23Coder%23KRRD%24%24@coderspoint.tg5xpoe.mongodb.net/test";
+import ENV from "../config.js";
+const dbConnectionString = ENV.MONGODB_URL;
 
 const connect = async () => {
 	await mongoose.connect(dbConnectionString);
