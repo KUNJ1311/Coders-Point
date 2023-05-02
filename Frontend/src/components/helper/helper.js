@@ -40,13 +40,7 @@ export const registerUser = async (credentials) => {
 			data: { msg },
 			status,
 		} = await axios.post(`${host}/api/register`, credentials);
-		let { username, email } = credentials;
-
-		//* send email
-		if (status === 201) {
-			await axios.post(`${host}/api/registerMail`, { username, userEmail: email, text: msg });
-		}
-		return Promise.resolve(msg);
+		return Promise.resolve(msg, status);
 	} catch (error) {
 		return Promise.reject({ error });
 	}
@@ -78,11 +72,12 @@ export const updateUser = async (response) => {
 //? generate OTP
 export const generateOTP = async (email) => {
 	try {
+		const decodedEmail = decodeURIComponent(email);
 		const {
 			data: { code },
 			status,
-		} = axios.get(`${host}/api/generateOTP`, { params: { email } });
-		//send mail with the otp
+		} = axios.get(`${host}/api/generateOTP`, { params: { email: decodedEmail } });
+		//* send mail with the otp
 		if (status === 201) {
 			let {
 				data: { username },
@@ -97,10 +92,40 @@ export const generateOTP = async (email) => {
 	}
 };
 
+//? generate OTP for new User
+export const generateOTPnewUser = async (email) => {
+	try {
+		const decodedEmail = decodeURIComponent(email);
+		const {
+			data: { code },
+			status,
+		} = axios.get(`${host}/api/generateOTP/newuser`, { params: { email: decodedEmail } });
+		//* send mail with the otp
+		if (status === 201) {
+			let text = code;
+			let extra = `Hello, here is your OTP. Please use this OTP to complete your registration process.`;
+			await axios.post(`${host}/api/registerMail`, { userEmail: email, text, subject: "OTP for registration process", extra });
+			return { status, msg: "OTP has been sent to your email." };
+		}
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
 //? verify OTP
 export const verifyOTP = async ({ email, code }) => {
 	try {
 		const { data, status } = await axios.get(`${host}/api/verifyOTP`, { params: { email, code } });
+		return { data, status };
+	} catch (error) {
+		return Promise.reject(error);
+	}
+};
+
+//? verify OTP new user
+export const verifyOTPnewuser = async ({ code }) => {
+	try {
+		const { data, status } = await axios.get(`${host}/api/verifyOTP`, { params: { code } });
 		return { data, status };
 	} catch (error) {
 		return Promise.reject(error);

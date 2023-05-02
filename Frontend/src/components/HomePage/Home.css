@@ -1,3 +1,42 @@
+/* ------------------------------------
+							Home-nav
+-------------------------------------*/
+.navbar {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 7px 10px;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.navbar__buttons {
+	display: flex;
+}
+
+.signupButton {
+	background-color: rgb(0, 0, 0);
+	border: 2px solid rgb(223, 225, 245);
+	border-radius: 6px;
+	color: rgb(223, 225, 245);
+	font-size: 16px;
+	font-weight: 500;
+	padding: 10px 16px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.signupButton:hover {
+	background-color: rgb(223, 225, 245);
+	color: rgb(3 21 53);
+}
+
+/* ------------------------------------
+							Home-nav
+-------------------------------------*/
+
 .home {
 	background-color: rgb(32 35 37);
 	display: flex;

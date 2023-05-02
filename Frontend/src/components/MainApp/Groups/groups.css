@@ -1,0 +1,107 @@
+/* ------------------------------------
+							groups
+-------------------------------------*/
+.groups {
+	background-color: #1e1f22;
+	height: 100vh;
+	width: 72px;
+	flex-shrink: 0;
+	font-size: 30px;
+	position: sticky;
+	overflow: auto;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.groups::-webkit-scrollbar {
+	display: none;
+}
+
+/* @media screen and (max-width: 768px) {
+	.discover {
+		display: none;
+	}
+}
+@media screen and (max-width: 640px) {
+	.groups {
+		display: none;
+	}
+} */
+
+.groups-border {
+	border-radius: 50%;
+	background-color: #313338;
+	width: 48px;
+	height: 48px;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out, border-radius 0.3s ease-out;
+}
+
+.groups-border:hover {
+	border-radius: 30%;
+	background-color: #5865f2;
+}
+
+.object-cover {
+	object-fit: cover;
+}
+
+.groups-svg-border {
+	border-radius: 50%;
+	background-color: #313338;
+	width: 48px;
+	height: 48px;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out, border-radius 0.3s ease-out;
+}
+
+.groups-svg-border:hover {
+	border-radius: 30%;
+	background-color: #249c57;
+}
+
+.groups-svg-border:hover .plus-svg {
+	fill: #ffffff;
+}
+
+.servers .round {
+	transition: background-color 0.2s ease-out, color 0.2s ease-out, border-radius 0.2s ease-out;
+}
+
+.servers:hover .round {
+	border-radius: 30%;
+}
+
+.sm-line {
+	margin: 0 0 7px;
+	width: 72px;
+}
+
+.sm-line-v {
+	height: 2px;
+	width: 32px;
+	border-radius: 1px;
+	background-color: rgb(84, 82, 90);
+}
+
+.logo-home {
+	filter: brightness(9999%);
+}
+
+.side-line {
+	position: relative;
+	left: -6px;
+	top: 0;
+}
+
+.side-line-effect {
+	position: relative;
+	display: flex;
+	width: 8px;
+	border-radius: 0 4px 4px 0;
+	margin-left: -10px;
+	background-color: #f3f4f5;
+	opacity: 1;
+	height: 8px;
+	transform: none;
+	transition: height 0.2s ease-out;
+}

@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
-import Discover from "./Discover";
-import Groups from "./Groups";
-import MainContent from "./MainContent";
+import Discover from "./Discover/Discover";
+import Groups from "./Groups/Groups";
+import MainContent from "./Maincontent/MainContent";
 import { useNavigate } from "react-router-dom";
 import { validateToken } from "../helper/helper";
+import "./Groups/groups.css";
+import "./Discover/discover.css";
+import "./Maincontent/maincontent.css";
 
 const MainApp = () => {
 	const Navigate = useNavigate();
