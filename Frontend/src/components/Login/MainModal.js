@@ -32,10 +32,7 @@ export default function MainModal({ onClose }) {
 	const OnChangePass = (value) => {
 		setChangePassword(value);
 	};
-	const navigate = useNavigate();
-	const NewAccount = () => {
-		navigate("/mainapp");
-	};
+
 	const RePass = () => {
 		setRePassword(true);
 	};
@@ -44,7 +41,7 @@ export default function MainModal({ onClose }) {
 		<>
 			<section className="sec" onClick={onClose}>
 				<div className={`container fade-in ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
-					{registerValue ? <OTP side={"sign-up-container"} handleVerify={NewAccount} /> : <Signup OnRegister={OnRegister} />}
+					{registerValue ? <OTP side={"sign-up-container"} /> : <Signup OnRegister={OnRegister} />}
 					{forgetValue ? sendOTP ? rePassword ? changePassword ? <Login OnForget={OnForget} /> : <ChangePass OnChangePass={OnChangePass} /> : <OTP side={"sign-in-container"} handleVerify={RePass} /> : <ForgetPass OnSend={OnSend} /> : <Login OnForget={OnForget} />}
 					<div className="overlay-container" id="overlayCon">
 						<div className="overlay">

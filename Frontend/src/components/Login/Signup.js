@@ -1,25 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { RiUser3Fill } from "react-icons/ri";
 import { MdMail } from "react-icons/md";
 import { IoLockClosed } from "react-icons/io5";
 import avatar from "./avatar.svg";
-import { useNavigate } from "react-router-dom";
-import { generateOTPnewUser } from "../helper/helper";
+import userContext from "../context/userContext";
 
 const Signup = ({ OnRegister }) => {
-	const [credentials, setCredentials] = useState({ email: "", password: "", username: "" });
-	let Navigate = useNavigate();
+	const context = useContext(userContext);
+	const { setCredentials, credentials, Register } = context;
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
-		try {
-			const { data } = await generateOTPnewUser(credentials.email);
-			if (data.status === 201) {
-				OnRegister(true, credentials);
-			}
-		} catch (error) {
-			alert("wrong");
-		}
+		Register({ OnRegister });
 	};
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });

@@ -58,7 +58,7 @@ export const registerMail = async (req, res) => {
                     </tr>
                     <tr>
                       <td style="text-align: center; font-size: 30px; font-weight: 500; padding: 20px 0;">
-                        ${username || ""}, ${extra}
+                        ${username || ""} ${extra}
                       </td>
                     </tr>
                     <tr>

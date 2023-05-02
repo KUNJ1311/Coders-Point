@@ -1,9 +1,13 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { registerUser, verifyOTPnewuser } from "../helper/helper";
-import { Navigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { registerUser, verifyOTPnewuser, verifyPassword } from "../helper/helper";
+import { useNavigate } from "react-router-dom";
+import userContext from "../context/userContext";
 
 const OTP = (props) => {
+	const Navigate = useNavigate();
+	const context = useContext(userContext);
+	const { credentials } = context;
+	const { email, password } = credentials;
 	const [otp, setOtp] = useState(new Array(6).fill(""));
 
 	const handleChange = (index, e) => {
@@ -24,26 +28,31 @@ const OTP = (props) => {
 			e.target.previousElementSibling.focus();
 		}
 	};
-	const handleVerify = async () => {
+	const handleVerifyOTP = async (e) => {
 		try {
-			const { data } = await verifyOTPnewuser(otp);
-			if (data.status === 201) {
-				const { data } = registerUser(props.credentials);
-				if (data.status === 201) {
-					Navigate("/main-app");
-					alert(data.msg);
+			e.preventDefault();
+			const code = otp.join("");
+			const { status } = await verifyOTPnewuser({ code });
+			if (status === 201) {
+				const { msg, status } = await registerUser(credentials);
+				if (status === 201) {
+					const { data, status } = await verifyPassword({ email, password });
+					if (status === 200) {
+						localStorage.setItem("coderToken", data.token);
+						Navigate("/mainapp");
+					}
 				} else {
-					alert("Sorry, the OTP you entered is invalid..!");
+					console.log("Sorry, the OTP you entered is invalid..!");
 				}
 			}
 		} catch (error) {
-			alert("Something went wrong..!");
+			console.log(error);
 		}
 	};
 	return (
 		<>
 			<div className={`form-container ${props.side}`}>
-				<form onSubmit={handleVerify} className="form-OTP">
+				<form onSubmit={handleVerifyOTP} className="form-OTP">
 					<h1 className="h">OTP Verification</h1>
 					<span className="ac-line"></span>
 					<span className="sm-text pt-5 pb-5">Enter 6 digit OTP sent to your E-mail address.</span>

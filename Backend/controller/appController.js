@@ -23,10 +23,35 @@ export async function verifyUser(req, res, next) {
 export async function validateToken(req, res) {
 	const token = req.body.token;
 	try {
-		jwt.verify(token, ENV.JWT_SECRET);
-		return res.status(200).send({ message: "Token is valid." });
+		const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
+		const userId = decodedToken.userId;
+		const user = await UserModal.findById(userId);
+		if (user) {
+			return res.status(200).send({ message: "Token is valid." });
+		} else {
+			return res.status(401).send({ error: "Token is invalid." });
+		}
 	} catch (error) {
 		return res.status(401).send({ error: "Token is invalid." });
+	}
+}
+//? POST: http://localhost:8080/api/checkuser
+export async function checkUser(req, res) {
+	try {
+		//* check the existing user
+		const { username, email } = req.body;
+		const existUsername = await UserModal.findOne({ username });
+		if (existUsername) {
+			return res.status(400).send({ msg: "Sorry a user with this Username is already exists" });
+		}
+		//* check the existing email
+		const existEmail = await UserModal.findOne({ email });
+		if (existEmail) {
+			return res.status(400).send({ msg: "Sorry E-mail Id is already exists" });
+		}
+		return res.status(200).send({ msg: "User can register" });
+	} catch (error) {
+		return res.status(401).send({ error: "User already exist..!" });
 	}
 }
 
@@ -34,19 +59,6 @@ export async function validateToken(req, res) {
 export async function register(req, res) {
 	try {
 		const { username, email, password } = req.body;
-
-		//* check the existing user
-		const existUsername = await UserModal.findOne({ username });
-		if (existUsername) {
-			return res.status(400).json({ error: "Sorry a user with this Username is already exists" });
-		}
-
-		//* check the existing email
-		const existEmail = await UserModal.findOne({ email });
-		if (existEmail) {
-			return res.status(400).json({ error: "Sorry E-mail Id is already exists" });
-		}
-
 		if (password) {
 			const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -74,15 +86,17 @@ export async function login(req, res) {
 		if (!passwordCheck) {
 			return res.status(400).send({ error: "Don't have Password" });
 		}
+
 		//* create jwt token
 		const token = jwt.sign(
 			{
-				userId: user.id,
+				userId: user._id,
 				email: user.email,
 			},
 			ENV.JWT_SECRET,
 			{ expiresIn: "24h" }
 		);
+
 		return res.status(200).send({
 			msg: "Login Successful...!",
 			username: user.username,
@@ -115,7 +129,6 @@ export async function getUser(req, res) {
 export async function updateUser(req, res) {
 	try {
 		const { userId } = req.user;
-		console.log(userId);
 		if (userId) {
 			const body = req.body;
 			//* update the data
@@ -145,6 +158,16 @@ export async function verifyOTP(req, res) {
 	if (parseInt(req.app.locals.OTP) === parseInt(code)) {
 		req.app.locals.OTP = null; //* reset OTP value
 		req.app.locals.resetSession = true; //* start session for the reset password
+		return res.status(201).send({ msg: "Verified Successfully!" });
+	}
+	return res.status(400).send({ error: "Invalid OTP" });
+}
+
+//? GET: http://localhost:8080/api/verifyOTP/newuser
+export async function verifyOTPnewuser(req, res) {
+	const { code } = req.query;
+	if (parseInt(req.app.locals.OTP) === parseInt(code)) {
+		req.app.locals.OTP = null; //* reset OTP value
 		return res.status(201).send({ msg: "Verified Successfully!" });
 	}
 	return res.status(400).send({ error: "Invalid OTP" });
