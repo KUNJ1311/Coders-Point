@@ -4,15 +4,6 @@ const host = "http://localhost:8080";
 
 //* Make Api Requests
 
-//? validateToken
-export const validateToken = async (token) => {
-	try {
-		return await axios.post(`${host}/api/validateToken`, { token });
-	} catch (error) {
-		return { error: "Token is not valid..!" };
-	}
-};
-
 //? authenticate function
 export async function authentication(email) {
 	try {
@@ -80,11 +71,10 @@ export const updateUser = async (response) => {
 //? generate OTP
 export const generateOTP = async (email) => {
 	try {
-		const decodedEmail = decodeURIComponent(email);
 		const {
 			data: { code },
 			status,
-		} = axios.get(`${host}/api/generateOTP`, { params: { email: decodedEmail } });
+		} = await axios.get(`${host}/api/generateOTP`, { params: { email: email } });
 		//* send mail with the otp
 		if (status === 201) {
 			let {
@@ -119,7 +109,8 @@ export const generateOTPnewUser = async (email) => {
 //? verify OTP
 export const verifyOTP = async ({ email, code }) => {
 	try {
-		const { data, status } = await axios.get(`${host}/api/verifyOTP`, { params: { email, code } });
+		const decodedEmail = decodeURIComponent(email);
+		const { data, status } = await axios.get(`${host}/api/verifyOTP`, { params: { decodedEmail, code } });
 		return { data, status };
 	} catch (error) {
 		return Promise.reject(error);

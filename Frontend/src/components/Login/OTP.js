@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { registerUser, verifyOTPnewuser, verifyPassword } from "../helper/helper";
+import { generateOTP, registerUser, verifyOTP, verifyOTPnewuser, verifyPassword } from "../helper/helper";
 import { useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
 import { toast } from "react-toastify";
@@ -10,9 +10,12 @@ const OTP = (props) => {
 	const { credentials } = context;
 	const { email, password } = credentials;
 	const [otp, setOtp] = useState(new Array(6).fill(""));
+	const [timer, setTimer] = useState(100);
+	const [resendDisabled, setResendDisabled] = useState(false);
 
 	const handleChange = (index, e) => {
 		const newOtp = [...otp];
+		console.log(otp.length);
 		if (e.target.value.length > 1) {
 			newOtp[index] = e.target.value.slice(0, 1);
 		} else {
@@ -30,25 +33,66 @@ const OTP = (props) => {
 		}
 	};
 	const handleVerifyOTP = async (e) => {
-		try {
-			e.preventDefault();
-			const code = otp.join("");
-			const { status } = await verifyOTPnewuser({ code });
-			if (status === 201) {
-				const { msg, status } = await registerUser(credentials);
+		const code = otp.join("");
+		if (props.side === "sign-up-container") {
+			try {
+				e.preventDefault();
+				const { status } = await verifyOTPnewuser({ code });
 				if (status === 201) {
-					const { data, status } = await verifyPassword({ email, password });
-					if (status === 200) {
-						localStorage.setItem("coderToken", data.token);
-						Navigate("/mainapp");
-						toast.info("Congratulations! Your account has been created successfully.");
+					const { msg, status } = await registerUser(credentials);
+					if (status === 201) {
+						const { data, status } = await verifyPassword({ email, password });
+						if (status === 200) {
+							localStorage.setItem("coderToken", data.token);
+							Navigate("/mainapp");
+							toast.info("Congratulations! Your account has been created successfully.");
+						}
 					}
 				}
+			} catch (error) {
+				toast.error(error.response.data.error || "Request failed..!");
 			}
-		} catch (error) {
-			toast.error(error.response.data.error || "Request failed..!");
+		} else if (props.side === "sign-in-container") {
+			try {
+				e.preventDefault();
+				const { status, data } = await verifyOTP({ email, code });
+				if (status === 201) {
+					toast.success("Verifed Successfully..!");
+					props.handleVerify(true);
+				}
+				console.log(data, status);
+			} catch (error) {
+				toast.error(error.response.data.error || "Request Failed..!");
+			}
+		} else {
+			toast.error("Internal Server Error..!");
 		}
 	};
+
+	const startTimer = async (e) => {
+		e.preventDefault();
+		//* Disable the "Resend" button
+		setResendDisabled(true);
+
+		//* Start the timer
+		const intervalId = setInterval(() => {
+			setTimer((prevTimer) => prevTimer - 1);
+		}, 1000);
+
+		setTimeout(() => {
+			clearInterval(intervalId);
+			setTimer(100);
+			setResendDisabled(false);
+		}, 100000);
+
+		//* Re-Generate OTP
+		await toast.promise(generateOTP(email), {
+			pending: "Sending OTP to your email...",
+			success: "Success! Your OTP has been sent.",
+			error: "Unable to send OTP. Please try again..",
+		});
+	};
+
 	return (
 		<>
 			<div className={`form-container ${props.side}`}>
@@ -65,13 +109,19 @@ const OTP = (props) => {
 						Verify
 					</button>
 					<div className="py-4 resend">
-						<span style={{ fontSize: "15px" }}>
-							Can't get OTP?
-							<span className="text-red" style={{ fontSize: "15px", color: "red" }}>
-								{" "}
-								Resend
+						{resendDisabled ? (
+							<span style={{ fontSize: "15px" }}>
+								You can request a new OTP after <span style={{ color: "red" }}>{timer}s</span>.
 							</span>
-						</span>
+						) : (
+							<span style={{ fontSize: "15px" }}>
+								Can't get OTP?
+								<span className="text-red" style={{ fontSize: "15px", color: "red" }} onClick={startTimer}>
+									{" "}
+									Resend
+								</span>
+							</span>
+						)}
 					</div>
 				</form>
 			</div>

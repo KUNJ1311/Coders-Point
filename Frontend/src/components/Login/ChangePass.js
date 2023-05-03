@@ -2,13 +2,16 @@ import React from "react";
 import { IoLockClosed } from "react-icons/io5";
 
 const ChangePass = ({ OnChangePass }) => {
-	const ChangePass = () => {
-		OnChangePass(true);
+	const ChangePass = (e) => {
+		try {
+			e.preventDefault();
+			OnChangePass(true);
+		} catch (error) {}
 	};
 	return (
 		<>
 			<div className="form-container sign-in-container">
-				<form action="#" className="form-login">
+				<form onSubmit={ChangePass} className="form-login">
 					<h1 className="h">Change Password</h1>
 					<span className="ac-line mb-4"></span>
 					<div className="infield">
@@ -21,7 +24,7 @@ const ChangePass = ({ OnChangePass }) => {
 						<input type="password" placeholder="Confirm Password" />
 						<label></label>
 					</div>
-					<button className="robtn" onClick={ChangePass}>
+					<button type="submit" className="robtn">
 						Change
 					</button>
 				</form>

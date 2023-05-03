@@ -17,7 +17,7 @@ router.route("/login").post(controller.verifyUser, controller.login);
 router.route("/checkuser").post(controller.checkUser);
 
 //? GET
-router.route("/user/:username").get(controller.getUser);
+router.route("/user/:email").get(controller.getUser);
 router.route("/generateOTP").get(controller.verifyUser, localVariables, controller.generateOTP);
 router.route("/generateOTP/newuser").get(localVariables, controller.generateOTP);
 router.route("/verifyOTP/newuser").get(controller.verifyOTPnewuser);

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserState from "./components/context/UserState";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AuthorizeUser } from "./components/middleware/auth";
 function App() {
 	return (
 		<>
@@ -14,8 +14,17 @@ function App() {
 					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
 					<Routes>
 						<Route exact path="/" element={<Home />} />
-						<Route path="/mainapp" element={<MainApp />} />
 						<Route path="/login" element={<Login />} />
+						{/* Authorized Routes */}
+
+						<Route
+							path="/mainapp"
+							element={
+								<AuthorizeUser>
+									<MainApp />
+								</AuthorizeUser>
+							}
+						/>
 					</Routes>
 				</Router>
 			</UserState>

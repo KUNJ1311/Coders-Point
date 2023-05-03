@@ -49,9 +49,10 @@ const Login = ({ OnForget }) => {
 					<input onChange={onChange} name="password" type="password" value={credentials.password} placeholder="Password" />
 					<label className="lable-main"></label>
 				</div>
-				<div className="forgot" onClick={handleForget}>
-					Forgot Password?
-				</div>
+				<span className="forgot">
+					Forgot Password?<span onClick={handleForget}> Recover Now</span>
+				</span>
+
 				<button type="submit" className="robtn">
 					Login In
 				</button>

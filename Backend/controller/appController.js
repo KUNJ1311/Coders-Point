@@ -8,6 +8,7 @@ export async function verifyUser(req, res, next) {
 	try {
 		const { email } = req.method == "GET" ? req.query : req.body;
 		const decodedEmail = decodeURIComponent(email);
+		console.log(decodedEmail);
 		//* check the user existance
 		let exist = await UserModal.findOne({ decodedEmail });
 		if (!exist) {
@@ -111,11 +112,11 @@ export async function login(req, res) {
 //? GET: http://localhost:8080/api/user/user123
 export async function getUser(req, res) {
 	try {
-		const { username } = req.params;
-		const decodedUsername = decodeURIComponent(username);
-		const user = await UserModal.findOne({ decodedUsername });
+		const { email } = req.params;
+		const decodedEmail = decodeURIComponent(email);
+		const user = await UserModal.findOne({ email: decodedEmail });
 		if (!user) {
-			return res.status(500).send({ error: "Couldn't Find User" });
+			return res.status(500).send({ msg: "Couldn't Find User" });
 		}
 		//! remove password from user JSON
 		const { password, ...rest } = Object.assign({}, user.toJSON());

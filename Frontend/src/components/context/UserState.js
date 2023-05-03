@@ -24,7 +24,7 @@ const UserState = (props) => {
 				toast.warn("Please enter your details.");
 			}
 		} catch (error) {
-			console.log(error);
+			return { error };
 		}
 	};
 	return <UserContext.Provider value={{ credentials, setCredentials, Register }}>{props.children}</UserContext.Provider>;
