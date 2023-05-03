@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { registerUser, verifyOTPnewuser, verifyPassword } from "../helper/helper";
 import { useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
+import { toast } from "react-toastify";
 
 const OTP = (props) => {
 	const Navigate = useNavigate();
@@ -40,13 +41,12 @@ const OTP = (props) => {
 					if (status === 200) {
 						localStorage.setItem("coderToken", data.token);
 						Navigate("/mainapp");
+						toast.info("Congratulations! Your account has been created successfully.");
 					}
-				} else {
-					console.log("Sorry, the OTP you entered is invalid..!");
 				}
 			}
 		} catch (error) {
-			console.log(error);
+			toast.error(error.response.data.error || "Request failed..!");
 		}
 	};
 	return (

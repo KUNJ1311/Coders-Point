@@ -160,7 +160,7 @@ export async function verifyOTP(req, res) {
 		req.app.locals.resetSession = true; //* start session for the reset password
 		return res.status(201).send({ msg: "Verified Successfully!" });
 	}
-	return res.status(400).send({ error: "Invalid OTP" });
+	return res.status(400).send({ error: "Sorry, the OTP you entered is invalid..!" });
 }
 
 //? GET: http://localhost:8080/api/verifyOTP/newuser
@@ -170,7 +170,7 @@ export async function verifyOTPnewuser(req, res) {
 		req.app.locals.OTP = null; //* reset OTP value
 		return res.status(201).send({ msg: "Verified Successfully!" });
 	}
-	return res.status(400).send({ error: "Invalid OTP" });
+	return res.status(400).send({ error: "Sorry, the OTP you entered is invalid..!" });
 }
 
 //* successfully redirect user when OTP is valid

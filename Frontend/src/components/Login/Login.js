@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { IoLockClosed } from "react-icons/io5";
 import { MdMail } from "react-icons/md";
 import { verifyPassword } from "../helper/helper";
+import { toast } from "react-toastify";
 
 const Login = ({ OnForget }) => {
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -13,17 +14,20 @@ const Login = ({ OnForget }) => {
 		OnForget(true);
 	};
 
+	//* login user and save token in localstorage
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
 			const { data } = await verifyPassword(credentials);
 			localStorage.setItem("coderToken", data.token);
 			Navigate("/mainapp");
+			toast.info("Logged in successfully..!");
 		} catch (error) {
-			alert("wrong credentials");
+			toast.error("Wrong Credentials..!");
 		}
 	};
 
+	//* set values of input feild on change
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
