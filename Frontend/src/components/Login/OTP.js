@@ -38,7 +38,7 @@ const OTP = (props) => {
 				e.preventDefault();
 				const { status } = await verifyOTP({ code, email });
 				if (status === 200) {
-					const { msg, status } = await registerUser(credentials);
+					const { status } = await registerUser(credentials);
 					if (status === 201) {
 						const { data, status } = await verifyPassword({ email, password });
 						if (status === 200) {

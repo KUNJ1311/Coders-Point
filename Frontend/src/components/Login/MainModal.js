@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
-
 import Signup from "./Signup";
 import Login from "./Login";
 import OTP from "./OTP";
 import ForgetPass from "./ForgetPass";
-import { useNavigate } from "react-router-dom";
 import ChangePass from "./ChangePass";
 
 export default function MainModal({ onClose }) {
