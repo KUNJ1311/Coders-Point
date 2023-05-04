@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { IoLockClosed } from "react-icons/io5";
 import userContext from "../context/userContext";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { resetPassword, verifyPassword } from "../helper/helper";
 
