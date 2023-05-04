@@ -15,7 +15,6 @@ const OTP = (props) => {
 
 	const handleChange = (index, e) => {
 		const newOtp = [...otp];
-		console.log(otp.length);
 		if (e.target.value.length > 1) {
 			newOtp[index] = e.target.value.slice(0, 1);
 		} else {
@@ -55,12 +54,11 @@ const OTP = (props) => {
 		} else if (props.side === "sign-in-container") {
 			try {
 				e.preventDefault();
-				const { status, data } = await verifyOTP({ email, code });
-				if (status === 201) {
+				const { status } = await verifyOTP({ email, code });
+				if (status === 200) {
 					toast.success("Verifed Successfully..!");
 					props.handleVerify(true);
 				}
-				console.log(data, status);
 			} catch (error) {
 				toast.error(error.response.data.error || "Request Failed..!");
 			}

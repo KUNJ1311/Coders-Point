@@ -15,18 +15,20 @@ const ForgetPass = ({ OnSend }) => {
 		try {
 			e.preventDefault();
 			if (email) {
-				await toast.promise(generateOTP(email), {
-					pending: "Sending OTP to your email...",
-					success: "Success! Your OTP has been sent.",
-					error: "Unable to send OTP. Please try again..",
-				});
-				OnSend(true);
+				try {
+					await toast.promise(generateOTP(email), {
+						pending: "Sending OTP to your email...",
+						success: "Success! Your OTP has been sent.",
+					});
+					OnSend(true);
+				} catch (error) {
+					return toast.warn(error.response.data.error);
+				}
 			} else {
 				return toast.warn("Please enter your details.");
 			}
 		} catch (error) {
-			console.log(error);
-			return { error };
+			toast.error("Server Error! Please, Try Again..");
 		}
 	};
 	return (
@@ -38,7 +40,7 @@ const ForgetPass = ({ OnSend }) => {
 					<span className="sm-text pt-5 pb-2">Enter your E-mail address.</span>
 					<div className="infield">
 						<MdMail className="icon-login" />
-						<input onChange={onChange} type="email" placeholder="Email" name="email" />
+						<input onChange={onChange} type="email" placeholder="Email" name="email" value={credentials.email} />
 						<label></label>
 					</div>
 					<button type="submit" className="robtn" style={{ marginTop: "15px" }}>

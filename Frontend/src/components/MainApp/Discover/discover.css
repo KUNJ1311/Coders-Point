@@ -145,11 +145,11 @@
 }
 
 .wrapperCommon:hover .channels-name div {
-	color: white;
+	color: #f2f3f5;
 }
 
 .wrapperCommon:hover .arrow-svg path {
-	fill: white;
+	fill: #f2f3f5;
 }
 
 .channels-add {
@@ -189,7 +189,7 @@
 }
 
 .add-button:hover svg path {
-	fill: white;
+	fill: #f2f3f5;
 }
 
 .tooltip .tooltiptext {
@@ -200,7 +200,7 @@
 	left: 50%;
 	margin-left: -20px;
 	background-color: #000000;
-	color: #ffffff;
+	color: #f2f3f5;
 	border-radius: 5px;
 	box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
 	padding: 6px;
@@ -283,7 +283,7 @@
 }
 
 .chat-channels:hover .channels-list {
-	color: white;
+	color: #f2f3f5;
 }
 
 .hidden {

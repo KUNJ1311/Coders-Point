@@ -6,6 +6,7 @@
 	--linear-grad: linear-gradient(to right, #141e30, #243b55);
 	--grad-clr1: #141e30;
 	--grad-clr2: #243b55;
+	--app-font: "Roboto Flex", sans-serif;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 	-webkit-tap-highlight-color: transparent;
 	margin: 0;
 	padding: 0;
-	font-family: "Roboto Slab", serif;
+	font-family: "Roboto", sans-serif;
 	color: var(--color-black);
 }
 /* --------------------------------------------------------
@@ -41,4 +42,8 @@ body {
 
 .scroller-d:hover::-webkit-scrollbar-thumb {
 	background-color: #131416;
+}
+
+.app-font {
+	font-family: var(--app-font);
 }

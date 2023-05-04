@@ -21,7 +21,7 @@ const Login = ({ OnForget }) => {
 			const { data } = await verifyPassword(credentials);
 			localStorage.setItem("coderToken", data.token);
 			Navigate("/mainapp");
-			toast.info("Logged in successfully..!");
+			toast.success("Logged in successfully..!");
 		} catch (error) {
 			toast.error("Wrong Credentials..!");
 		}

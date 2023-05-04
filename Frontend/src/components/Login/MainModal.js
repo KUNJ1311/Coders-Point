@@ -15,7 +15,6 @@ export default function MainModal({ onClose }) {
 	const [forgetValue, setForgetValue] = useState(false);
 	const [sendOTP, setSendOTP] = useState(false);
 	const [rePassword, setRePassword] = useState(false);
-	const [changePassword, setChangePassword] = useState(false);
 	function togglePanel() {
 		setIsActive(!isActive);
 		setIsScaled(!isScaled);
@@ -29,10 +28,6 @@ export default function MainModal({ onClose }) {
 	const OnSend = (value) => {
 		setSendOTP(value);
 	};
-	const OnChangePass = (value) => {
-		setChangePassword(value);
-	};
-
 	const RePass = () => {
 		setRePassword(true);
 	};
@@ -42,7 +37,7 @@ export default function MainModal({ onClose }) {
 			<section className="sec" onClick={onClose}>
 				<div className={`container fade-in ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
 					{registerValue ? <OTP side={"sign-up-container"} /> : <Signup OnRegister={OnRegister} />}
-					{forgetValue ? sendOTP ? rePassword ? changePassword ? <Login OnForget={OnForget} /> : <ChangePass OnChangePass={OnChangePass} /> : <OTP side={"sign-in-container"} handleVerify={RePass} /> : <ForgetPass OnSend={OnSend} /> : <Login OnForget={OnForget} />}
+					{forgetValue ? sendOTP ? rePassword ? <ChangePass /> : <OTP side={"sign-in-container"} handleVerify={RePass} /> : <ForgetPass OnSend={OnSend} /> : <Login OnForget={OnForget} />}
 					<div className="overlay-container" id="overlayCon">
 						<div className="overlay">
 							<div className="overlay-panel overlay-left">

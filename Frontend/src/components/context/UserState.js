@@ -4,7 +4,7 @@ import { checkUser, generateOTPnewUser } from "../helper/helper";
 import { toast } from "react-toastify";
 
 const UserState = (props) => {
-	const [credentials, setCredentials] = useState({ email: "", password: "", username: "" });
+	const [credentials, setCredentials] = useState({ email: "", password: "", username: "", repassword: "" });
 	const { email, password, username } = credentials;
 	const Register = async ({ OnRegister }) => {
 		try {

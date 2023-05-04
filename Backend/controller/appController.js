@@ -1,4 +1,5 @@
 import UserModal from "../model/User.modal.js";
+import OtpModal from "../model/Otp.modal.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import ENV from "../config.js";
@@ -7,10 +8,8 @@ import ENV from "../config.js";
 export async function verifyUser(req, res, next) {
 	try {
 		const { email } = req.method == "GET" ? req.query : req.body;
-		const decodedEmail = decodeURIComponent(email);
-		console.log(decodedEmail);
 		//* check the user existance
-		let exist = await UserModal.findOne({ decodedEmail });
+		let exist = await UserModal.findOne({ email });
 		if (!exist) {
 			return res.status(404).send({ error: "Can't Find User!" });
 		}
@@ -113,8 +112,7 @@ export async function login(req, res) {
 export async function getUser(req, res) {
 	try {
 		const { email } = req.params;
-		const decodedEmail = decodeURIComponent(email);
-		const user = await UserModal.findOne({ email: decodedEmail });
+		const user = await UserModal.findOne({ email });
 		if (!user) {
 			return res.status(500).send({ msg: "Couldn't Find User" });
 		}
@@ -146,22 +144,59 @@ export async function updateUser(req, res) {
 	}
 }
 
+// //? GET: http://localhost:8080/api/generateOTP
+// export async function generateOTP(req, res) {
+// 	//* Generate a random 6-digit number
+// 	req.app.locals.OTP = Math.floor(100000 + Math.random() * 900000);
+// 	res.status(201).send({ code: req.app.locals.OTP });
+// }
+
 //? GET: http://localhost:8080/api/generateOTP
 export async function generateOTP(req, res) {
-	//* Generate a random 6-digit number
-	req.app.locals.OTP = Math.floor(100000 + Math.random() * 900000);
-	res.status(201).send({ code: req.app.locals.OTP });
+	const { email } = req.query;
+	let user = await UserModal.findOne({ email });
+	if (user) {
+		let otpData = await OtpModal.findOne({ email });
+		let otpCode;
+		if (!otpData) {
+			//* create new OTP object if it doesn't exist
+			otpCode = Math.floor(100000 + Math.random() * 900000);
+			otpData = new OtpModal({
+				email,
+				code: otpCode,
+				verified: false,
+				expiresIn: new Date().getTime() + 300 * 1000, //* 5 minutes
+			});
+		} else {
+			//* update existing OTP object with new code and expiration time
+			otpCode = Math.floor(100000 + Math.random() * 900000);
+			otpData.code = otpCode;
+			otpData.verified = false;
+			otpData.expiresIn = new Date().getTime() + 300 * 1000; //* 5 minutes
+		}
+		await otpData.save();
+		return res.status(201).send({ msg: "Please check your Email Id", code: otpCode, username: user.username });
+	} else {
+		return res.status(401).send({ error: "Email Id not Exist" });
+	}
 }
 
 //? GET: http://localhost:8080/api/verifyOTP
 export async function verifyOTP(req, res) {
-	const { code } = req.query;
-	if (parseInt(req.app.locals.OTP) === parseInt(code)) {
-		req.app.locals.OTP = null; //* reset OTP value
-		req.app.locals.resetSession = true; //* start session for the reset password
-		return res.status(201).send({ msg: "Verified Successfully!" });
+	const { code, email } = req.query;
+	let otpData = await OtpModal.findOne({ email });
+	if (otpData.code === parseInt(code)) {
+		if (otpData.expiresIn < new Date().getTime()) {
+			//* if OTP is expired
+			return res.status(400).send({ error: "OTP expired!" });
+		}
+		//* set verified to true
+		otpData.verified = true;
+		await otpData.save();
+		return res.status(200).send({ msg: "Verified Successfully!" });
+	} else {
+		return res.status(400).send({ error: "Sorry, the OTP you entered is invalid..!" });
 	}
-	return res.status(400).send({ error: "Sorry, the OTP you entered is invalid..!" });
 }
 
 //? GET: http://localhost:8080/api/verifyOTP/newuser
@@ -174,34 +209,59 @@ export async function verifyOTPnewuser(req, res) {
 	return res.status(400).send({ error: "Sorry, the OTP you entered is invalid..!" });
 }
 
-//* successfully redirect user when OTP is valid
-//? GET: http://localhost:8080/api/createResetSession
-export async function createResetSession(req, res) {
-	if (req.app.locals) {
-		req.app.locals.resetSession = false; //* allow access to this route only once
-		return res.status(201).send({ msg: "Access Granted!" });
-	}
-	return res.status(440).send({ error: "Session Expried!" });
-}
+// //* successfully redirect user when OTP is valid
+// //? GET: http://localhost:8080/api/createResetSession
+// export async function createResetSession(req, res) {
+// 	if (req.app.locals) {
+// 		req.app.locals.resetSession = false; //* allow access to this route only once
+// 		return res.status(201).send({ msg: "Access Granted!" });
+// 	}
+// 	return res.status(440).send({ error: "Session Expried!" });
+// }
 
-//* update the password when we have valid session
+// //* update the password when we have valid session
+// //? PUT http://localhost:8080/api/resetPassword
+// export async function resetPassword(req, res) {
+// 	try {
+// 		if (!req.app.locals.resetSession) {
+// 			return res.status(440).send({ error: "Session Expried!" });
+// 		}
+// 		const { email, password } = req.body;
+// 		try {
+// 			const user = await UserModal.findOne({ email });
+// 			const hashedPassword = await bcrypt.hash(password, 10);
+// 			await UserModal.updateOne({ username: user.username }, { password: hashedPassword });
+// 			req.app.locals.resetSession = false; //* reset session
+// 			res.status(201).send({ msg: "Record Updated Successfully" });
+// 		} catch (error) {
+// 			return res.status(404).send({ error: "email not Found" });
+// 		}
+// 	} catch (error) {
+// 		return res.status(401).send({ error });
+// 	}
+// }
+
 //? PUT http://localhost:8080/api/resetPassword
 export async function resetPassword(req, res) {
-	try {
-		if (!req.app.locals.resetSession) {
-			return res.status(440).send({ error: "Session Expried!" });
-		}
-		const { email, password } = req.body;
-		try {
-			const user = await UserModal.findOne({ email });
+	const { email, password } = req.body;
+	let otpData = await OtpModal.findOne({ email });
+	if (otpData && otpData.verified && otpData.expiresIn > new Date().getTime()) {
+		const user = await UserModal.findOne({ email });
+		if (user) {
 			const hashedPassword = await bcrypt.hash(password, 10);
-			await UserModal.updateOne({ username: user.username }, { password: hashedPassword });
-			req.app.locals.resetSession = false; //* reset session
-			res.status(201).send({ msg: "Record Updated Successfully" });
-		} catch (error) {
-			return res.status(404).send({ error: "email not Found" });
+			await UserModal.findOneAndUpdate({ email }, { password: hashedPassword });
+			//* delete the OTP data
+			await OtpModal.deleteOne({ email });
+			return res.status(201).send({ msg: "Record Updated Successfully" });
+		} else {
+			return res.status(401).send({ error: "User not found..!" });
 		}
-	} catch (error) {
-		return res.status(401).send({ error });
+	} else {
+		if (otpData && otpData.expiresIn > new Date().getTime()) {
+			await OtpModal.deleteOne({ email });
+			return res.status(401).send({ error: "OTP Expired..!" });
+		} else {
+			return res.status(401).send({ error: "Access Denied! Please verify the OTP first." });
+		}
 	}
 }
