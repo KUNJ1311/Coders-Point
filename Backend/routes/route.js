@@ -3,25 +3,27 @@ const router = Router();
 
 //! *** all controllers *** !//
 import * as controller from "../controller/appController.js";
+import Auth from "../middleware/auth.js";
+import { registerMail } from "../controller/mailer.js";
 
 //? POST
+router.route("/validateToken").post(controller.validateToken);
 router.route("/register").post(controller.register);
-//TODO ↓↓↓↓↓↓↓↓
-// router.route("/authenticate").post();
-router.route("/registerMail").post((req, res) => {
+router.route("/registerMail").post(registerMail);
+router.route("/authenticate").post(controller.verifyUser, (req, res) => {
 	res.end();
 });
-//TODO ↑↑↑↑↑↑↑↑
-router.route("/login").post(controller.login);
+router.route("/login").post(controller.verifyUser, controller.login);
+router.route("/checkuser").post(controller.checkUser);
 
 //? GET
-router.route("/user/:username").get(controller.getUser);
-router.route("/generateOTP").post(controller.generateOTP);
-router.route("/verifyOTP").post(controller.verifyOTP);
-router.route("/createResetSession").post(controller.createResetSession);
+router.route("/user/:email").get(controller.getUser);
+router.route("/generateOTP").get(controller.generateOTP);
+router.route("/verifyOTP").get(controller.verifyOTP);
+router.route("/generateOTP/newuser").get(controller.generateOTPnewUser);
 
 //? PUT
-router.route("/updateuser").put(controller.updateUser);
+router.route("/updateUser").put(Auth, controller.updateUser);
 router.route("/resetPassword").put(controller.resetPassword);
 
 export default router;
