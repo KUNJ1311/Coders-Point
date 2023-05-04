@@ -18,14 +18,9 @@ router.route("/checkuser").post(controller.checkUser);
 
 //? GET
 router.route("/user/:email").get(controller.getUser);
-// router.route("/generateOTP").get(controller.verifyUser, localVariables, controller.generateOTP);
-// router.route("/generateOTP/newuser").get(localVariables, controller.generateOTP);
 router.route("/generateOTP").get(controller.generateOTP);
-router.route("/generateOTP/newuser").get(controller.generateOTP);
-router.route("/verifyOTP/newuser").get(controller.verifyOTPnewuser);
-// router.route("/verifyOTP").get(controller.verifyUser, controller.verifyOTP);
 router.route("/verifyOTP").get(controller.verifyOTP);
-// router.route("/createResetSession").get(controller.createResetSession);
+router.route("/generateOTP/newuser").get(controller.generateOTPnewUser);
 
 //? PUT
 router.route("/updateUser").put(Auth, controller.updateUser);

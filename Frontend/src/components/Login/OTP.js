@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { generateOTP, registerUser, verifyOTP, verifyOTPnewuser, verifyPassword } from "../helper/helper";
+import { generateOTP, generateOTPnewUser, registerUser, verifyOTP, verifyPassword } from "../helper/helper";
 import { useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
 import { toast } from "react-toastify";
@@ -36,8 +36,8 @@ const OTP = (props) => {
 		if (props.side === "sign-up-container") {
 			try {
 				e.preventDefault();
-				const { status } = await verifyOTPnewuser({ code });
-				if (status === 201) {
+				const { status } = await verifyOTP({ code, email });
+				if (status === 200) {
 					const { msg, status } = await registerUser(credentials);
 					if (status === 201) {
 						const { data, status } = await verifyPassword({ email, password });
@@ -84,11 +84,21 @@ const OTP = (props) => {
 		}, 100000);
 
 		//* Re-Generate OTP
-		await toast.promise(generateOTP(email), {
-			pending: "Sending OTP to your email...",
-			success: "Success! Your OTP has been sent.",
-			error: "Unable to send OTP. Please try again..",
-		});
+		if (props.side === "sign-in-container") {
+			await toast.promise(generateOTP(email), {
+				pending: "Sending OTP to your email...",
+				success: "Success! Your OTP has been sent.",
+				error: "Unable to send OTP. Please try again..",
+			});
+		} else if (props.side === "sign-up-container") {
+			await toast.promise(generateOTPnewUser(email), {
+				pending: "Sending OTP to your email...",
+				success: "Success! Your OTP has been sent.",
+				error: "Unable to send OTP. Please try again..",
+			});
+		} else {
+			toast.error("Internal Server Error..!");
+		}
 	};
 
 	return (

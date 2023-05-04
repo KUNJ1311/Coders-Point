@@ -90,10 +90,13 @@ export const generateOTP = async (email) => {
 //? generate OTP for new User
 export const generateOTPnewUser = async (email) => {
 	try {
-		const { data, status } = await axios.get(`${host}/api/generateOTP/newuser`);
+		const {
+			status,
+			data: { code },
+		} = await axios.get(`${host}/api/generateOTP/newUser`, { params: { email } });
 		//* send mail with the otp
 		if (status === 201) {
-			let text = data.code;
+			let text = code;
 			let extra = `Hello, here is your OTP. Please use this OTP to complete your registration process.`;
 			await axios.post(`${host}/api/registerMail`, { userEmail: email, text, subject: "OTP for registration process", extra });
 			return { status, msg: "OTP has been sent to your email." };
