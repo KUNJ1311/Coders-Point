@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BsFolder2Open } from "react-icons/bs";
-import { RiUserVoiceLine } from "react-icons/ri";
-import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
+import { HiFolder } from "react-icons/hi2";
+import { HiSpeakerWave } from "react-icons/hi2";
+import { HiChatAlt } from "react-icons/hi";
+
 const Discover = () => {
-	const text = ["test", "fun", "run", "KUNJ"];
+	const text = ["test", "fun", "General", "Kunj", "rohit2424"];
 	const vc = ["vc", "fun", "testing"];
 	const project = ["iu", "coders point"];
 	const [hiddenText, setHiddenText] = useState(false);
@@ -24,9 +25,7 @@ const Discover = () => {
 			<nav className="d-flex discover-nav">
 				<div className="relative cursor-pointer">
 					<header>
-						<div className="d-flex align-c">
-							<div>Valorant</div>
-						</div>
+						<div>Thik hai!!</div>
 					</header>
 				</div>
 			</nav>
@@ -58,7 +57,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<HiOutlineChatBubbleLeftRight className="react-svg" stroke="#96969a" />
+											<HiChatAlt className="react-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{text}</div>
 									</Link>
@@ -94,7 +93,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<RiUserVoiceLine className="react-svg" fill="#96969a" />
+											<HiSpeakerWave className="react-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{vc}</div>
 									</Link>
@@ -130,7 +129,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<BsFolder2Open className="react-svg" fill="#96969a" />
+											<HiFolder className="react-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{project}</div>
 									</Link>
