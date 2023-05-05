@@ -1,12 +1,9 @@
 import React from "react";
-import Tooltip from "../Tooltip/Tooltip";
 
 const MainContent = () => {
 	return (
 		<>
-			<div className="maincontent">
-				<Tooltip />
-			</div>
+			<div className="maincontent"></div>
 		</>
 	);
 };
