@@ -192,7 +192,7 @@
 	fill: #f2f3f5;
 }
 
-.tooltip .tooltiptext {
+/* .tooltip .tooltiptext {
 	visibility: hidden;
 	position: absolute;
 	z-index: 999;
@@ -215,7 +215,7 @@
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 	opacity: 1;
-}
+} */
 
 .chat-channels {
 	padding: 1px 0;
