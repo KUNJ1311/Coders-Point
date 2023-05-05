@@ -12,6 +12,7 @@
 	scroll-behavior: smooth;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	z-index: 3;
 }
 
 .groups::-webkit-scrollbar {

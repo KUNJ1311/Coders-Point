@@ -7,6 +7,7 @@
 	width: 240px;
 	flex-shrink: 0;
 	font-size: 30px;
+	z-index: 2;
 }
 
 .discover-nav {
@@ -15,6 +16,7 @@
 	justify-content: flex-start;
 	flex: 1 1 auto;
 	min-height: 0;
+	z-index: 2;
 	position: relative;
 }
 
@@ -58,7 +60,6 @@
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	scroll-behavior: smooth;
-	z-index: 1;
 	position: relative;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -157,13 +158,12 @@
 	align-items: center;
 	justify-content: center;
 	flex: 0 0 auto;
-	padding-right: 8px;
+	padding-inline: 2px;
 	cursor: pointer;
 }
 
 .add-button {
 	cursor: pointer;
-	display: block;
 	width: 18px;
 	height: 18px;
 	position: relative;
@@ -174,47 +174,13 @@
 	background: none;
 	border: none;
 	border-radius: 3px;
-	font-size: 14px;
-	font-weight: 500;
-	line-height: 16px;
-	padding: 2px 16px;
-	user-select: none;
-	overflow: hidden;
+	font-size: 18px;
 	margin: 0;
 	padding: 0;
 }
 
-.add-svg path {
-	fill: #96969a;
-}
-
 .add-button:hover svg path {
 	fill: #f2f3f5;
-}
-
-.tooltip .tooltiptext {
-	visibility: hidden;
-	position: absolute;
-	z-index: 999;
-	top: 100%;
-	left: 50%;
-	margin-left: -20px;
-	background-color: #000000;
-	color: #f2f3f5;
-	border-radius: 5px;
-	box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
-	padding: 6px;
-	font-size: 12px;
-	line-height: 1.2;
-	width: 120px;
-	text-align: center;
-	opacity: 0;
-	transition: all 0.2s ease-in-out;
-}
-
-.tooltip:hover .tooltiptext {
-	visibility: visible;
-	opacity: 1;
 }
 
 .chat-channels {
@@ -261,11 +227,12 @@
 	height: 18px;
 }
 
-.react-svg {
+.type-svg {
 	position: relative;
-	margin-bottom: 2px;
 	width: 18px;
 	height: 18px;
+	display: flex;
+	align-items: center;
 }
 
 .channels-list {

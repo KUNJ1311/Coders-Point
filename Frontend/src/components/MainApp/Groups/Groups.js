@@ -6,8 +6,24 @@ import img3 from "../../Image/facebook.png";
 import img4 from "../../Image/telegram.png";
 import img5 from "../../Image/twitter.png";
 import img6 from "../../Image/instal.webp";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+
 const Groups = () => {
-	const groups = [img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6];
+	const groups = [
+		{ name: "Valorant", img: img1 },
+		{ name: "React JS", img: img2 },
+		{ name: "Facebook", img: img3 },
+		{ name: "Telegram", img: img4 },
+		{ name: "Twitter", img: img5 },
+		{ name: "Instagram", img: img6 },
+		{ name: "Valorant", img: img1 },
+		{ name: "React JS", img: img2 },
+		{ name: "Facebook", img: img3 },
+		{ name: "Telegram", img: img4 },
+		{ name: "Twitter", img: img5 },
+		{ name: "Instagram", img: img6 },
+	];
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const handleClick = (index) => {
@@ -51,11 +67,12 @@ const Groups = () => {
 							<span style={style} className="side-line-effect"></span>
 						</div>
 					</div>
-					<div className="d-flex align-c justify-c cursor-pointer groups-border home-logo" style={mystyle} onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleClicklogo}>
+					<div id="home-tooltip" data-tooltip-offset={20} className="d-flex align-c justify-c cursor-pointer groups-border home-logo" style={mystyle} onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleClicklogo}>
 						<div className="align-c justify-c">
-							<img className="d-block pr-1 logo-home" src={img} width="20px" height="27px" alt="" />
+							<img className="d-block logo-home" src={img} width="30px" height="30px" alt="" />
 						</div>
 					</div>
+					<Tooltip anchorSelect="#home-tooltip" place="right" content="Home" id="tooltip" />
 				</div>
 				{/* line */}
 				<div className="d-flex justify-c sm-line ">
@@ -64,8 +81,9 @@ const Groups = () => {
 				{/* Servers */}
 				<div className="d-flex flex-col w-full align-c ">
 					{groups.map((group, index) => (
-						<div key={index} width="48px" height="48px" className=" cursor-pointer servers" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)}>
-							<div className="d-flex align-c justify-c mb-2 " width="48px" height="48px">
+						<div key={index} width="48px" height="48px" className="servers">
+							<div id="groups-tooltip" data-tooltip-content={group.name} data-tooltip-offset={20} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
+								<Tooltip id="tooltip" anchorSelect="#groups-tooltip" place="right" render={({ content }) => <span>{content}</span>} />
 								<div height="48px">
 									<div className="side-line">
 										<span
@@ -76,7 +94,7 @@ const Groups = () => {
 										></span>
 									</div>
 								</div>
-								<img className=" d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group} width="48px" height="48px" alt="" />
+								<img className=" d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group.img} width="48px" height="48px" alt="" />
 							</div>
 						</div>
 					))}
