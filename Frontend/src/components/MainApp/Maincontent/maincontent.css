@@ -11,6 +11,7 @@
 	flex-direction: column;
 	flex: 1 1 auto;
 }
+
 .maincontent section {
 	position: relative;
 	flex: 0 0 auto;
@@ -20,6 +21,7 @@
 	color: #f2f2f5;
 	box-shadow: 0 1px 0 #202124, 0 1.5px 0 #202124, 0 2px 0 #202124;
 }
+
 .maincontent-title {
 	position: relative;
 	flex: 1 1 auto;
@@ -28,12 +30,14 @@
 	min-width: 0;
 	overflow: hidden;
 }
+
 .maincontent-title div {
 	align-items: center;
 	display: flex;
 	position: relative;
 	margin-inline: 8px;
 }
+
 .maincontent main {
 	min-width: 0;
 	min-height: 0;
@@ -44,21 +48,45 @@
 	align-items: stretch;
 	position: relative;
 }
+
 .big-type-svg {
 	position: relative;
 	width: 26px;
 	height: 26px;
 }
+
 .chat-area {
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scrollbar-width: 7px;
+	scrollbar-color: #2b2d31 !important;
 	position: relative;
 	display: flex;
 	flex: 1 1 auto;
 	z-index: 0;
 }
+
+.chat-area::-webkit-scrollbar {
+	width: 18px;
+	height: 18px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+	background-color: #2b2d31;
+	border-radius: 15px;
+	background-clip: padding-box;
+	border: 5px solid transparent;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+	background-color: #1a1b1e;
+	border-radius: 15px;
+	border: 5px solid transparent;
+	background-clip: padding-box;
+}
+
 .chat-form {
 	background-color: #313338;
-	overflow: auto;
 	display: flex;
 	flex: 0 0 auto;
 	padding-inline: 16px;
@@ -73,9 +101,45 @@
 	width: 100%;
 	text-indent: 0;
 	border-radius: 8px;
-	height: 44px;
 }
-
+.chat-input textarea {
+	padding: 10px 10px 10px 0;
+	background-color: transparent;
+	display: flex;
+	flex: 1 1 auto;
+	font-size: 16px;
+	color: #b5bac1;
+	font-family: var(--app-font);
+	border: none;
+	outline: none;
+	resize: none;
+	font-weight: 400;
+	max-height: 50vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.auto-height {
+	display: flex;
+	flex: 1 1 auto;
+	max-height: 50vh;
+	border-radius: 8px;
+}
+.chat-input textarea::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+.chat-input textarea::-webkit-scrollbar-track {
+	border-radius: 8px;
+	background-clip: padding-box;
+	border: 4px solid transparent;
+	background: transparent;
+}
+.chat-input textarea::-webkit-scrollbar-thumb {
+	background-color: #1a1b1e;
+	border-radius: 8px;
+	border: 4px solid transparent;
+	background-clip: padding-box;
+}
 .add-btn {
 	padding: 10px 16px;
 	position: relative;
@@ -90,14 +154,17 @@
 	border-radius: 3px;
 	font-size: 18px;
 }
+
 .add-btn:hover svg {
 	fill: white;
 }
+
 .add-btn svg {
 	fill: #b5bac1;
 	width: 24px;
 	height: 24px;
 }
+
 .invi-block {
 	display: block;
 	height: 30px;

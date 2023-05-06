@@ -11,12 +11,11 @@ function App() {
 		<>
 			<UserState>
 				<Router>
-					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
+					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover theme="light" />
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route path="/login" element={<Login />} />
 						{/* Authorized Routes */}
-
 						<Route
 							path="/mainapp"
 							element={

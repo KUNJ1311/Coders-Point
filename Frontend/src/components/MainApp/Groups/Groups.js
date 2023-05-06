@@ -101,10 +101,11 @@ const Groups = () => {
 				</div>
 				{/* Plus */}
 				<div className="d-flex flex-col w-full align-c">
-					<div width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
+					<div id="add-tooltip" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
 						<svg className="d-flex object-cover round plus-svg" fill="#249c57" width="48px" height="48px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
 							<path d="M486 691h52V538h153v-52H538V333h-52v153H333v52h153z" />
 						</svg>
+						<Tooltip anchorSelect="#add-tooltip" place="right" content="Add Group" id="tooltip" />
 					</div>
 				</div>
 			</div>

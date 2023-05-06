@@ -5,6 +5,6 @@ const dbConnectionString = ENV.MONGODB_URL;
 const connect = async () => {
 	await mongoose.connect(dbConnectionString);
 	mongoose.set("strictQuery", true);
-	console.log("MongoDB connected");
+	console.log("MongoDB Connected Successfully");
 };
 export default connect;
