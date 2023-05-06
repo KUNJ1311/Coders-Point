@@ -1,17 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-* {
-	padding: 0px;
-	margin: 0px;
-	box-sizing: border-box;
-}
-
-:root {
-	--linear-grad: linear-gradient(to right, #141e30, #243b55);
-	--grad-clr1: #141e30;
-	--grad-clr2: #243b55;
-}
-
+/* --------------------------------------
+								login page
+---------------------------------------*/
 .sec {
 	z-index: 999;
 	width: 100vw;
@@ -25,7 +15,7 @@
 	background-color: #2023259d;
 	justify-content: center;
 	align-items: center;
-	font-family: "Poppins", sans-serif;
+	font-family: var(--second-font);
 }
 
 .container {
@@ -34,7 +24,7 @@
 	width: 848px;
 	height: 500px;
 	background-color: #f5f5f5;
-	box-shadow: rgba(223, 242, 255, 0.16) 0px 6px 10px, rgba(223, 242, 255, 0.23) 0px 6px 10px;
+	box-shadow: 0px 5px 12px 1px gray, 0px 0px 12px 1px gray;
 	overflow: hidden;
 	animation-name: grow-modal;
 	animation-duration: 0.5s;
@@ -122,17 +112,23 @@ h1.h {
 }
 
 .forgot {
-	cursor: pointer;
 	color: #333;
-	font-size: 14px;
+	font-size: 15px !important;
 	text-decoration: none;
 	margin: 10px 0px;
-	border-bottom: 2px solid #eee;
 }
-.forgot:hover {
-	color: #006aff;
-	border-color: #78a5e5;
+
+.forgot span {
+	cursor: pointer;
+	color: red;
+	font-size: 15px !important;
+	transition: all 0.2s ease-in-out;
 }
+
+.forgot span:hover {
+	color: #006aff !important;
+}
+
 .ac-line {
 	width: 70px;
 	height: 5px;
@@ -318,7 +314,7 @@ h1.h {
 .resend span {
 	transition: all 0.2s ease-in-out;
 }
-.resend span span:hover {
+.resend .text-red:hover {
 	color: #006aff !important;
 	cursor: pointer;
 }
