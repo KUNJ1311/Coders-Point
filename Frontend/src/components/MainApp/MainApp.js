@@ -8,7 +8,7 @@ import "./Maincontent/maincontent.css";
 
 const MainApp = () => {
 	return (
-		<div className="d-flex app-font">
+		<div className="d-flex app-font absolute">
 			<Groups />
 			<Discover />
 			<MainContent />

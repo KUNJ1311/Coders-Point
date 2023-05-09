@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import avatar from "./avatar.svg";
 import { useNavigate } from "react-router-dom";
 import { IoLockClosed } from "react-icons/io5";
@@ -52,7 +52,6 @@ const Login = ({ OnForget }) => {
 				<span className="forgot">
 					Forgot Password?<span onClick={handleForget}> Recover Now</span>
 				</span>
-
 				<button type="submit" className="robtn">
 					Login In
 				</button>
