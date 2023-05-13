@@ -221,7 +221,7 @@ export async function verifyOTP(req, res) {
 	if (otpData.code === parseInt(code)) {
 		if (otpData.expiresIn < new Date().getTime()) {
 			//* if OTP is expired
-			return res.status(400).send({ error: "OTP expired!" });
+			return res.status(400).send({ error: "Your OTP has timed out and is no longer valid" });
 		}
 		//* set verified to true
 		otpData.verified = true;

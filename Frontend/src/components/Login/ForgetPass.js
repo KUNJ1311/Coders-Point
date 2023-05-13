@@ -22,7 +22,7 @@ const ForgetPass = ({ OnSend }) => {
 					});
 					OnSend(true);
 				} catch (error) {
-					return toast.warn(error.response.data.error);
+					return toast.warn(error?.response?.data?.error || "Try Again..");
 				}
 			} else {
 				return toast.warn("Please enter your details.");

@@ -27,13 +27,13 @@ const ChangePass = () => {
 					toast.success("Password Changed Successfully..!");
 				} else {
 					Navigate("/");
-					toast.error(data.error.error || "Please, Try Again..!");
+					toast.error(data?.error?.error || "Please, Try Again..!");
 				}
 			} else {
 				toast.warn("Passwords doesn't match..!");
 			}
 		} catch (error) {
-			toast.error(error.error.response.data.error || "Server Error..!");
+			toast.error(error?.error?.response?.data?.error || "Server Error..!");
 		}
 	};
 	return (
