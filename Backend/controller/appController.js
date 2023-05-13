@@ -63,7 +63,7 @@ export async function register(req, res) {
 			const hashedPassword = await bcrypt.hash(password, 10);
 
 			const otpData = await OtpModal.findOne({ email });
-			if (!otpData || !otpData.verified || otpData.expiresIn < new Date().getTime()) {
+			if (!otpData || !otpData.verified || otpData.expiresIn < new Date(Date.now())) {
 				//* return error response if OTP is not verified
 				return res.status(401).send({ error: "Please verify your OTP first" });
 			}
@@ -166,14 +166,14 @@ export async function generateOTP(req, res) {
 					email,
 					code: otpCode,
 					verified: false,
-					expiresIn: new Date().getTime() + 300 * 1000, //* 5 minutes
+					expiresIn: new Date(Date.now() + 300 * 1000), //* 5 minutes
 				});
 			} else {
 				//* update existing OTP object with new code and expiration time
 				otpCode = Math.floor(100000 + Math.random() * 900000);
 				otpData.code = otpCode;
 				otpData.verified = false;
-				otpData.expiresIn = new Date().getTime() + 300 * 1000; //* 5 minutes
+				otpData.expiresIn = new Date(Date.now() + 300 * 1000); //* 5 minutes
 			}
 			await otpData.save();
 			return res.status(201).send({ msg: "Please check your Email Id", code: otpCode, username: user.username });
@@ -198,14 +198,14 @@ export async function generateOTPnewUser(req, res) {
 				email,
 				code: otpCode,
 				verified: false,
-				expiresIn: new Date().getTime() + 300 * 1000, //* 5 minutes
+				expiresIn: new Date(Date.now() + 300 * 1000), //* 5 minutes
 			});
 		} else {
 			//* update existing OTP object with new code and expiration time
 			otpCode = Math.floor(100000 + Math.random() * 900000);
 			otpData.code = otpCode;
 			otpData.verified = false;
-			otpData.expiresIn = new Date().getTime() + 300 * 1000; //* 5 minutes
+			otpData.expiresIn = new Date(Date.now() + 300 * 1000); //* 5 minutes
 		}
 		await otpData.save();
 		return res.status(201).send({ msg: "Please check your Email Id", code: otpCode });

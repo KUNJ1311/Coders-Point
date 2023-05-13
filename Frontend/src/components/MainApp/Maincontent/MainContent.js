@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./maincontent.css";
 import { HiChatAlt } from "react-icons/hi";
 import { IoAddCircle } from "react-icons/io5";

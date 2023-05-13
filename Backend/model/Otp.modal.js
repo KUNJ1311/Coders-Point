@@ -15,7 +15,7 @@ export const OtpSchema = new mongoose.Schema({
 		required: true,
 	},
 	expiresIn: {
-		type: Number,
+		type: Date,
 		required: true,
 	},
 });
