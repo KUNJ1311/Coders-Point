@@ -49,7 +49,7 @@ const OTP = (props) => {
 					}
 				}
 			} catch (error) {
-				toast.error(error.response.data.error || "Request failed..!");
+				toast.error(error?.response?.data?.error || "Request failed..!");
 			}
 		} else if (props.side === "sign-in-container") {
 			try {
@@ -60,10 +60,10 @@ const OTP = (props) => {
 					props.handleVerify(true);
 				}
 			} catch (error) {
-				toast.error(error.response.data.error || "Request Failed..!");
+				toast.error(error?.response?.data?.error || "Your OTP has timed out and is no longer valid");
 			}
 		} else {
-			toast.error("Internal Server Error..!");
+			toast.error("Error..!");
 		}
 	};
 
