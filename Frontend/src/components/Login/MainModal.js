@@ -13,19 +13,24 @@ export default function MainModal({ onClose }) {
 	const [forgetValue, setForgetValue] = useState(false);
 	const [sendOTP, setSendOTP] = useState(false);
 	const [rePassword, setRePassword] = useState(false);
+
 	function togglePanel() {
 		setIsActive(!isActive);
 		setIsScaled(!isScaled);
 	}
+
 	const OnRegister = (value) => {
 		setRegisterValue(value);
 	};
+
 	const OnForget = (value) => {
 		setForgetValue(value);
 	};
+
 	const OnSend = (value) => {
 		setSendOTP(value);
 	};
+
 	const RePass = () => {
 		setRePassword(true);
 	};

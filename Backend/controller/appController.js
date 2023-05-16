@@ -35,6 +35,7 @@ export async function validateToken(req, res) {
 		return res.status(401).send({ error: "Token is invalid." });
 	}
 }
+
 //? POST: http://localhost:8080/api/checkuser
 export async function checkUser(req, res) {
 	try {
@@ -115,7 +116,7 @@ export async function login(req, res) {
 	}
 }
 
-//? GET: http://localhost:8080/api/user/user123
+//? GET: http://localhost:8080/api/user/email
 export async function getUser(req, res) {
 	try {
 		const { email } = req.params;

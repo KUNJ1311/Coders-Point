@@ -9,10 +9,14 @@ const ChangePass = () => {
 	const Navigate = useNavigate();
 	const context = useContext(userContext);
 	const { setCredentials, credentials } = context;
+	const { password, repassword, email } = credentials;
+
+	//* set email, password, re-enter password in credentials
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
-	const { password, repassword, email } = credentials;
+
+	//* change pass func.
 	const ChangePass = async (e) => {
 		try {
 			e.preventDefault();
@@ -36,6 +40,7 @@ const ChangePass = () => {
 			toast.error(error?.error?.response?.data?.error || "Server Error..!");
 		}
 	};
+
 	return (
 		<>
 			<div className="form-container sign-in-container">
