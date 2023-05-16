@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
-
 import Signup from "./Signup";
 import Login from "./Login";
 import OTP from "./OTP";
 import ForgetPass from "./ForgetPass";
-import { useNavigate } from "react-router-dom";
 import ChangePass from "./ChangePass";
 
 export default function MainModal({ onClose }) {
@@ -15,7 +13,6 @@ export default function MainModal({ onClose }) {
 	const [forgetValue, setForgetValue] = useState(false);
 	const [sendOTP, setSendOTP] = useState(false);
 	const [rePassword, setRePassword] = useState(false);
-	const [changePassword, setChangePassword] = useState(false);
 	function togglePanel() {
 		setIsActive(!isActive);
 		setIsScaled(!isScaled);
@@ -29,13 +26,6 @@ export default function MainModal({ onClose }) {
 	const OnSend = (value) => {
 		setSendOTP(value);
 	};
-	const OnChangePass = (value) => {
-		setChangePassword(value);
-	};
-	const navigate = useNavigate();
-	const NewAccount = () => {
-		navigate("/mainapp");
-	};
 	const RePass = () => {
 		setRePassword(true);
 	};
@@ -44,14 +34,14 @@ export default function MainModal({ onClose }) {
 		<>
 			<section className="sec" onClick={onClose}>
 				<div className={`container fade-in ${isActive ? "right-panel-active" : ""}`} id="container" onClick={(e) => e.stopPropagation()}>
-					{registerValue ? <OTP side={"sign-up-container"} handleVerify={NewAccount} /> : <Signup OnRegister={OnRegister} />}
-					{forgetValue ? sendOTP ? rePassword ? changePassword ? <Login OnForget={OnForget} /> : <ChangePass OnChangePass={OnChangePass} /> : <OTP side={"sign-in-container"} handleVerify={RePass} /> : <ForgetPass OnSend={OnSend} /> : <Login OnForget={OnForget} />}
+					{registerValue ? <OTP side={"sign-up-container"} /> : <Signup OnRegister={OnRegister} />}
+					{forgetValue ? sendOTP ? rePassword ? <ChangePass /> : <OTP side={"sign-in-container"} handleVerify={RePass} /> : <ForgetPass OnSend={OnSend} /> : <Login OnForget={OnForget} />}
 					<div className="overlay-container" id="overlayCon">
 						<div className="overlay">
 							<div className="overlay-panel overlay-left">
 								<h1 className="h">Welcome Back!</h1>
 								<p>To keep connected with us please login with your personal info</p>
-								<button className="robtn">Sign In</button>
+								<button className="robtn">Login In</button>
 							</div>
 							<div className="overlay-panel overlay-right">
 								<h1 className="h">Hello, Friend!</h1>

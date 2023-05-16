@@ -1,23 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdMail } from "react-icons/md";
+import userContext from "../context/userContext";
+import { generateOTP } from "../helper/helper";
+import { toast } from "react-toastify";
 
 const ForgetPass = ({ OnSend }) => {
-	const handleSend = () => {
-		OnSend(true);
+	const context = useContext(userContext);
+	const { setCredentials, credentials } = context;
+	const onChange = (e) => {
+		setCredentials({ ...credentials, [e.target.name]: e.target.value });
+	};
+	const { email } = credentials;
+	const handleSend = async (e) => {
+		try {
+			e.preventDefault();
+			if (email) {
+				try {
+					await toast.promise(generateOTP(email), {
+						pending: "Sending OTP to your email...",
+						success: "Success! Your OTP has been sent.",
+					});
+					OnSend(true);
+				} catch (error) {
+					return toast.warn(error.response.data.error);
+				}
+			} else {
+				return toast.warn("Please enter your details.");
+			}
+		} catch (error) {
+			toast.error("Server Error! Please, Try Again..");
+		}
 	};
 	return (
 		<>
 			<div className="form-container sign-in-container">
-				<form action="#" className="form-login">
+				<form onSubmit={handleSend} className="form-login">
 					<h1 className="h">Forget Password</h1>
 					<span className="ac-line"></span>
 					<span className="sm-text pt-5 pb-2">Enter your E-mail address.</span>
 					<div className="infield">
 						<MdMail className="icon-login" />
-						<input type="email" placeholder="Email" name="email" />
+						<input onChange={onChange} type="email" placeholder="Email" name="email" value={credentials.email} />
 						<label></label>
 					</div>
-					<button className="robtn" onClick={handleSend} style={{ marginTop: "15px" }}>
+					<button type="submit" className="robtn" style={{ marginTop: "15px" }}>
 						Send OTP
 					</button>
 				</form>

@@ -1,11 +1,14 @@
 import React from "react";
-import Discover from "./Discover";
-import Groups from "./Groups";
-import MainContent from "./MainContent";
+import Discover from "./Discover/Discover";
+import Groups from "./Groups/Groups";
+import MainContent from "./Maincontent/MainContent";
+import "./Groups/groups.css";
+import "./Discover/discover.css";
+import "./Maincontent/maincontent.css";
 
 const MainApp = () => {
 	return (
-		<div className="d-flex">
+		<div className="d-flex app-font absolute">
 			<Groups />
 			<Discover />
 			<MainContent />
