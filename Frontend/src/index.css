@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
 	--color-white: rgb(255, 255, 255);
 	--color-black: black;
@@ -16,10 +17,12 @@ body {
 	width: 100%;
 	background-color: var(--color-white);
 }
+
 input,
 button {
 	font-family: var(--second-font);
 }
+
 * {
 	box-sizing: border-box;
 	user-select: none;
@@ -27,26 +30,29 @@ button {
 	margin: 0;
 	padding: 0;
 }
+
 #tooltip {
 	z-index: 999999;
 	position: fixed;
-	font-size: 14px;
-	background-color: black;
-	color: white;
+	font-size: 13px;
+	background-color: rgb(6, 6, 6);
+	color: rgb(233, 234, 238);
 	border-radius: 7px;
-	padding-block: 5px;
-	padding-inline: 13px;
 	font-weight: 500;
 }
+
 .app-font {
 	font-family: var(--app-font);
 }
+
 .add-svg path {
 	fill: #a5a5ab;
 }
+
 /* --------------------------------------------------------
 										scroll-bar
 -----------------------------------------------------------*/
+
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;

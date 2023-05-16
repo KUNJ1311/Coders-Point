@@ -24,13 +24,18 @@ const Groups = () => {
 		{ name: "Twitter", img: img5 },
 		{ name: "Instagram", img: img6 },
 	];
+
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
+	const [clickedlogo, setClickedlogo] = useState(false);
+	const [isHovered, setIsHovered] = useState(false);
+
 	const handleClick = (index) => {
 		setClickedIndex(index);
 		setHoveredIndex(index);
 		setClickedlogo(false);
 	};
+
 	const handleMouseEnter = (index) => {
 		setHoveredIndex(index);
 	};
@@ -38,25 +43,29 @@ const Groups = () => {
 	const handleMouseLeave = () => {
 		setHoveredIndex(null);
 	};
-	const [isHovered, setIsHovered] = useState(false);
+
 	const handleMouseEnterlogo = () => {
 		setIsHovered(true);
 	};
+
 	const handleMouseLeavelogo = () => {
 		setIsHovered(false);
 	};
-	const [clickedlogo, setClickedlogo] = useState(false);
+
 	const handleClicklogo = () => {
 		setClickedlogo(true);
 		setClickedIndex(null);
 	};
+
 	const style = {
 		height: clickedlogo ? "40px" : isHovered ? "20px" : "8px",
 	};
+
 	const mystyle = {
 		borderRadius: clickedlogo ? "30%" : isHovered ? "30%" : "50%",
 		backgroundColor: clickedlogo ? "#5865f2" : isHovered ? "#5865f2" : "#313338",
 	};
+
 	return (
 		<div className="groups">
 			<div style={{ paddingTop: "12px" }}>
@@ -72,7 +81,7 @@ const Groups = () => {
 							<img className="d-block logo-home" src={img} width="30px" height="30px" alt="" />
 						</div>
 					</div>
-					<Tooltip anchorSelect="#home-tooltip" place="right" content="Home" id="tooltip" />
+					<Tooltip anchorSelect="#home-tooltip" place="right" content="Home" id="tooltip" style={{ fontSize: "15px" }} />
 				</div>
 				{/* line */}
 				<div className="d-flex justify-c sm-line ">
@@ -83,7 +92,7 @@ const Groups = () => {
 					{groups.map((group, index) => (
 						<div key={index} width="48px" height="48px" className="servers">
 							<div id="groups-tooltip" data-tooltip-content={group.name} data-tooltip-offset={20} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
-								<Tooltip id="tooltip" anchorSelect="#groups-tooltip" place="right" render={({ content }) => <span>{content}</span>} />
+								<Tooltip id="tooltip" anchorSelect="#groups-tooltip" place="right" style={{ fontSize: "15px" }} render={({ content }) => <span>{content}</span>} />
 								<div height="48px">
 									<div className="side-line">
 										<span

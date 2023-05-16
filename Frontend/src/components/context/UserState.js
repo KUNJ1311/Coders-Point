@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 const UserState = (props) => {
 	const [credentials, setCredentials] = useState({ email: "", password: "", username: "", repassword: "" });
 	const { email, password, username } = credentials;
+
+	//* Register user
 	const Register = async ({ OnRegister }) => {
 		try {
 			if (email && username && password) {

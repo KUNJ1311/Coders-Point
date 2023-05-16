@@ -12,15 +12,19 @@ const Discover = () => {
 	const [hiddenText, setHiddenText] = useState(false);
 	const [hiddenVC, setHiddenVC] = useState(false);
 	const [hiddenProject, setHiddenProject] = useState(false);
+
 	const handleHideChannelsText = () => {
 		setHiddenText(!hiddenText);
 	};
+
 	const handleHideChannelsVC = () => {
 		setHiddenVC(!hiddenVC);
 	};
+
 	const handleHideChannelsProject = () => {
 		setHiddenProject(!hiddenProject);
 	};
+
 	return (
 		<div className="discover">
 			<nav className="d-flex discover-nav">

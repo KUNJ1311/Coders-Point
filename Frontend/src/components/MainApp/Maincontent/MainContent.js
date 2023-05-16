@@ -5,11 +5,13 @@ import { IoAddCircle } from "react-icons/io5";
 const MainContent = () => {
 	const [value, setValue] = useState("");
 
+	//* change text area height dynamically
 	function handleChange(event) {
 		setValue(event.target.value);
 		event.target.style.height = "auto";
 		event.target.style.height = `${event.target.scrollHeight}px`;
 	}
+
 	return (
 		<>
 			<div className="maincontent">

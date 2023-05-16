@@ -13,6 +13,7 @@ const OTP = (props) => {
 	const [timer, setTimer] = useState(100);
 	const [resendDisabled, setResendDisabled] = useState(false);
 
+	//* Change opt box - when user enter 1 number send to next box (1 number in each box only)
 	const handleChange = (index, e) => {
 		const newOtp = [...otp];
 		if (e.target.value.length > 1) {
@@ -26,13 +27,17 @@ const OTP = (props) => {
 		}
 	};
 
+	//* on Backspace remove 1 number from opt box
 	const handleKeyDown = (index, e) => {
 		if (e.key === "Backspace" && index > 0 && otp[index] === "") {
 			e.target.previousElementSibling.focus();
 		}
 	};
+
+	//* Verify OTP
 	const handleVerifyOTP = async (e) => {
 		const code = otp.join("");
+		//? For New user so
 		if (props.side === "sign-up-container") {
 			try {
 				e.preventDefault();
@@ -51,7 +56,9 @@ const OTP = (props) => {
 			} catch (error) {
 				toast.error(error?.response?.data?.error || "Request failed..!");
 			}
-		} else if (props.side === "sign-in-container") {
+		}
+		//? for existing users
+		else if (props.side === "sign-in-container") {
 			try {
 				e.preventDefault();
 				const { status } = await verifyOTP({ email, code });
@@ -67,8 +74,10 @@ const OTP = (props) => {
 		}
 	};
 
+	//* Start timer on Resend OTP
 	const startTimer = async (e) => {
 		e.preventDefault();
+
 		//* Disable the "Resend" button
 		setResendDisabled(true);
 
