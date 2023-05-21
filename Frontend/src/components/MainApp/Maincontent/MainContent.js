@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./maincontent.css";
 import { HiChatAlt } from "react-icons/hi";
 import { IoAddCircle } from "react-icons/io5";
+import { userData } from "../../helper/helper";
+
 const MainContent = () => {
 	const [value, setValue] = useState("");
+	const [adduserData, setAddUserData] = useState(null);
 
 	//* change text area height dynamically
 	function handleChange(event) {
@@ -11,6 +14,21 @@ const MainContent = () => {
 		event.target.style.height = "auto";
 		event.target.style.height = `${event.target.scrollHeight}px`;
 	}
+
+	//* Getting user data
+	useEffect(() => {
+		const GetData = async () => {
+			try {
+				const { data, status } = await userData();
+				if (status === 201) {
+					setAddUserData(data);
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		GetData();
+	}, []);
 
 	return (
 		<>
@@ -29,8 +47,10 @@ const MainContent = () => {
 					<div style={{ overflow: "auto", display: "flex", flex: "1 1 auto", flexDirection: "column" }}>
 						<div className="chat-area">
 							<div style={{ color: "white", padding: "70px" }}>
-								<h1>Just Testing For Scroll</h1>
-								<h2 style={{ marginTop: "40px", marginBottom: "20px", fontSize: "24px" }}>Introduction to React.js</h2>
+								<h1>Testing Scroll & Fetching Logged-In User Data</h1>
+								<h3 style={{ marginTop: "20px", color: "blueviolet" }}>Username : {adduserData?.username}</h3>
+								<h3 style={{ color: "blueviolet", marginBottom: "20px" }}>Email : {adduserData?.email}</h3>
+								<h2 style={{ marginBottom: "20px", fontSize: "24px" }}>Introduction to React.js</h2>
 
 								<p style={{ marginBottom: "20px" }}>
 									<strong>React.js</strong> is a popular <em>JavaScript library</em> used for building <em>user interfaces</em>. It was developed by Facebook and is now maintained by a community of developers.

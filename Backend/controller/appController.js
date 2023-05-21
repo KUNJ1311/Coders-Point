@@ -101,8 +101,7 @@ export async function login(req, res) {
 				userId: user._id,
 				email: user.email,
 			},
-			ENV.JWT_SECRET,
-			{ expiresIn: "24h" }
+			ENV.JWT_SECRET
 		);
 
 		return res.status(200).send({
@@ -113,6 +112,22 @@ export async function login(req, res) {
 		});
 	} catch (error) {
 		return res.status(500).send({ error });
+	}
+}
+
+//? GET: http://localhost:8080/api/userdata
+export async function userdata(req, res) {
+	try {
+		const token = req.headers.authorization.split(" ")[1];
+		//* retrive the user details of the logged in user
+		const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
+		const id = decodedToken.userId;
+		const data = await UserModal.findOne({ _id: id });
+		//! remove password from user JSON
+		const { email, username } = Object.assign({}, data.toJSON());
+		return res.status(201).send({ email, username });
+	} catch (error) {
+		return res.status(500).send({ msg: "User not Found" });
 	}
 }
 
@@ -129,26 +144,6 @@ export async function getUser(req, res) {
 		return res.status(201).send(rest);
 	} catch (error) {
 		return res.status(404).send({ error });
-	}
-}
-
-//? PUT: http://localhost:8080/api/updateUser
-export async function updateUser(req, res) {
-	try {
-		const { userId } = req.user;
-		if (userId) {
-			const body = req.body;
-			//* update the data
-			const result = await UserModal.updateOne({ _id: userId }, body);
-			if (result.nModified === 0) {
-				return res.status(404).send({ error: "User not found" });
-			}
-			return res.status(201).send({ msg: "Record Updated..!" });
-		} else {
-			return res.status(401).send({ error: "User Not Found...!" });
-		}
-	} catch (error) {
-		return res.status(401).send(error);
 	}
 }
 
@@ -233,7 +228,27 @@ export async function verifyOTP(req, res) {
 	}
 }
 
-//? PUT http://localhost:8080/api/resetPassword
+//? PUT: http://localhost:8080/api/updateUser
+export async function updateUser(req, res) {
+	try {
+		const { userId } = req.user;
+		if (userId) {
+			const body = req.body;
+			//* update the data
+			const result = await UserModal.updateOne({ _id: userId }, body);
+			if (result.nModified === 0) {
+				return res.status(404).send({ error: "User not found" });
+			}
+			return res.status(201).send({ msg: "Record Updated..!" });
+		} else {
+			return res.status(401).send({ error: "User Not Found...!" });
+		}
+	} catch (error) {
+		return res.status(401).send(error);
+	}
+}
+
+//? PUT: http://localhost:8080/api/resetPassword
 export async function resetPassword(req, res) {
 	const { email, password } = req.body;
 	let otpData = await OtpModal.findOne({ email });

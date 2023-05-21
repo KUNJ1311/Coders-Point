@@ -30,7 +30,7 @@ const Discover = () => {
 			<nav className="d-flex discover-nav">
 				<div className="relative cursor-pointer">
 					<header>
-						<div>Thik hai!!</div>
+						<div>Group Name</div>
 					</header>
 				</div>
 			</nav>

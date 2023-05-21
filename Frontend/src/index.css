@@ -39,6 +39,7 @@ button {
 	color: rgb(233, 234, 238);
 	border-radius: 7px;
 	font-weight: 500;
+	padding: 7px 13px;
 }
 
 .app-font {
