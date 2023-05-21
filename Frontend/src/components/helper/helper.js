@@ -1,18 +1,17 @@
 import axios from "axios";
 
 const host = "http://localhost:8080";
-
 //* Make Api Requests
 
 //? authenticate function
 export async function authentication(email) {
 	try {
-		// const encodedEmail = encodeURIComponent(email);
 		return await axios.post(`${host}/api/authenticate`, { email });
 	} catch (error) {
 		return { error: "Email doesn't exist..!" };
 	}
 }
+
 //? Check user in database
 export async function checkUser(email, username) {
 	try {
@@ -22,6 +21,7 @@ export async function checkUser(email, username) {
 		return { error };
 	}
 }
+
 //? Get User Details
 export const getUser = async ({ email }) => {
 	try {
@@ -58,11 +58,11 @@ export const verifyPassword = async ({ email, password }) => {
 };
 
 //? update user function
-export const updateUser = async (response) => {
+export const updateUser = async (data, msg) => {
 	try {
 		const token = localStorage.getItem("token");
-		const data = await axios.post(`${host}/api/updateUser`, response, { headers: { Authorization: `Bearer ${token}` } });
-		return Promise.resolve({ data });
+		const ndata = await axios.post(`${host}/api/updateUser`, data, msg, { headers: { Authorization: `Bearer ${token}` } });
+		return Promise.resolve({ ndata });
 	} catch (error) {
 		return Promise.reject({ error: "Couldn't Update Profile..!" });
 	}
@@ -131,6 +131,21 @@ export const resetPassword = async ({ email, password }) => {
 	try {
 		const { data, status } = await axios.put(`${host}/api/resetPassword`, { email, password });
 		return Promise.resolve({ data, status });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? get user data
+export const userData = async () => {
+	try {
+		const token = localStorage.getItem("coderToken");
+		const { data, msg, status } = await axios.get("http://localhost:8080/api/userdata", {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		return Promise.resolve({ data, msg, status });
 	} catch (error) {
 		return Promise.reject({ error });
 	}

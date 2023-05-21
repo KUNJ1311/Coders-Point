@@ -7,10 +7,14 @@ import { toast } from "react-toastify";
 const ForgetPass = ({ OnSend }) => {
 	const context = useContext(userContext);
 	const { setCredentials, credentials } = context;
+	const { email } = credentials;
+
+	//* set email to credentials
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
-	const { email } = credentials;
+
+	//* send otp to user
 	const handleSend = async (e) => {
 		try {
 			e.preventDefault();
@@ -22,7 +26,7 @@ const ForgetPass = ({ OnSend }) => {
 					});
 					OnSend(true);
 				} catch (error) {
-					return toast.warn(error.response.data.error);
+					return toast.warn(error?.response?.data?.error || "Try Again..");
 				}
 			} else {
 				return toast.warn("Please enter your details.");
@@ -31,6 +35,7 @@ const ForgetPass = ({ OnSend }) => {
 			toast.error("Server Error! Please, Try Again..");
 		}
 	};
+
 	return (
 		<>
 			<div className="form-container sign-in-container">

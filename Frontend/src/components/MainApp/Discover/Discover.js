@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiFolder } from "react-icons/hi2";
 import { HiSpeakerWave } from "react-icons/hi2";
-import { HiChatAlt } from "react-icons/hi";
+import { HiChatAlt, HiPlus } from "react-icons/hi";
+import { Tooltip } from "react-tooltip";
 
 const Discover = () => {
 	const text = ["test", "fun", "General", "Kunj", "rohit2424"];
@@ -11,26 +12,31 @@ const Discover = () => {
 	const [hiddenText, setHiddenText] = useState(false);
 	const [hiddenVC, setHiddenVC] = useState(false);
 	const [hiddenProject, setHiddenProject] = useState(false);
+
 	const handleHideChannelsText = () => {
 		setHiddenText(!hiddenText);
 	};
+
 	const handleHideChannelsVC = () => {
 		setHiddenVC(!hiddenVC);
 	};
+
 	const handleHideChannelsProject = () => {
 		setHiddenProject(!hiddenProject);
 	};
+
 	return (
 		<div className="discover">
 			<nav className="d-flex discover-nav">
 				<div className="relative cursor-pointer">
 					<header>
-						<div>Thik hai!!</div>
+						<div>Group Name</div>
 					</header>
 				</div>
 			</nav>
 			<div className="scroller-d">
 				<ul className="ul-discover">
+					<Tooltip anchorSelect="#create-tooltip" id="tooltip" place="top" content="Create Channel" />
 					<li className="channels">
 						<div className="cursor-pointer wrapperCommon">
 							<div className="channels-content" onClick={handleHideChannelsText}>
@@ -41,13 +47,10 @@ const Discover = () => {
 									<div>text Channels</div>
 								</h3>
 							</div>
-							<div className="channels-add tooltip">
-								<button className="add-button" type="button">
-									<svg className="add-svg" width="18px" height="18px" viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fillRule="evenodd" clipRule="evenodd" d="M13 6C13 5.44771 12.5523 5 12 5C11.4477 5 11 5.44771 11 6V11H6C5.44771 11 5 11.4477 5 12C5 12.5523 5.44771 13 6 13H11V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V13H18C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11H13V6Z" />
-									</svg>
+							<div className="channels-add ">
+								<button className="add-button" id="create-tooltip" type="button">
+									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
-								<span className="tooltiptext">Create Channel</span>
 							</div>
 						</div>
 					</li>
@@ -57,7 +60,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<HiChatAlt className="react-svg" fill="#96969a" />
+											<HiChatAlt className="type-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{text}</div>
 									</Link>
@@ -77,13 +80,10 @@ const Discover = () => {
 									<div>Voice Channels</div>
 								</h3>
 							</div>
-							<div className="channels-add tooltip">
-								<button className="add-button " type="button">
-									<svg className="add-svg" width="18px" height="18px" viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fillRule="evenodd" clipRule="evenodd" d="M13 6C13 5.44771 12.5523 5 12 5C11.4477 5 11 5.44771 11 6V11H6C5.44771 11 5 11.4477 5 12C5 12.5523 5.44771 13 6 13H11V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V13H18C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11H13V6Z" />
-									</svg>
+							<div className="channels-add ">
+								<button className="add-button " id="create-tooltip" type="button">
+									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
-								<span className="tooltiptext">Create Channel</span>
 							</div>
 						</div>
 					</li>
@@ -93,7 +93,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<HiSpeakerWave className="react-svg" fill="#96969a" />
+											<HiSpeakerWave className="type-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{vc}</div>
 									</Link>
@@ -113,13 +113,10 @@ const Discover = () => {
 									<div>Project Files</div>
 								</h3>
 							</div>
-							<div className="channels-add tooltip">
-								<button className="add-button " type="button">
-									<svg className="add-svg" width="18px" height="18px" viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fillRule="evenodd" clipRule="evenodd" d="M13 6C13 5.44771 12.5523 5 12 5C11.4477 5 11 5.44771 11 6V11H6C5.44771 11 5 11.4477 5 12C5 12.5523 5.44771 13 6 13H11V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V13H18C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11H13V6Z" />
-									</svg>
+							<div className="channels-add ">
+								<button className="add-button" id="create-tooltip" type="button">
+									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
-								<span className="tooltiptext">Create Channel</span>
 							</div>
 						</div>
 					</li>
@@ -129,7 +126,7 @@ const Discover = () => {
 								<div className="chat-channels-2">
 									<Link to="/channels/testing/" className="link-channels">
 										<div className="link-channels-2" role="img">
-											<HiFolder className="react-svg" fill="#96969a" />
+											<HiFolder className="type-svg" fill="#96969a" />
 										</div>
 										<div className="channels-list">{project}</div>
 									</Link>

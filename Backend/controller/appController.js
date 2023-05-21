@@ -35,6 +35,7 @@ export async function validateToken(req, res) {
 		return res.status(401).send({ error: "Token is invalid." });
 	}
 }
+
 //? POST: http://localhost:8080/api/checkuser
 export async function checkUser(req, res) {
 	try {
@@ -63,7 +64,7 @@ export async function register(req, res) {
 			const hashedPassword = await bcrypt.hash(password, 10);
 
 			const otpData = await OtpModal.findOne({ email });
-			if (!otpData || !otpData.verified || otpData.expiresIn < new Date().getTime()) {
+			if (!otpData || !otpData.verified || otpData.expiresIn < new Date(Date.now())) {
 				//* return error response if OTP is not verified
 				return res.status(401).send({ error: "Please verify your OTP first" });
 			}
@@ -100,8 +101,7 @@ export async function login(req, res) {
 				userId: user._id,
 				email: user.email,
 			},
-			ENV.JWT_SECRET,
-			{ expiresIn: "24h" }
+			ENV.JWT_SECRET
 		);
 
 		return res.status(200).send({
@@ -115,7 +115,23 @@ export async function login(req, res) {
 	}
 }
 
-//? GET: http://localhost:8080/api/user/user123
+//? GET: http://localhost:8080/api/userdata
+export async function userdata(req, res) {
+	try {
+		const token = req.headers.authorization.split(" ")[1];
+		//* retrive the user details of the logged in user
+		const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
+		const id = decodedToken.userId;
+		const data = await UserModal.findOne({ _id: id });
+		//! remove password from user JSON
+		const { email, username } = Object.assign({}, data.toJSON());
+		return res.status(201).send({ email, username });
+	} catch (error) {
+		return res.status(500).send({ msg: "User not Found" });
+	}
+}
+
+//? GET: http://localhost:8080/api/user/email
 export async function getUser(req, res) {
 	try {
 		const { email } = req.params;
@@ -128,26 +144,6 @@ export async function getUser(req, res) {
 		return res.status(201).send(rest);
 	} catch (error) {
 		return res.status(404).send({ error });
-	}
-}
-
-//? PUT: http://localhost:8080/api/updateUser
-export async function updateUser(req, res) {
-	try {
-		const { userId } = req.user;
-		if (userId) {
-			const body = req.body;
-			//* update the data
-			const result = await UserModal.updateOne({ _id: userId }, body);
-			if (result.nModified === 0) {
-				return res.status(404).send({ error: "User not found" });
-			}
-			return res.status(201).send({ msg: "Record Updated..!" });
-		} else {
-			return res.status(401).send({ error: "User Not Found...!" });
-		}
-	} catch (error) {
-		return res.status(401).send(error);
 	}
 }
 
@@ -166,14 +162,14 @@ export async function generateOTP(req, res) {
 					email,
 					code: otpCode,
 					verified: false,
-					expiresIn: new Date().getTime() + 300 * 1000, //* 5 minutes
+					expiresIn: new Date(Date.now() + 300 * 1000), //* 5 minutes
 				});
 			} else {
 				//* update existing OTP object with new code and expiration time
 				otpCode = Math.floor(100000 + Math.random() * 900000);
 				otpData.code = otpCode;
 				otpData.verified = false;
-				otpData.expiresIn = new Date().getTime() + 300 * 1000; //* 5 minutes
+				otpData.expiresIn = new Date(Date.now() + 300 * 1000); //* 5 minutes
 			}
 			await otpData.save();
 			return res.status(201).send({ msg: "Please check your Email Id", code: otpCode, username: user.username });
@@ -198,14 +194,14 @@ export async function generateOTPnewUser(req, res) {
 				email,
 				code: otpCode,
 				verified: false,
-				expiresIn: new Date().getTime() + 300 * 1000, //* 5 minutes
+				expiresIn: new Date(Date.now() + 300 * 1000), //* 5 minutes
 			});
 		} else {
 			//* update existing OTP object with new code and expiration time
 			otpCode = Math.floor(100000 + Math.random() * 900000);
 			otpData.code = otpCode;
 			otpData.verified = false;
-			otpData.expiresIn = new Date().getTime() + 300 * 1000; //* 5 minutes
+			otpData.expiresIn = new Date(Date.now() + 300 * 1000); //* 5 minutes
 		}
 		await otpData.save();
 		return res.status(201).send({ msg: "Please check your Email Id", code: otpCode });
@@ -221,7 +217,7 @@ export async function verifyOTP(req, res) {
 	if (otpData.code === parseInt(code)) {
 		if (otpData.expiresIn < new Date().getTime()) {
 			//* if OTP is expired
-			return res.status(400).send({ error: "OTP expired!" });
+			return res.status(400).send({ error: "Your OTP has timed out and is no longer valid" });
 		}
 		//* set verified to true
 		otpData.verified = true;
@@ -232,7 +228,27 @@ export async function verifyOTP(req, res) {
 	}
 }
 
-//? PUT http://localhost:8080/api/resetPassword
+//? PUT: http://localhost:8080/api/updateUser
+export async function updateUser(req, res) {
+	try {
+		const { userId } = req.user;
+		if (userId) {
+			const body = req.body;
+			//* update the data
+			const result = await UserModal.updateOne({ _id: userId }, body);
+			if (result.nModified === 0) {
+				return res.status(404).send({ error: "User not found" });
+			}
+			return res.status(201).send({ msg: "Record Updated..!" });
+		} else {
+			return res.status(401).send({ error: "User Not Found...!" });
+		}
+	} catch (error) {
+		return res.status(401).send(error);
+	}
+}
+
+//? PUT: http://localhost:8080/api/resetPassword
 export async function resetPassword(req, res) {
 	const { email, password } = req.body;
 	let otpData = await OtpModal.findOne({ email });

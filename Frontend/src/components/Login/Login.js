@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import avatar from "./avatar.svg";
 import { useNavigate } from "react-router-dom";
 import { IoLockClosed } from "react-icons/io5";
@@ -7,9 +7,10 @@ import { verifyPassword } from "../helper/helper";
 import { toast } from "react-toastify";
 
 const Login = ({ OnForget }) => {
-	const [credentials, setCredentials] = useState({ email: "", password: "" });
 	let Navigate = useNavigate();
+	const [credentials, setCredentials] = useState({ email: "", password: "" });
 
+	//* open 'send otp using registered email' component on forgetpassword click
 	const handleForget = () => {
 		OnForget(true);
 	};
@@ -31,6 +32,7 @@ const Login = ({ OnForget }) => {
 	const onChange = (e) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
+
 	return (
 		<div className="form-container sign-in-container">
 			<form action="#" className="form-login" onSubmit={handleLogin}>
@@ -52,7 +54,6 @@ const Login = ({ OnForget }) => {
 				<span className="forgot">
 					Forgot Password?<span onClick={handleForget}> Recover Now</span>
 				</span>
-
 				<button type="submit" className="robtn">
 					Login In
 				</button>
