@@ -6,19 +6,19 @@ import coder from "./g8.svg";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+	const Navigate = useNavigate();
+
 	const [state] = useState({
 		title: "Welcome To",
 		title_two: "Coders Point",
 	});
 
-	const Navigate = useNavigate();
+	//* Check Token to redirect user to main app
 	useEffect(() => {
 		async function checkToken() {
 			const token = localStorage.getItem("coderToken");
 			if (token) {
 				Navigate("/mainapp");
-			} else {
-				localStorage.removeItem("coderToken");
 			}
 		}
 		checkToken();

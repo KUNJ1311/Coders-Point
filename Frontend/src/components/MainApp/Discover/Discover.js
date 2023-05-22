@@ -12,21 +12,25 @@ const Discover = () => {
 	const [hiddenText, setHiddenText] = useState(false);
 	const [hiddenVC, setHiddenVC] = useState(false);
 	const [hiddenProject, setHiddenProject] = useState(false);
+
 	const handleHideChannelsText = () => {
 		setHiddenText(!hiddenText);
 	};
+
 	const handleHideChannelsVC = () => {
 		setHiddenVC(!hiddenVC);
 	};
+
 	const handleHideChannelsProject = () => {
 		setHiddenProject(!hiddenProject);
 	};
+
 	return (
 		<div className="discover">
 			<nav className="d-flex discover-nav">
 				<div className="relative cursor-pointer">
 					<header>
-						<div>Thik hai!!</div>
+						<div>Group Name</div>
 					</header>
 				</div>
 			</nav>

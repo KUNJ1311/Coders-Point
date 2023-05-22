@@ -21,6 +21,7 @@ router.route("/user/:email").get(controller.getUser);
 router.route("/generateOTP").get(controller.generateOTP);
 router.route("/verifyOTP").get(controller.verifyOTP);
 router.route("/generateOTP/newuser").get(controller.generateOTPnewUser);
+router.route("/userdata").get(controller.userdata);
 
 //? PUT
 router.route("/updateUser").put(Auth, controller.updateUser);

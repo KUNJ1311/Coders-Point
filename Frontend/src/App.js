@@ -11,6 +11,7 @@ function App() {
 		<>
 			<UserState>
 				<Router>
+					{/* Alert */}
 					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover theme="light" />
 					<Routes>
 						<Route exact path="/" element={<Home />} />

@@ -5,14 +5,17 @@ import MainModal from "../Login/MainModal";
 function Navbar() {
 	const [showModal, setShowModal] = useState(false);
 
+	//* Get Started to login
 	const handleClick = () => {
 		setShowModal(true);
 	};
 
+	//* Close login page
 	const handleCloseModal = () => {
 		setShowModal(false);
 	};
 
+	//* Close login page with ESC Key
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if (event.key === "Escape") {
@@ -25,6 +28,7 @@ function Navbar() {
 			document.removeEventListener("keydown", handleKeyDown);
 		}
 	}, [showModal]);
+
 	return (
 		<>
 			<nav className="navbar" style={{ backgroundColor: "#161819" }}>

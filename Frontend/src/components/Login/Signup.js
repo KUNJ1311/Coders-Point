@@ -9,12 +9,13 @@ const Signup = ({ OnRegister }) => {
 	const context = useContext(userContext);
 	const { setCredentials, credentials, Register } = context;
 
+	const onChange = (e) => {
+		setCredentials({ ...credentials, [e.target.name]: e.target.value });
+	};
+
 	const handleRegister = async (e) => {
 		e.preventDefault();
 		Register({ OnRegister });
-	};
-	const onChange = (e) => {
-		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
 	return (
