@@ -48,8 +48,8 @@ const MainContent = () => {
 						<div className="chat-area">
 							<div style={{ color: "white", padding: "70px" }}>
 								<h1>Testing Scroll & Fetching Logged-In User Data</h1>
-								<h3 style={{ marginTop: "20px", color: "blueviolet" }}>Username : {adduserData?.username}</h3>
-								<h3 style={{ color: "blueviolet", marginBottom: "20px" }}>Email : {adduserData?.email}</h3>
+								<h3 style={{ marginTop: "20px", color: "powderblue" }}>Username : {adduserData?.username}</h3>
+								<h3 style={{ color: "powderblue", marginBottom: "20px" }}>Email : {adduserData?.email}</h3>
 								<h2 style={{ marginBottom: "20px", fontSize: "24px" }}>Introduction to React.js</h2>
 
 								<p style={{ marginBottom: "20px" }}>
