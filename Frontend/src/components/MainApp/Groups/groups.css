@@ -122,6 +122,7 @@
 	height: 25px;
 }
 .logout_btn path {
+	stroke-width: 40;
 	display: flex;
 	justify-content: center;
 	align-items: center;
