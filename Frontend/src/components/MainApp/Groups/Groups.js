@@ -120,7 +120,7 @@ const Groups = () => {
 				</div>
 				{/* Logout */}
 				<div className="d-flex flex-col w-full align-c">
-					<div id="logout-tooltip" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
+					<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
 						<IoExitOutline className="logout_btn" />
 						<Tooltip anchorSelect="#logout-tooltip" place="right" content="Logout" id="tooltip" />
 					</div>
