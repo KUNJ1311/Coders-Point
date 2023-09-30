@@ -49,7 +49,20 @@ button {
 .add-svg path {
 	fill: #a5a5ab;
 }
-
+.logout_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.logout_btn path {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	stroke: #249c57;
+}
+.groups-svg-border:hover .logout_btn path {
+	stroke: white;
+}
 /* --------------------------------------------------------
 										scroll-bar
 -----------------------------------------------------------*/
