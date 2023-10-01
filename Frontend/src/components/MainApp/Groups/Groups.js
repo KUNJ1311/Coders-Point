@@ -8,15 +8,11 @@ import img5 from "../../Image/twitter.png";
 import img6 from "../../Image/instal.webp";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { IoExitOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Groups = () => {
 	const groups = [
-		{ name: "Valorant", img: img1 },
-		{ name: "React JS", img: img2 },
-		{ name: "Facebook", img: img3 },
-		{ name: "Telegram", img: img4 },
-		{ name: "Twitter", img: img5 },
-		{ name: "Instagram", img: img6 },
 		{ name: "Valorant", img: img1 },
 		{ name: "React JS", img: img2 },
 		{ name: "Facebook", img: img3 },
@@ -66,6 +62,11 @@ const Groups = () => {
 		backgroundColor: clickedlogo ? "#5865f2" : isHovered ? "#5865f2" : "#313338",
 	};
 
+	let Navigate = useNavigate();
+	const handleLogout = () => {
+		localStorage.removeItem("coderToken");
+		Navigate("/");
+	};
 	return (
 		<div className="groups">
 			<div style={{ paddingTop: "12px" }}>
@@ -115,6 +116,13 @@ const Groups = () => {
 							<path d="M486 691h52V538h153v-52H538V333h-52v153H333v52h153z" />
 						</svg>
 						<Tooltip anchorSelect="#add-tooltip" place="right" content="Add Group" id="tooltip" />
+					</div>
+				</div>
+				{/* Logout */}
+				<div className="d-flex flex-col w-full align-c">
+					<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
+						<IoExitOutline className="logout_btn" />
+						<Tooltip anchorSelect="#logoutsvg-btn" place="right" content="Logout" id="tooltip" />
 					</div>
 				</div>
 			</div>

@@ -106,3 +106,28 @@
 	transform: none;
 	transition: height 0.2s ease-out;
 }
+#logoutsvg-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.add-svg path {
+	fill: #a5a5ab;
+}
+.logout_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25px;
+	height: 25px;
+}
+.logout_btn path {
+	stroke-width: 40;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	stroke: #249c57;
+}
+.groups-svg-border:hover .logout_btn path {
+	stroke: white;
+}
