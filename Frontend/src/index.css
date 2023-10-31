@@ -10,6 +10,7 @@
 	--second-font: "Roboto Slab", serif;
 	--toastify-text-color-light: #2f2f2f !important;
 	--toastify-font-family: var(--second-font) !important;
+	--color-light-gray: #96969a;
 }
 
 body {
