@@ -106,7 +106,7 @@
 	transform: none;
 	transition: height 0.2s ease-out;
 }
-#logout-tooltip {
+#logoutsvg-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;

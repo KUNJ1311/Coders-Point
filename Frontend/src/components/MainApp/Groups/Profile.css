@@ -1,0 +1,110 @@
+.profile-window {
+	z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #2023259d;
+	justify-content: center;
+	align-items: center;
+}
+
+.window2 {
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.window3 {
+	flex-basis: 50%;
+	max-width: 50%;
+	margin-bottom: 1rem;
+	margin-bottom: 0;
+}
+
+.window4 {
+	border: 1px solid #e0e0e0; /* Add a border style */
+	border-radius: 4px; /* Add rounded corners */
+	padding: 1rem; /* Add some padding inside the card */
+	margin-bottom: 1rem; /* Create spacing between cards, adjust as needed */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for a lifted effect */
+	background-color: #ffffff;
+	font-size: 1.25rem; /* Customize heading font size */
+	margin-bottom: 0.5rem; /* Adjust spacing below heading */
+	font-size: 1rem; /* Customize paragraph font size */
+	margin-bottom: 0; /* Remove spacing below paragraphs */
+}
+
+.window5 {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -5px; /* Negative margin to counteract gutters */
+	margin-left: -5px; /* Negative margin to counteract gutters */
+	margin-right: 0;
+	margin-left: 0;
+	flex: 1;
+	padding: 5px;
+}
+
+.left-window {
+	flex: 0 0 33.3333%; /* Create a column that spans 4 units in a medium (md) viewport */
+	max-width: 33.3333%; /* Set the maximum width of the column */
+	background: linear-gradient(to right, #ff5733, #c72269); /* Replace these colors with your desired gradient */
+	padding: 1rem; /* Add padding as needed */
+	border-radius: 5px; /* Add rounded corners */
+	text-align: center;
+	color: #ffffff;
+}
+
+.img {
+	margin-top: 3rem; /* Add margin to the top, adjust as needed */
+	margin-bottom: 3rem;
+}
+
+.right-window {
+	flex: 0 0 66.6667%; /* Create a column that spans 8 units in a medium (md) viewport */
+	max-width: 66.6667%; /* Set the maximum width of the column */
+}
+
+.details {
+	padding: 1.5rem;
+	padding: 1.5rem;
+}
+
+.line {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+.details2 {
+	padding-top: 0.25rem;
+}
+
+.mail {
+	margin-bottom: 1rem;
+}
+
+.mailid {
+	color: #6c757d;
+}
+
+.contact {
+	margin-bottom: 1rem;
+}
+
+.contactno {
+	color: #6c757d;
+}
+
+.socials {
+	display: flex;
+	justify-content: flex-start;
+}

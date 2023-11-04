@@ -6,6 +6,9 @@ import UserState from "./components/context/UserState";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthorizeUser } from "./components/middleware/auth";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+
 function App() {
 	return (
 		<>
@@ -13,6 +16,7 @@ function App() {
 				<Router>
 					{/* Alert */}
 					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover theme="light" />
+					{/* Tooltip Component */}
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route path="/login" element={<Login />} />
@@ -26,6 +30,7 @@ function App() {
 							}
 						/>
 					</Routes>
+					<Tooltip id="tooltip" style={{ fontSize: "14px" }} anchorSelect="#chat-timestamp-tooltip" place="top" render={({ content }) => <span>{content}</span>} />
 				</Router>
 			</UserState>
 		</>
