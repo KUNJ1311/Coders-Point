@@ -17,18 +17,13 @@ const Groups = () => {
 		{ name: "Telegram", img: img4 },
 		{ name: "Twitter", img: img5 },
 		{ name: "Instagram", img: img6 },
-		{ name: "Valorant", img: img1 },
-		{ name: "React JS", img: img2 },
-		{ name: "Facebook", img: img3 },
-		{ name: "Telegram", img: img4 },
-		{ name: "Twitter", img: img5 },
-		{ name: "Instagram", img: img6 },
 	];
 
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const [clickedlogo, setClickedlogo] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
+
 
 	const handleClick = (index) => {
 		setClickedIndex(index);
