@@ -9,30 +9,37 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { IoExitOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import ProfileModal from "./ProfileModal";
+import ProfileModel from "./ProfileModel";
 
 const Groups = () => {
-	const [showProfileModal, setShowProfileModal] = useState(false);
+	const [showProfileModel, setShowProfileModel] = useState(false);
 
-	//* Close login page
-	const handleCloseProfileModal = () => {
-		setShowProfileModal(false);
+	//* Close Profile page
+	const handleCloseProfileModel = () => {
+		setShowProfileModel(false);
 		setClickedlogo(false);
 	};
 
-	//* Close login page with ESC Key
+	//* Close Profile page with ESC Key
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if (event.key === "Escape") {
-				handleCloseProfileModal();
+				handleCloseProfileModel();
 			}
 		};
-		if (showProfileModal) {
+		if (showProfileModel) {
 			document.addEventListener("keydown", handleKeyDown);
 		} else {
 			document.removeEventListener("keydown", handleKeyDown);
 		}
-	}, [showProfileModal]);
+	}, [showProfileModel]);
+
+	//* Get Started to Profile
+	const handleProfileClick = () => {
+		setShowProfileModel(true);
+		setClickedlogo(true);
+		setClickedIndex(null);
+	};
 
 	const groups = [
 		{ name: "Valorant", img: img1 },
@@ -70,13 +77,6 @@ const Groups = () => {
 		setIsHovered(false);
 	};
 
-	//* Get Started to login
-	const handleProfileClick = () => {
-		setShowProfileModal(true);
-		setClickedlogo(true);
-		setClickedIndex(null);
-	};
-
 	const style = {
 		height: clickedlogo ? "40px" : isHovered ? "20px" : "8px",
 	};
@@ -92,7 +92,7 @@ const Groups = () => {
 	};
 	return (
 		<>
-			{showProfileModal && <ProfileModal onClose={handleCloseProfileModal} />}
+			{showProfileModel && <ProfileModel onClose={handleCloseProfileModel} />}
 			<div className="groups">
 				<div style={{ paddingTop: "12px" }}>
 					{/* Home */}

@@ -30,7 +30,7 @@ function App() {
 							}
 						/>
 					</Routes>
-					<Tooltip id="tooltip" style={{ fontSize: "14px" }} anchorSelect="#chat-timestamp-tooltip" place="top" render={({ content }) => <span>{content}</span>} />
+					<Tooltip id="tooltip" className="app-font" style={{ fontSize: "13px" }} delayShow={1000} anchorSelect="#chat-timestamp-tooltip" place="top" render={({ content }) => <span>{content}</span>} />
 				</Router>
 			</UserState>
 		</>

@@ -6,7 +6,7 @@ import OTP from "./OTP";
 import ForgetPass from "./ForgetPass";
 import ChangePass from "./ChangePass";
 
-export default function MainModal({ onClose }) {
+export default function MainModel({ onClose }) {
 	const [isActive, setIsActive] = useState(false);
 	const [isScaled, setIsScaled] = useState(false);
 	const [registerValue, setRegisterValue] = useState(false);
