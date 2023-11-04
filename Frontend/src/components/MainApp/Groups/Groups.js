@@ -55,6 +55,7 @@ const Groups = () => {
 	const [clickedlogo, setClickedlogo] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
+
 	const handleClick = (index) => {
 		setClickedIndex(index);
 		setHoveredIndex(index);
