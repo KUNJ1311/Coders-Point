@@ -12,7 +12,9 @@ const TopNav = (props) => {
 					<div>
 						<HiChatAlt className="big-type-svg" fill="#b5bac1" />
 					</div>
-					<span>General</span>
+					<span data-tooltip-id="chat-timestamp-tooltips" data-tooltip-content="hi">
+						General
+					</span>
 				</div>
 				<div className="toolbar_nav">
 					<div id="chat-nav-tooltip">
