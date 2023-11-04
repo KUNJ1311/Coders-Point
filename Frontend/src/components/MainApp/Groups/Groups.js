@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "../../Image/icon.png";
 import img1 from "../../Image/test.jpg";
 import img2 from "../../Image/test.png";
 import img3 from "../../Image/facebook.png";
@@ -18,6 +17,7 @@ const Groups = () => {
 	//* Close login page
 	const handleCloseProfileModal = () => {
 		setShowProfileModal(false);
+		setClickedlogo(false);
 	};
 
 	//* Close login page with ESC Key
@@ -84,7 +84,6 @@ const Groups = () => {
 
 	const mystyle = {
 		borderRadius: clickedlogo ? "30%" : isHovered ? "30%" : "50%",
-		backgroundColor: clickedlogo ? "#5865f2" : isHovered ? "#5865f2" : "#313338",
 	};
 
 	let Navigate = useNavigate();
@@ -104,12 +103,10 @@ const Groups = () => {
 								<span style={style} className="side-line-effect"></span>
 							</div>
 						</div>
-						<div id="home-tooltip" data-tooltip-offset={20} className="d-flex align-c justify-c cursor-pointer groups-border home-logo" style={mystyle} onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
-							<div className="align-c justify-c">
-								<img className="d-block logo-home" src={img} width="30px" height="30px" alt="" />
-							</div>
+						<div id="home-tooltip" data-tooltip-offset={20} className="d-flex align-c justify-c cursor-pointer round" onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
+							<img className="d-flex object-cover round-effect" style={mystyle} src="https://cdn.discordapp.com/avatars/715429945295372329/a977e19af9bf390800ab713f57edb7a1.webp" width="48px" height="48px" alt="" />
 						</div>
-						<Tooltip anchorSelect="#home-tooltip" place="right" content="Home" id="tooltip" style={{ fontSize: "15px" }} />
+						<Tooltip anchorSelect="#home-tooltip" place="right" content="Profile" id="tooltip" style={{ fontSize: "15px" }} />
 					</div>
 					{/* line */}
 					<div className="d-flex justify-c sm-line ">
