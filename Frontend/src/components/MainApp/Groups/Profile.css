@@ -1,4 +1,6 @@
 .profile-window {
+	font-family: var(--app-font);
+
 	z-index: 999;
 	width: 100vw;
 	height: 100vh;
@@ -31,12 +33,12 @@
 }
 
 .window4 {
-	border: 1px solid #e0e0e0; /* Add a border style */
+	border: 1px solid #1e1f22; /* Add a border style */
 	border-radius: 4px; /* Add rounded corners */
 	padding: 1rem; /* Add some padding inside the card */
 	margin-bottom: 1rem; /* Create spacing between cards, adjust as needed */
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for a lifted effect */
-	background-color: #ffffff;
+	background-color: #1e1f22;
 	font-size: 1.25rem; /* Customize heading font size */
 	margin-bottom: 0.5rem; /* Adjust spacing below heading */
 	font-size: 1rem; /* Customize paragraph font size */
@@ -57,16 +59,11 @@
 .left-window {
 	flex: 0 0 33.3333%; /* Create a column that spans 4 units in a medium (md) viewport */
 	max-width: 33.3333%; /* Set the maximum width of the column */
-	background: linear-gradient(to right, #ff5733, #c72269); /* Replace these colors with your desired gradient */
-	padding: 1rem; /* Add padding as needed */
-	border-radius: 5px; /* Add rounded corners */
+	background: #1e1f22; /* Replace these colors with your desired gradient */
 	text-align: center;
-	color: #ffffff;
-}
-
-.img {
-	margin-top: 3rem; /* Add margin to the top, adjust as needed */
-	margin-bottom: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .right-window {
@@ -79,8 +76,14 @@
 	padding: 1.5rem;
 }
 
+.details h6 {
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+}
 .line {
 	margin-top: 0;
+	border-color: #b5bac1;
 	margin-bottom: 1rem;
 }
 
@@ -93,7 +96,7 @@
 }
 
 .mailid {
-	color: #6c757d;
+	color: #b5bac1;
 }
 
 .contact {
@@ -101,10 +104,38 @@
 }
 
 .contactno {
-	color: #6c757d;
+	color: #b5bac1;
 }
 
 .socials {
 	display: flex;
 	justify-content: flex-start;
+}
+
+.edit-icon {
+	color: white;
+	width: 55px;
+	height: 55px;
+	stroke-width: 1.4px;
+	transition: opacity 0.3s ease-out;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.edit-icon-area {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 230px;
+	height: 230px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-out;
+}
+
+.edit-icon-area:hover .edit-icon {
+	opacity: 1;
+}
+.edit-icon-area:hover {
+	background-color: #1e1f2254;
 }

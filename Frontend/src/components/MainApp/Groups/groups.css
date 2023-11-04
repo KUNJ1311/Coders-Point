@@ -72,6 +72,14 @@
 	border-radius: 30%;
 }
 
+.round-effect {
+	transition: background-color 0.2s ease-out, color 0.2s ease-out, border-radius 0.2s ease-out;
+}
+
+.round-effect:hover {
+	border-radius: 30%;
+}
+
 .sm-line {
 	margin: 0 0 7px;
 	width: 72px;
@@ -82,10 +90,6 @@
 	width: 32px;
 	border-radius: 1px;
 	background-color: rgb(84, 82, 90);
-}
-
-.logo-home {
-	filter: brightness(9999%);
 }
 
 .side-line {
