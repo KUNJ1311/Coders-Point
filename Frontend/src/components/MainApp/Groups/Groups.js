@@ -104,7 +104,7 @@ const Groups = () => {
 							</div>
 						</div>
 						<div id="home-tooltip" data-tooltip-offset={20} className="d-flex align-c justify-c cursor-pointer round" onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
-							<img className="d-flex object-cover round-effect" style={mystyle} src="https://cdn.discordapp.com/avatars/715429945295372329/a977e19af9bf390800ab713f57edb7a1.webp" width="48px" height="48px" alt="" />
+							<img className="d-flex object-cover round-effect" style={mystyle} src="https://cdn.discordapp.com/attachments/1019824561396649994/1170282970616180766/WhatsApp_Image_2023-11-04_at_09.39.26_844c77ef.jpg?ex=655879f3&is=654604f3&hm=6f9c592d062644229a40dbc321b5b92de120a28d27be3098b4c2200e51a9d546&" width="48px" height="48px" alt="" />
 						</div>
 						<Tooltip anchorSelect="#home-tooltip" place="right" content="Profile" id="tooltip" style={{ fontSize: "15px" }} />
 					</div>
