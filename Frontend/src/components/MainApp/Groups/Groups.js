@@ -7,9 +7,8 @@ import img5 from "../../Image/twitter.png";
 import img6 from "../../Image/instal.webp";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { IoExitOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 import ProfileModel from "./ProfileModel";
+import { HiPlus } from "react-icons/hi2";
 
 const Groups = () => {
 	const [showProfileModel, setShowProfileModel] = useState(false);
@@ -55,7 +54,6 @@ const Groups = () => {
 	const [clickedlogo, setClickedlogo] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
-
 	const handleClick = (index) => {
 		setClickedIndex(index);
 		setHoveredIndex(index);
@@ -86,11 +84,6 @@ const Groups = () => {
 		borderRadius: clickedlogo ? "30%" : isHovered ? "30%" : "50%",
 	};
 
-	let Navigate = useNavigate();
-	const handleLogout = () => {
-		localStorage.removeItem("coderToken");
-		Navigate("/");
-	};
 	return (
 		<>
 			{showProfileModel && <ProfileModel onClose={handleCloseProfileModel} />}
@@ -135,20 +128,18 @@ const Groups = () => {
 					</div>
 					{/* Plus */}
 					<div className="d-flex flex-col w-full align-c">
-						<div id="add-tooltip" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
-							<svg className="d-flex object-cover round plus-svg" fill="#249c57" width="48px" height="48px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-								<path d="M486 691h52V538h153v-52H538V333h-52v153H333v52h153z" />
-							</svg>
-							<Tooltip anchorSelect="#add-tooltip" place="right" content="Add Group" id="tooltip" />
+						<div id="add-group-tooltip" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
+							<HiPlus className="add-svg add-group" width="18px" height="18px" />
+							<Tooltip anchorSelect="#add-group-tooltip" place="right" content="Add Group" id="tooltip" />
 						</div>
 					</div>
-					{/* Logout */}
+					{/* Logout
 					<div className="d-flex flex-col w-full align-c">
 						<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
 							<IoExitOutline className="logout_btn" />
 							<Tooltip anchorSelect="#logoutsvg-btn" place="right" content="Logout" id="tooltip" />
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</>

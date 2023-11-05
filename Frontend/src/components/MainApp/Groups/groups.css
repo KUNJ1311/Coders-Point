@@ -115,6 +115,11 @@
 	justify-content: center;
 	align-items: center;
 }
+#add-group-tooltip {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .add-svg path {
 	fill: #a5a5ab;
 }
@@ -125,13 +130,26 @@
 	width: 25px;
 	height: 25px;
 }
-.logout_btn path {
-	stroke-width: 40;
+.add-group {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 25px;
+	height: 25px;
+}
+.add-group path {
+	stroke-width: 0.7;
+	stroke: #249c57;
+	fill: #249c57;
+}
+.logout_btn path {
+	stroke-width: 40;
 	stroke: #249c57;
 }
 .groups-svg-border:hover .logout_btn path {
 	stroke: white;
+}
+.groups-svg-border:hover .add-group path {
+	stroke: white;
+	fill: white;
 }

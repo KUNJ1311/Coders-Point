@@ -50,7 +50,7 @@ const ChatMessage = (props) => {
 									<span style={{ marginRight: "0.25rem", cursor: "pointer" }}>
 										<span>{message.sender}</span>
 									</span>
-									<span className="chat-timestamp" id="chat-timestamp-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={8}>
+									<span className="chat-timestamp" data-tooltip-id="chat-timestamp-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={8}>
 										{formatDate(msg.timestamp)}
 									</span>
 								</h3>
@@ -63,7 +63,7 @@ const ChatMessage = (props) => {
 						<div className="chat-same-user">
 							<div style={{ position: "static", marginLeft: "0", paddingLeft: "0", textIndent: "0" }}>
 								<span className="chat-small-timestamp">
-									<time id="chat-timestamp-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={8}>
+									<time data-tooltip-id="chat-timestamp-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={8}>
 										<i className="timestamp-separator" aria-hidden="true">
 											[
 										</i>

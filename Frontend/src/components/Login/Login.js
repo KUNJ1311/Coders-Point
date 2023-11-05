@@ -52,7 +52,7 @@ const Login = ({ OnForget }) => {
 					<label className="lable-main"></label>
 				</div>
 				<span className="forgot">
-					Forgot Password?<span onClick={handleForget}> Recover Now</span>
+					Forgot Password?<span onClick={handleForget}> Reset Now</span>
 				</span>
 				<button type="submit" className="robtn">
 					Login In

@@ -78,8 +78,8 @@ export const generateOTP = async (email) => {
 		//* send mail with the otp
 		if (status === 201) {
 			let text = code;
-			let extra = `Verify and recover your password.`;
-			await axios.post(`${host}/api/registerMail`, { username, userEmail: email, text, subject: "Password recovery OTP", extra });
+			let extra = `verify and change your password.`;
+			await axios.post(`${host}/api/registerMail`, { username, userEmail: email, text, subject: "Password Reset OTP Request", extra });
 		}
 		return { msg: "Success" };
 	} catch (error) {
@@ -97,7 +97,7 @@ export const generateOTPnewUser = async (email) => {
 		//* send mail with the otp
 		if (status === 201) {
 			let text = code;
-			let extra = `Hello, here is your OTP. Please use this OTP to complete your registration process.`;
+			let extra = `complete your registration process.`;
 			await axios.post(`${host}/api/registerMail`, { userEmail: email, text, subject: "OTP for registration process", extra });
 			return { status, msg: "OTP has been sent to your email." };
 		}
