@@ -3,7 +3,6 @@ import "./maincontent.css";
 import TopNav from "./ChatComponents/TopNav";
 import ChatArea from "./ChatComponents/ChatArea";
 import Users from "./ChatComponents/Users/Users";
-// import { userData } from "../../helper/helper";
 
 const MainContent = () => {
 	const [hideUser, setHideUser] = useState(false);
