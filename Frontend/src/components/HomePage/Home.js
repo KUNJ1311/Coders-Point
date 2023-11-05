@@ -40,7 +40,7 @@ const Home = () => {
 									autoStart: true,
 									loop: true,
 									delay: 50,
-									strings: ["Code", "Chat", "Contibute"],
+									strings: ["Code", "Chat", "Contribute"],
 								}}
 							/>
 						</div>

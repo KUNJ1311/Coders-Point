@@ -10,6 +10,7 @@
 	--second-font: "Roboto Slab", serif;
 	--toastify-text-color-light: #2f2f2f !important;
 	--toastify-font-family: var(--second-font) !important;
+	--color-light-gray: #96969a;
 }
 
 body {
@@ -34,20 +35,17 @@ button {
 #tooltip {
 	z-index: 999999;
 	position: fixed;
-	font-size: 13px;
-	background-color: rgb(6, 6, 6);
+	font-size: 12px;
+	background-color: rgb(0, 0, 0) !important;
+	opacity: 0.93;
 	color: rgb(233, 234, 238);
 	border-radius: 7px;
-	font-weight: 500;
-	padding: 7px 13px;
+	font-weight: 400;
+	padding: 6px 12px;
 }
 
 .app-font {
 	font-family: var(--app-font);
-}
-
-.add-svg path {
-	fill: #a5a5ab;
 }
 
 /* --------------------------------------------------------

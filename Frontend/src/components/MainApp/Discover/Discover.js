@@ -80,7 +80,7 @@ const Discover = () => {
 									<div>Voice Channels</div>
 								</h3>
 							</div>
-							<div className="channels-add ">
+							<div className="channels-add">
 								<button className="add-button " id="create-tooltip" type="button">
 									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>

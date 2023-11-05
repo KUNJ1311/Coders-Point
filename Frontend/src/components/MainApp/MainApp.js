@@ -6,6 +6,7 @@ import "./Groups/groups.css";
 import "./Discover/discover.css";
 import "./Maincontent/maincontent.css";
 
+
 const MainApp = () => {
 	return (
 		<div className="d-flex app-font absolute">

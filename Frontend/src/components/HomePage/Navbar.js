@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import coders from "../Image/coders.png";
-import MainModal from "../Login/MainModal";
+import MainModel from "../Login/MainModel";
 function Navbar() {
-	const [showModal, setShowModal] = useState(false);
+	const [showModel, setShowModel] = useState(false);
 
 	//* Get Started to login
 	const handleClick = () => {
-		setShowModal(true);
+		setShowModel(true);
 	};
 
 	//* Close login page
-	const handleCloseModal = () => {
-		setShowModal(false);
+	const handleCloseModel = () => {
+		setShowModel(false);
 	};
 
 	//* Close login page with ESC Key
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if (event.key === "Escape") {
-				handleCloseModal();
+				handleCloseModel();
 			}
 		};
-		if (showModal) {
+		if (showModel) {
 			document.addEventListener("keydown", handleKeyDown);
 		} else {
 			document.removeEventListener("keydown", handleKeyDown);
 		}
-	}, [showModal]);
+	}, [showModel]);
 
 	return (
 		<>
@@ -43,7 +43,7 @@ function Navbar() {
 					</button>
 				</div>
 			</nav>
-			{showModal && <MainModal onClose={handleCloseModal} />}
+			{showModel && <MainModel onClose={handleCloseModel} />}
 		</>
 	);
 }

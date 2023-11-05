@@ -1,0 +1,128 @@
+.profile-window {
+	font-family: var(--app-font);
+	z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #2023259d;
+	justify-content: center;
+	align-items: center;
+}
+
+.window2 {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.window3 {
+	width: 800px;
+}
+
+.window4 {
+	border: 1px solid #1e1f22;
+	border-radius: 4px;
+	padding: 3rem 1rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	background-color: #1e1f22;
+	font-size: 1rem;
+}
+
+.window5 {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	padding: 5px;
+}
+
+.left-window {
+	flex: 0 0 33.3333%;
+	max-width: 33.3333%;
+	background: #1e1f22;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-window {
+	flex: 0 0 66.6667%;
+	max-width: 66.6667%;
+}
+
+.details {
+	padding: 1.5rem;
+	padding: 1.5rem;
+}
+
+.details h6 {
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+}
+.line {
+	margin-top: 0;
+	border-color: #b5bac1;
+	margin-bottom: 1rem;
+}
+
+.details2 {
+	padding-top: 0.25rem;
+}
+
+.mail {
+	margin-bottom: 1rem;
+}
+
+.mailid {
+	color: #b5bac1;
+}
+
+.contact {
+	margin-bottom: 1rem;
+}
+
+.contactno {
+	color: #b5bac1;
+}
+
+.socials {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.edit-icon {
+	color: white;
+	width: 55px;
+	height: 55px;
+	stroke-width: 1.1px;
+	transition: opacity 0.3s ease-out;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.edit-icon-area {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	border-radius: 50%;
+	justify-content: center;
+	width: 230px;
+	height: 230px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-out;
+}
+
+.edit-icon-area:hover .edit-icon {
+	opacity: 1;
+}
+.edit-icon-area:hover {
+	background-color: #1e1f22a9;
+}

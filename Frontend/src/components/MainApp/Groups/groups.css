@@ -72,6 +72,14 @@
 	border-radius: 30%;
 }
 
+.round-effect {
+	transition: background-color 0.2s ease-out, color 0.2s ease-out, border-radius 0.2s ease-out;
+}
+
+.round-effect:hover {
+	border-radius: 30%;
+}
+
 .sm-line {
 	margin: 0 0 7px;
 	width: 72px;
@@ -82,10 +90,6 @@
 	width: 32px;
 	border-radius: 1px;
 	background-color: rgb(84, 82, 90);
-}
-
-.logo-home {
-	filter: brightness(9999%);
 }
 
 .side-line {
@@ -105,4 +109,29 @@
 	height: 8px;
 	transform: none;
 	transition: height 0.2s ease-out;
+}
+#logoutsvg-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.add-svg path {
+	fill: #a5a5ab;
+}
+.logout_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25px;
+	height: 25px;
+}
+.logout_btn path {
+	stroke-width: 40;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	stroke: #249c57;
+}
+.groups-svg-border:hover .logout_btn path {
+	stroke: white;
 }
