@@ -5,7 +5,6 @@ import img3 from "../../Image/facebook.png";
 import img4 from "../../Image/telegram.png";
 import img5 from "../../Image/twitter.png";
 import img6 from "../../Image/instal.webp";
-import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
@@ -96,10 +95,9 @@ const Groups = () => {
 								<span style={style} className="side-line-effect"></span>
 							</div>
 						</div>
-						<div id="home-tooltip" data-tooltip-offset={20} className="d-flex align-c justify-c cursor-pointer round" onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
+						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Profile" data-tooltip-offset={18} data-tooltip-place="right" className="d-flex align-c justify-c cursor-pointer round" onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
 							<img className="d-flex object-cover round-effect" style={mystyle} src="https://cdn.discordapp.com/avatars/715429945295372329/a977e19af9bf390800ab713f57edb7a1.webp" width="48px" height="48px" alt="" />
 						</div>
-						<Tooltip anchorSelect="#home-tooltip" place="right" content="Profile" id="tooltip" style={{ fontSize: "15px" }} />
 					</div>
 					{/* line */}
 					<div className="d-flex justify-c sm-line ">
@@ -109,8 +107,7 @@ const Groups = () => {
 					<div className="d-flex flex-col w-full align-c ">
 						{groups.map((group, index) => (
 							<div key={index} width="48px" height="48px" className="servers">
-								<div id="groups-tooltip" data-tooltip-content={group.name} data-tooltip-offset={20} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
-									<Tooltip id="tooltip" anchorSelect="#groups-tooltip" place="right" style={{ fontSize: "15px" }} render={({ content }) => <span>{content}</span>} />
+								<div data-tooltip-id="my-tooltip-big" data-tooltip-content={group.name} data-tooltip-offset={18} data-tooltip-place="right" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
 									<div height="48px">
 										<div className="side-line">
 											<span
@@ -128,9 +125,8 @@ const Groups = () => {
 					</div>
 					{/* Plus */}
 					<div className="d-flex flex-col w-full align-c">
-						<div id="add-group-tooltip" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
+						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Add Group" data-tooltip-offset={18} data-tooltip-place="right" width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
 							<HiPlus className="add-svg add-group" width="18px" height="18px" />
-							<Tooltip anchorSelect="#add-group-tooltip" place="right" content="Add Group" id="tooltip" />
 						</div>
 					</div>
 					{/* Logout

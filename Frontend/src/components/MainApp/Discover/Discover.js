@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { HiFolder } from "react-icons/hi2";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { HiChatAlt, HiPlus } from "react-icons/hi";
-import { Tooltip } from "react-tooltip";
 
 const Discover = () => {
 	const text = ["test", "fun", "General", "Kunj", "rohit2424"];
@@ -36,7 +35,6 @@ const Discover = () => {
 			</nav>
 			<div className="scroller-d">
 				<ul className="ul-discover">
-					<Tooltip anchorSelect="#create-tooltip" id="tooltip" place="top" content="Create Channel" />
 					<li className="channels">
 						<div className="cursor-pointer wrapperCommon">
 							<div className="channels-content" onClick={handleHideChannelsText}>
@@ -48,7 +46,7 @@ const Discover = () => {
 								</h3>
 							</div>
 							<div className="channels-add ">
-								<button className="add-button" id="create-tooltip" type="button">
+								<button className="add-button" data-tooltip-id="my-tooltip" data-tooltip-offset={8} data-tooltip-place="top" data-tooltip-content="Create Channel" type="button">
 									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
 							</div>
@@ -81,7 +79,7 @@ const Discover = () => {
 								</h3>
 							</div>
 							<div className="channels-add">
-								<button className="add-button " id="create-tooltip" type="button">
+								<button className="add-button" data-tooltip-id="my-tooltip" data-tooltip-offset={8} data-tooltip-place="top" data-tooltip-content="Create Channel" type="button">
 									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
 							</div>
@@ -114,7 +112,7 @@ const Discover = () => {
 								</h3>
 							</div>
 							<div className="channels-add ">
-								<button className="add-button" id="create-tooltip" type="button">
+								<button className="add-button" data-tooltip-id="my-tooltip" data-tooltip-offset={8} data-tooltip-place="top" data-tooltip-content="Create Channel" type="button">
 									<HiPlus className="add-svg" width="18px" height="18px" />
 								</button>
 							</div>

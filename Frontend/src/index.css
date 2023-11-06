@@ -32,29 +32,25 @@ button {
 	padding: 0;
 }
 
-#tooltip {
+#my-tooltip {
 	z-index: 999999;
-	position: fixed;
-	font-size: 12px;
+	font-size: 13px;
 	background-color: rgb(0, 0, 0) !important;
-	opacity: 0.93;
-	color: rgb(233, 234, 238);
 	border-radius: 7px;
-	font-weight: 400;
-	padding: 6px 12px;
-}
-#chat-timestamp-tooltip {
-	z-index: 999999;
-	position: fixed;
-	font-size: 12px;
-	background-color: rgb(0, 0, 0) !important;
-	opacity: 0.93;
-	color: rgb(233, 234, 238);
-	border-radius: 7px;
-	font-weight: 400;
-	padding: 6px 12px;
+	font-weight: 500;
+	padding: 7px 12px;
 	font-family: var(--app-font);
 }
+#my-tooltip-big {
+	z-index: 999999;
+	font-size: 16px;
+	background-color: rgb(0, 0, 0) !important;
+	border-radius: 7px;
+	font-weight: 400;
+	padding: 7px 12px;
+	font-family: var(--app-font);
+}
+
 .app-font {
 	font-family: var(--app-font);
 }

@@ -4,7 +4,7 @@ import { TbPhotoEdit } from "react-icons/tb";
 import { userData } from "../../helper/helper";
 import { useNavigate } from "react-router-dom";
 import { IoExitOutline } from "react-icons/io5";
-import { Tooltip } from "react-tooltip";
+
 export default function ProfileModel({ onClose }) {
 	const [adduserData, setAddUserData] = useState(null);
 	//* Getting user data
@@ -28,8 +28,7 @@ export default function ProfileModel({ onClose }) {
 		Navigate("/");
 	};
 	return (
-		<section className="profile-window " onClick={onClose}>
-			<Tooltip id="tooltip" className="app-font" style={{ fontSize: "13px" }} anchorSelect="#profile-btn" place="top" render={({ content }) => <span>{content}</span>} />
+		<section className="profile-window" onClick={onClose}>
 			<div className="window2">
 				<div className="window3" onClick={(e) => e.stopPropagation()}>
 					<div className="window4" style={{ borderRadius: ".5rem" }}>
