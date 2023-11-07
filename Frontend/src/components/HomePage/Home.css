@@ -92,6 +92,18 @@
 	z-index: 1;
 	display: flex;
 	position: relative;
+	padding-bottom: 22%;
+	align-items: center;
+}
+.footer-content{
+	position: relative;
+	color: #dfe1f5;
+	font-size: xx-large;
+	align-items: end;
+	
+}
+.line{
+	padding-bottom: 8;
 }
 @keyframes moveRight {
 	0% {
