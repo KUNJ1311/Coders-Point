@@ -1,5 +1,4 @@
 import React from "react";
-import { Tooltip } from "react-tooltip";
 
 const ChatMessage = (props) => {
 	const formatTime = (timestamp) => {
@@ -21,6 +20,20 @@ const ChatMessage = (props) => {
 		return `${month}/${day}/${year} ${time}`;
 	};
 
+	const formatDateTime = (timestamp) => {
+		const date = new Date(timestamp);
+		const options = {
+			weekday: "long",
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		};
+		return date.toLocaleDateString("en-US", options);
+	};
+
 	const { message } = props;
 	if (!message) {
 		return null; // Return null if message is undefined
@@ -37,9 +50,8 @@ const ChatMessage = (props) => {
 									<span style={{ marginRight: "0.25rem", cursor: "pointer" }}>
 										<span>{message.sender}</span>
 									</span>
-									<span className="chat-timestamp" data-tooltip-id="hula" data-tooltip-content="sda" data-tooltip-offset={20}>
+									<span className="chat-timestamp" data-tooltip-id="my-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={10} data-tooltip-delay-show={800} data-tooltip-place="top">
 										{formatDate(msg.timestamp)}
-										<Tooltip id="hula" />
 									</span>
 								</h3>
 								<div className="chat-main-user">
@@ -51,7 +63,7 @@ const ChatMessage = (props) => {
 						<div className="chat-same-user">
 							<div style={{ position: "static", marginLeft: "0", paddingLeft: "0", textIndent: "0" }}>
 								<span className="chat-small-timestamp">
-									<time id="chat-timestamp-tooltip" data-tooltip-content={formatDate(msg.timestamp)} data-tooltip-offset={20}>
+									<time data-tooltip-id="my-tooltip" data-tooltip-content={formatDateTime(msg.timestamp)} data-tooltip-offset={10} data-tooltip-delay-show={800} data-tooltip-place="top">
 										<i className="timestamp-separator" aria-hidden="true">
 											[
 										</i>

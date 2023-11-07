@@ -32,15 +32,23 @@ button {
 	padding: 0;
 }
 
-#tooltip {
+#my-tooltip {
 	z-index: 999999;
-	position: fixed;
 	font-size: 13px;
-	background-color: rgb(6, 6, 6);
-	color: rgb(233, 234, 238);
+	background-color: rgb(0, 0, 0) !important;
 	border-radius: 7px;
 	font-weight: 500;
-	padding: 7px 13px;
+	padding: 7px 12px;
+	font-family: var(--app-font);
+}
+#my-tooltip-big {
+	z-index: 999999;
+	font-size: 16px;
+	background-color: rgb(0, 0, 0) !important;
+	border-radius: 7px;
+	font-weight: 400;
+	padding: 7px 12px;
+	font-family: var(--app-font);
 }
 
 .app-font {

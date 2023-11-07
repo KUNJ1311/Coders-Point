@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { TbPhotoEdit } from "react-icons/tb";
 import { userData } from "../../helper/helper";
-export default function ProfileModal({ onClose }) {
+import { useNavigate } from "react-router-dom";
+import { IoExitOutline } from "react-icons/io5";
+
+export default function ProfileModel({ onClose }) {
 	const [adduserData, setAddUserData] = useState(null);
 	//* Getting user data
 	useEffect(() => {
@@ -18,8 +21,14 @@ export default function ProfileModal({ onClose }) {
 		};
 		GetData();
 	}, []);
+
+	let Navigate = useNavigate();
+	const handleLogout = () => {
+		localStorage.removeItem("coderToken");
+		Navigate("/");
+	};
 	return (
-		<section className="profile-window " onClick={onClose}>
+		<section className="profile-window" onClick={onClose}>
 			<div className="window2">
 				<div className="window3" onClick={(e) => e.stopPropagation()}>
 					<div className="window4" style={{ borderRadius: ".5rem" }}>
@@ -43,6 +52,11 @@ export default function ProfileModal({ onClose }) {
 											<h6>Email</h6>
 											<p className="mailid">{adduserData?.email}</p>
 										</div>
+									</div>
+								</div>
+								<div className="profile-btns">
+									<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
+										<IoExitOutline className="logout_btn" />
 									</div>
 								</div>
 							</div>
