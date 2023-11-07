@@ -31,11 +31,11 @@ const TopNav = (props) => {
   //     setMode(!mode);
   //   };
   return (
-    <section className={"align-c d-flex " + (mode ? "" : "dark")}>
+    <section className={"align-c d-flex " + (mode ? "" : "jjj")}>
       <div className={"relative children_nav " + (mode ? "" : "dark")}>
         <div className={"maincontent-title " + (mode ? "" : "dark")}>
           <div>
-            <HiChatAlt className="big-type-svg" fill="#b5bac1" />
+            <HiChatAlt className="big-type-svg ok" fill="#b5bac1" />
           </div>
           <span
             data-tooltip-id="chat-timestamp-tooltips"
@@ -53,13 +53,11 @@ const TopNav = (props) => {
           >
             {mode && (
               <MdSunny
-                className={"big-type-svg " + (mode ? "" : "dd")}
+                className={"big-type-svg  " + (mode ? "" : "dd")}
                 fill="#b5bac1"
               />
             )}
-            {!mode && (
-              <BsFillMoonStarsFill className="big-type-svg" fill="#b5bac1" />
-            )}
+            {!mode && <BsFillMoonStarsFill className="big-type-svg ok " />}
           </div>
           <div
             id="chat-nav-tooltip"
@@ -68,7 +66,10 @@ const TopNav = (props) => {
               hideUser ? "Show Member List" : "Hide Member List"
             }
           >
-            <ImUsers className="big-type-svg" fill="#b5bac1" />
+            <ImUsers
+              className={"big-type-svg " + (mode ? "" : "ok")}
+              fill="#b5bac1"
+            />{" "}
           </div>
         </div>
         <Tooltip

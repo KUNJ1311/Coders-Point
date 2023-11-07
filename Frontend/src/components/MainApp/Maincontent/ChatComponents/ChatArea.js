@@ -77,12 +77,14 @@ const ChatArea = () => {
         flexDirection: "column",
       }}
     >
-      <div className={"chat-area " + (mode ? "" : "dark")}>
-        <div className="chat-list">
+      <div className={"chat-area " + (mode ? "" : "chat-area-dark")}>
+        <div className={"chat-list " + (mode ? "" : "chat-area-dark")}>
           <div className="chat-list-div">
             <ol className={"chat-ol " + (mode ? "" : "dark")}>
               <div className={"chat-timeline " + (mode ? "" : "dark")}>
-                <span>October 1, 2023</span>
+                <span className={"span " + (mode ? "" : "span-col")}>
+                  October 1, 2023
+                </span>
               </div>
               {messages.map((message, index) => (
                 <ChatMessage

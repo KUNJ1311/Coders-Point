@@ -126,7 +126,7 @@
 	pointer-events: none;
 	box-sizing: border-box;
 }
-.chat-timeline span {
+ .span {
 	display: block;
 	flex: 0 0 auto;
 	padding: 2px 4px;

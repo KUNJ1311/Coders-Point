@@ -11,7 +11,7 @@ const Users = (props) => {
       style={{ display: props.hideUser ? "none" : "flex" }}
     >
       <aside className={"users_wrap hidden_users " + (mode ? "" : "darkok")}>
-        <div className={"users_box " + (mode ? "" : "darkok")}>
+        <div className={"users_box " + (mode ? "" : "userbox-dark")}>
           <Online />
           <Offline />
         </div>
