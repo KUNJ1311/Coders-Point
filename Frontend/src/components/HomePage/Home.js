@@ -52,14 +52,14 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="lorem">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In perferendis recusandae itaque. Nostrum expedita voluptatibus et corporis quod doloribus nobis optio illum amet. Reiciendis, saepe facilis minima ducimus corrupti cumque!</div>
-			
+
 			<footer>
-				
-      <div className="footer-content">
-		<hr color="" className="line"/>
-        <p>&copy; {new Date().getFullYear()} CodersPoint</p>
-      </div>
-    </footer>
+
+				<div className="footer-content">
+					<hr color="" className="line" />
+					<p>&copy; {new Date().getFullYear()} CodersPoint</p>
+				</div>
+			</footer>
 		</>
 	);
 };
