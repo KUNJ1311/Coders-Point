@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 import "./Home.css";
 import coder from "./g8.svg";
 import { useNavigate } from "react-router-dom";
-
+import home from "./banner-bg.png"
 const Home = () => {
 	const Navigate = useNavigate();
 
@@ -28,6 +28,7 @@ const Home = () => {
 		<>
 			<Navbar />
 			<div className="home">
+				<img src={home} alt="dhruvin" className="home-bg" />
 				<div className="home-intro">
 					<div>
 						<h2>
@@ -50,6 +51,7 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+			<div className="lorem">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In perferendis recusandae itaque. Nostrum expedita voluptatibus et corporis quod doloribus nobis optio illum amet. Reiciendis, saepe facilis minima ducimus corrupti cumque!</div>
 		</>
 	);
 };
