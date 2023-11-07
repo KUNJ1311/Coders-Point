@@ -52,13 +52,36 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="lorem">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In perferendis recusandae itaque. Nostrum expedita voluptatibus et corporis quod doloribus nobis optio illum amet. Reiciendis, saepe facilis minima ducimus corrupti cumque!</div>
-
-			<footer>
-
-				<div className="footer-content">
-					<hr color="" className="line" />
-					<p>&copy; {new Date().getFullYear()} CodersPoint</p>
+			<footer class="footer">
+				<div class="waves">
+					<div class="wave" id="wave1"></div>
+					<div class="wave" id="wave2"></div>
+					<div class="wave" id="wave3"></div>
+					<div class="wave" id="wave4"></div>
 				</div>
+				<ul class="social-icon">
+					<li class="social-icon_item"><a class="social-icon_link" href="#">
+						<ion-icon name="logo-facebook"></ion-icon>
+					</a></li>
+					<li class="social-icon_item"><a class="social-icon_link" href="#">
+						<ion-icon name="logo-twitter" alt="twitter"></ion-icon>
+					</a></li>
+					<li class="social-icon_item"><a class="social-icon_link" href="#">
+						<ion-icon name="logo-linkedin"></ion-icon>
+					</a></li>
+					<li class="social-icon_item"><a class="social-icon_link" href="#">
+						<ion-icon name="logo-instagram"></ion-icon>
+					</a></li>
+				</ul>
+				<ul class="menu">
+					<li class="menu_item"><a class="menu_link" href="#">Home</a></li>
+					<li class="menu_item"><a class="menu_link" href="#">About</a></li>
+					<li class="menu_item"><a class="menu_link" href="#">Services</a></li>
+					<li class="menu_item"><a class="menu_link" href="#">Team</a></li>
+					<li class="menu_item"><a class="menu_link" href="#">Contact</a></li>
+
+				</ul>
+				<p>&copy;2023 CodersPoint | All Rights Reserved</p>
 			</footer>
 		</>
 	);
