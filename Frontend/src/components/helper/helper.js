@@ -139,7 +139,8 @@ export const resetPassword = async ({ email, password }) => {
 //? get user data
 export const userData = async () => {
 	try {
-		const token = localStorage.getItem("coderToken");
+		const datauser = JSON.parse(localStorage.getItem("userdata"));
+		const token = datauser.token;
 		const { data, msg, status } = await axios.get("http://localhost:8080/api/userdata", {
 			headers: {
 				Authorization: `Bearer ${token}`,
