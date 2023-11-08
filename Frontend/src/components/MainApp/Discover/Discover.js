@@ -132,7 +132,11 @@ const Discover = () => {
                   id="create-tooltip"
                   type="button"
                 >
-                  <HiPlus className="add-svg" width="18px" height="18px" />
+                  <HiPlus
+                    className={"add-svg " + (mode ? "" : "ok")}
+                    width="18px"
+                    height="18px"
+                  />
                 </button>
               </div>
             </div>
@@ -149,7 +153,7 @@ const Discover = () => {
                 >
                   <Link to="/channels/testing/" className="link-channels">
                     <div className="link-channels-2" role="img">
-                      <HiSpeakerWave className="type-svg" fill="#96969a" />
+                      <HiSpeakerWave className="type-svg " fill="#96969a" />
                     </div>
                     <div
                       className={
