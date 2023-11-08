@@ -52,33 +52,33 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="lorem">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In perferendis recusandae itaque. Nostrum expedita voluptatibus et corporis quod doloribus nobis optio illum amet. Reiciendis, saepe facilis minima ducimus corrupti cumque!</div>
-			<footer class="footer">
-				<div class="waves">
-					<div class="wave" id="wave1"></div>
-					<div class="wave" id="wave2"></div>
-					<div class="wave" id="wave3"></div>
-					<div class="wave" id="wave4"></div>
+			<footer className="footer">
+				<div className="waves">
+					<div className="wave" id="wave1"></div>
+					<div className="wave" id="wave2"></div>
+					<div className="wave" id="wave3"></div>
+					<div className="wave" id="wave4"></div>
 				</div>
-				<ul class="social-icon">
-					<li class="social-icon_item"><a class="social-icon_link" href="#">
+				<ul className="social-icon">
+					<li className="social-icon_item"><a class="social-icon_link" href="#">
 						<ion-icon name="logo-facebook"></ion-icon>
 					</a></li>
-					<li class="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a class="social-icon_link" href="#">
 						<ion-icon name="logo-twitter" alt="twitter"></ion-icon>
 					</a></li>
-					<li class="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a class="social-icon_link" href="#">
 						<ion-icon name="logo-linkedin"></ion-icon>
 					</a></li>
-					<li class="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a class="social-icon_link" href="#">
 						<ion-icon name="logo-instagram"></ion-icon>
 					</a></li>
 				</ul>
-				<ul class="menu">
-					<pre><li class="menu_item"><a class="menu_link" href="#">Home</a></li>
-					<li class="menu_item"><a class="menu_link" href="#">About</a></li>
-					<li class="menu_item"><a class="menu_link" href="#">Services</a></li>
-					<li class="menu_item"><a class="menu_link" href="#">Team</a></li>
-					<li class="menu_item"><a class="menu_link" href="#">Contact</a></li>
+				<ul className="menu">
+					<pre><li className="menu_item"><a className="menu_link" href="#">Home</a></li>
+					<li className="menu_item"><a className="menu_link" href="#">About</a></li>
+					<li className="menu_item"><a className="menu_link" href="#">Services</a></li>
+					<li className="menu_item"><a className="menu_link" href="#">Team</a></li>
+					<li className="menu_item"><a className="menu_link" href="#">Contact</a></li>
 					</pre>
 				</ul>
 				<p>&copy;2023 CodersPoint | All Rights Reserved</p>
