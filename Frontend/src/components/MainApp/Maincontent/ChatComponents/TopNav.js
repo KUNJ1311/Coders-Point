@@ -3,6 +3,7 @@ import { HiChatAlt } from "react-icons/hi";
 import { ImUsers } from "react-icons/im";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { MdSunny } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 const TopNav = (props) => {
 	const { hideUser, handleUserClick } = props;
 	const [mode, setMode] = useState(true);
@@ -15,7 +16,10 @@ const TopNav = (props) => {
 			localStorage.setItem("DarkMode", "false");
 		}
 	}, []);
-
+	const navigate = useNavigate();
+	const handleHome = () => {
+		navigate(`/mainapp`);
+	};
 	const handleModeCLick = () => {
 		const theme = localStorage.getItem("DarkMode");
 		if (theme === "true") {
@@ -35,6 +39,9 @@ const TopNav = (props) => {
 					<span>General</span>
 				</div>
 				<div className="toolbar_nav">
+					<div data-tooltip-id="my-tooltip" data-tooltip-content="Home Chat" data-tooltip-offset={10} data-tooltip-place="bottom" onClick={handleHome}>
+						Home
+					</div>
 					<div data-tooltip-id="my-tooltip" data-tooltip-content={!mode ? "Dark Mode" : "Light Mode"} data-tooltip-offset={10} data-tooltip-place="bottom" onClick={handleModeCLick}>
 						{mode ? <MdSunny className="big-type-svg" fill={mode ? "#b5bac1" : "#ffffff"} /> : <BsFillMoonStarsFill className="big-type-svg" fill={mode ? "#b5bac1" : "#ffffff"} />}
 					</div>

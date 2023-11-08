@@ -16,8 +16,9 @@ const Home = () => {
 	//* Check Token to redirect user to main app
 	useEffect(() => {
 		async function checkToken() {
-			const token = localStorage.getItem("coderToken");
-			if (token) {
+			const data = localStorage.getItem("userdata");
+			const userdata = JSON.parse(data);
+			if (userdata.token) {
 				Navigate("/mainapp");
 			}
 		}

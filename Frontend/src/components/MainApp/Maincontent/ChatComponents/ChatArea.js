@@ -1,8 +1,47 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import ChatMessage from "./Chat/ChatMessage";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { toggleTheme } from "../../../../Features/themeSlice";
 
 const ChatArea = () => {
+	// const dispatch = useDispatch();
+	// const dark = useSelector((state) => state.themeKey);
+
+	const [messageContent, setMessageContent] = useState("");
+	// const messagesEndRef = useRef(null);
+	// const dyParams = useParams();
+	// const [chat_id, chat_user] = dyParams._id.split("&");
+	// console.log(chat_id, chat_user);
+	// const userData = JSON.parse(localStorage.getItem("userdata"));
+	// const [allMessages, setAllMessages] = useState([]);
+	// console.log("Chat area id : ", chat_id._id);
+	// const sendMessage = () => {
+	// 	console.log("SendMessage Fired to", chat_id._id);
+	// 	const config = {
+	// 		headers: {
+	// 			Authorization: `Bearer ${userData.data.token}`,
+	// 		},
+	// 	};
+	// 	axios
+	// 		.post(
+	// 			"http://localhost:8080/message/",
+	// 			{
+	// 				content: messageContent,
+	// 				chatId: chat_id,
+	// 			},
+	// 			config
+	// 		)
+	// 		.then(({ data }) => {
+	// 			console.log("Message Fired");
+	// 		});
+	// };
+	// const scrollToBottom = () => {
+	//   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	// };
+
 	const [value, setValue] = useState("");
 	const [messages, setMessages] = useState([
 		{
@@ -30,12 +69,6 @@ const ChatArea = () => {
 
 		// Add more message groups
 	]);
-
-	function handleChange(event) {
-		setValue(event.target.value);
-		event.target.style.height = "auto";
-		event.target.style.height = `${event.target.scrollHeight}px`;
-	}
 
 	const handleSendMessage = () => {
 		const newMessage = {
@@ -67,7 +100,7 @@ const ChatArea = () => {
 					<div className="chat-list-div">
 						<ol className="chat-ol">
 							<div className="chat-timeline">
-								<span>October 1, 2023</span>
+								<span>October 1, 2023 </span>
 							</div>
 							{messages.map((message, index) => (
 								<ChatMessage key={index} message={message} />
@@ -81,12 +114,27 @@ const ChatArea = () => {
 				<div className="chat-input">
 					<div className="auto-height">
 						<div style={{ display: "flex", alignItems: "flex-start", flex: "0 0 auto" }}>
-							<button className="add-btn">
+							<button type="button" className="add-btn">
 								<IoAddCircle />
 							</button>
 						</div>
 						<div style={{ display: "flex", alignItems: "center", flex: "1 1 auto", minHeight: "44px" }}>
-							<textarea value={value} onChange={handleChange} rows={1} type="text" placeholder="Message #General" />
+							<textarea
+								rows={1}
+								type="text"
+								placeholder="Message #General"
+								value={messageContent}
+								onChange={(e) => {
+									setMessageContent(e.target.value);
+								}}
+								onKeyDown={(event) => {
+									if (event.code == "Enter") {
+										// sendMessage();
+										setMessageContent("");
+										// setRefresh(!refresh);
+									}
+								}}
+							/>
 							<button type="button" onClick={handleSendMessage}>
 								Send
 							</button>

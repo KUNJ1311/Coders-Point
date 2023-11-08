@@ -24,7 +24,7 @@ export default function ProfileModel({ onClose }) {
 
 	let Navigate = useNavigate();
 	const handleLogout = () => {
-		localStorage.removeItem("coderToken");
+		localStorage.removeItem("userdata");
 		Navigate("/");
 	};
 	return (

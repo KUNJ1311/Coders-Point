@@ -8,8 +8,37 @@ import img6 from "../../Image/instal.webp";
 import "react-tooltip/dist/react-tooltip.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
+import CreateGroups from "./CreateGroup";
+import { useNavigate } from "react-router-dom";
 
 const Groups = () => {
+	const navigate = useNavigate();
+	const [showCreateGroup, setShowCreateGroup] = useState(false);
+
+	//* Close Profile page
+	const handleCloseCreateGroup = () => {
+		setShowCreateGroup(false);
+	};
+
+	//* Close Profile page with ESC Key
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape") {
+				handleCloseCreateGroup();
+			}
+		};
+		if (showCreateGroup) {
+			document.addEventListener("keydown", handleKeyDown);
+		} else {
+			document.removeEventListener("keydown", handleKeyDown);
+		}
+	}, [showCreateGroup]);
+
+	//* Get Started to Profile
+	const handleCreateGroupClick = () => {
+		setShowCreateGroup(true);
+	};
+
 	const [showProfileModel, setShowProfileModel] = useState(false);
 
 	//* Close Profile page
@@ -54,6 +83,7 @@ const Groups = () => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	const handleClick = (index) => {
+		navigate(`/mainapp/chat/654ac5dfbb400020f27c3406`);
 		setClickedIndex(index);
 		setHoveredIndex(index);
 		setClickedlogo(false);
@@ -85,6 +115,7 @@ const Groups = () => {
 
 	return (
 		<>
+			{showCreateGroup && <CreateGroups onClose={handleCloseCreateGroup} />}
 			{showProfileModel && <ProfileModel onClose={handleCloseProfileModel} />}
 			<div className="groups">
 				<div style={{ paddingTop: "12px" }}>
@@ -125,7 +156,7 @@ const Groups = () => {
 					</div>
 					{/* Plus */}
 					<div className="d-flex flex-col w-full align-c">
-						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Add Group" data-tooltip-offset={18} data-tooltip-place="right" width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border">
+						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Add Group" data-tooltip-offset={18} data-tooltip-place="right" width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleCreateGroupClick}>
 							<HiPlus className="add-svg add-group" width="18px" height="18px" />
 						</div>
 					</div>

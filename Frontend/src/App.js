@@ -7,6 +7,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthorizeUser } from "./components/middleware/auth";
 import { Tooltip } from "react-tooltip";
+import MainContent from "./components/MainApp/Maincontent/MainContent";
+import HomeChat from "./components/MainApp/HomeChat/HomeChat";
 
 function App() {
 	return (
@@ -22,6 +24,7 @@ function App() {
 						<Route exact path="/" element={<Home />} />
 						<Route path="/login" element={<Login />} />
 						{/* Authorized Routes */}
+
 						<Route
 							path="/mainapp"
 							element={
@@ -30,6 +33,7 @@ function App() {
 								</AuthorizeUser>
 							}
 						/>
+						<Route path="mainapp/chat/:_id" element={<MainContent />} />
 					</Routes>
 				</Router>
 			</UserState>

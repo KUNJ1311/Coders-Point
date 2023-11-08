@@ -3,6 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import connect from "./database/conn.js";
 import router from "./routes/route.js";
+import chatRoutes from "./routes/chatRoutes.js";
+import messageRoutes from "./routes/messageRoutes.js";
 
 const app = express();
 
@@ -20,6 +22,8 @@ app.get("/", (req, res) => {
 
 //* api routes
 app.use("/api", router);
+app.use("/chat", chatRoutes);
+app.use("/message", messageRoutes);
 
 //* Start Server only when valid connection
 connect()
