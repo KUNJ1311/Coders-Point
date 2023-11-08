@@ -3,10 +3,13 @@ import { IoAddCircle } from "react-icons/io5";
 import ChatMessage from "./Chat/ChatMessage";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import { useDispatch, useSelector } from "react-redux";
 // import { toggleTheme } from "../../../../Features/themeSlice";
 
 const ChatArea = () => {
+	const mode = useSelector((state) => state.themeKey);
+
 	// const dispatch = useDispatch();
 	// const dark = useSelector((state) => state.themeKey);
 
@@ -95,25 +98,31 @@ const ChatArea = () => {
 
 	return (
 		<div style={{ overflow: "auto", display: "flex", flex: "1 1 auto", flexDirection: "column" }}>
-			<div className="chat-area">
-				<div className="chat-list">
+			<div className={"chat-area " + (mode ? "" : "chat-area-dark")}>
+				<div className={"chat-list " + (mode ? "" : "chat-area-dark")}>
 					<div className="chat-list-div">
-						<ol className="chat-ol">
-							<div className="chat-timeline">
-								<span>October 1, 2023 </span>
+						<ol className={"chat-ol " + (mode ? "" : "dark")}>
+							<div className={"chat-timeline " + (mode ? "" : "dark")}>
+								<span className={"span " + (mode ? "" : "span-col")}>October 1, 2023</span>
 							</div>
 							{messages.map((message, index) => (
-								<ChatMessage key={index} message={message} />
+								<ChatMessage key={index} message={message} className={mode ? "" : "dark"} />
 							))}
 							<div className="invi-block"></div>
 						</ol>
 					</div>
 				</div>
 			</div>
-			<form className="chat-form">
+			<form className={"chat-form " + (mode ? "" : "dark")}>
 				<div className="chat-input">
-					<div className="auto-height">
-						<div style={{ display: "flex", alignItems: "flex-start", flex: "0 0 auto" }}>
+					<div className={"auto-height " + (mode ? "" : "text")}>
+						<div
+							style={{
+								display: "flex",
+								alignItems: "flex-start",
+								flex: "0 0 auto",
+							}}
+						>
 							<button type="button" className="add-btn">
 								<IoAddCircle />
 							</button>

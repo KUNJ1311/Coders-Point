@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { HiFolder } from "react-icons/hi2";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { HiChatAlt, HiPlus } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const Discover = () => {
+	const mode = useSelector((state) => state.themeKey);
+
 	const text = ["test", "fun", "General", "Kunj", "rohit2424"];
 	const vc = ["vc", "fun", "testing"];
 	const project = ["iu", "coders point"];
@@ -26,16 +29,16 @@ const Discover = () => {
 
 	return (
 		<>
-			<div className="discover">
+			<div className={"discover " + (mode ? "" : "discover-col")}>
 				<nav className="d-flex discover-nav">
 					<div className="relative cursor-pointer">
-						<header>
-							<div>Group Name</div>
+						<header className={mode ? "" : "discover-col"}>
+							<div className={mode ? "" : "discover-col"}>Group Name</div>
 						</header>
 					</div>
 				</nav>
-				<div className="scroller-d">
-					<ul className="ul-discover">
+				<div className={"scroller-d " + (mode ? "" : "scroll-d")}>
+					<ul className={"ul-discover " + (mode ? "" : "discover-col")}>
 						<li className="channels">
 							<div className="cursor-pointer wrapperCommon">
 								<div className="channels-content" onClick={handleHideChannelsText}>
@@ -43,7 +46,7 @@ const Discover = () => {
 										<path fillRule="evenodd" clipRule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
 									</svg>
 									<h3 className="channels-name">
-										<div>text Channels</div>
+										<div className={mode ? "" : "darkfont"}>text Channels</div>
 									</h3>
 								</div>
 								<div className="channels-add ">

@@ -10,8 +10,11 @@ import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
 import CreateGroups from "./CreateGroup";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Groups = () => {
+	const mode = useSelector((state) => state.themeKey);
+
 	const navigate = useNavigate();
 	const [showCreateGroup, setShowCreateGroup] = useState(false);
 
@@ -117,13 +120,13 @@ const Groups = () => {
 		<>
 			{showCreateGroup && <CreateGroups onClose={handleCloseCreateGroup} />}
 			{showProfileModel && <ProfileModel onClose={handleCloseProfileModel} />}
-			<div className="groups">
+			<div className={"groups " + (mode ? "" : "groups-dark")}>
 				<div style={{ paddingTop: "12px" }}>
 					{/* Home */}
 					<div className="d-flex align-c justify-c mb-2" width="48px" height="48px">
 						<div height="48px">
 							<div className="side-line">
-								<span style={style} className="side-line-effect"></span>
+								<span style={style} className={"side-line-effect " + (mode ? "" : "side-line-dark")}></span>
 							</div>
 						</div>
 						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Profile" data-tooltip-offset={18} data-tooltip-place="right" className="d-flex align-c justify-c cursor-pointer round" onMouseEnter={handleMouseEnterlogo} onMouseLeave={handleMouseLeavelogo} onClick={handleProfileClick}>
@@ -145,7 +148,7 @@ const Groups = () => {
 												style={{
 													height: clickedIndex === index ? "40px" : hoveredIndex === index ? "20px" : "8px",
 												}}
-												className="side-line-effect"
+												className={"side-line-effect " + (mode ? "" : "side-line-dark")}
 											></span>
 										</div>
 									</div>
