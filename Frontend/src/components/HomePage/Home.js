@@ -74,12 +74,12 @@ const Home = () => {
 					</a></li>
 				</ul>
 				<ul class="menu">
-					<li class="menu_item"><a class="menu_link" href="#">Home</a></li>
+					<pre><li class="menu_item"><a class="menu_link" href="#">Home</a></li>
 					<li class="menu_item"><a class="menu_link" href="#">About</a></li>
 					<li class="menu_item"><a class="menu_link" href="#">Services</a></li>
 					<li class="menu_item"><a class="menu_link" href="#">Team</a></li>
 					<li class="menu_item"><a class="menu_link" href="#">Contact</a></li>
-
+					</pre>
 				</ul>
 				<p>&copy;2023 CodersPoint | All Rights Reserved</p>
 			</footer>
