@@ -151,7 +151,13 @@ const Discover = () => {
                     <div className="link-channels-2" role="img">
                       <HiSpeakerWave className="type-svg" fill="#96969a" />
                     </div>
-                    <div className="channels-list ">{vc}</div>
+                    <div
+                      className={
+                        "channels-list " + (mode ? "" : "channel-list-dark")
+                      }
+                    >
+                      {vc}
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -181,7 +187,7 @@ const Discover = () => {
                   ></path>
                 </svg>
                 <h3 className="channels-name">
-                  <div>Project Files</div>
+                  <div className={mode ? "" : "darkfont"}>Project Files</div>
                 </h3>
               </div>
               <div className="channels-add ">
@@ -209,7 +215,13 @@ const Discover = () => {
                     <div className="link-channels-2" role="img">
                       <HiFolder className="type-svg" fill="#96969a" />
                     </div>
-                    <div className="channels-list">{project}</div>
+                    <div
+                      className={
+                        "channels-list " + (mode ? "" : "channel-list-dark")
+                      }
+                    >
+                      {project}
+                    </div>
                   </Link>
                 </div>
               </div>

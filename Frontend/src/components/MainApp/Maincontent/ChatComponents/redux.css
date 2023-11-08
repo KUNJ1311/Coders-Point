@@ -156,3 +156,16 @@
 	color: black !important;
 	text-decoration: none;
 }
+
+.side-line-dark{
+	position: relative;
+	display: flex;
+	width: 8px;
+	border-radius: 0 4px 4px 0;
+	margin-left: -10px;
+	background-color: #060607 !important;
+	opacity: 1;
+	height: 8px;
+	transform: none;
+	transition: height 0.2s ease-out;
+}

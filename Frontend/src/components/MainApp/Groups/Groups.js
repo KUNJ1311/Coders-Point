@@ -105,7 +105,12 @@ const Groups = () => {
           >
             <div height="48px">
               <div className="side-line">
-                <span style={style} className="side-line-effect"></span>
+                <span
+                  style={style}
+                  className={
+                    "side-line-effect " + (mode ? "" : "side-line-dark")
+                  }
+                ></span>
               </div>
             </div>
             <div
@@ -170,7 +175,9 @@ const Groups = () => {
                               ? "20px"
                               : "8px",
                         }}
-                        className="side-line-effect"
+                        className={
+                          "side-line-effect " + (mode ? "" : "side-line-dark")
+                        }
                       ></span>
                     </div>
                   </div>
