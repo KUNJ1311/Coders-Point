@@ -9,7 +9,11 @@ import { useSelector } from "react-redux";
 
 const ChatArea = () => {
 	const mode = useSelector((state) => state.themeKey);
-
+	function handleChange(event) {
+		setValue(event.target.value);
+		event.target.style.height = "auto";
+		event.target.style.height = `${event.target.scrollHeight}px`;
+	}
 	// const dispatch = useDispatch();
 	// const dark = useSelector((state) => state.themeKey);
 
@@ -47,13 +51,6 @@ const ChatArea = () => {
 
 	const [value, setValue] = useState("");
 	const [messages, setMessages] = useState([
-		{
-			sender: "Kunj Faladu",
-			messages: [
-				{ text: "jaj asdnad", timestamp: new Date() },
-				// Add more messages for the same sender
-			],
-		},
 		{
 			sender: "Faladu",
 			messages: [
@@ -128,22 +125,14 @@ const ChatArea = () => {
 							</button>
 						</div>
 						<div style={{ display: "flex", alignItems: "center", flex: "1 1 auto", minHeight: "44px" }}>
-							<textarea
-								rows={1}
-								type="text"
-								placeholder="Message #General"
-								value={messageContent}
-								onChange={(e) => {
-									setMessageContent(e.target.value);
-								}}
-								onKeyDown={(event) => {
-									if (event.code == "Enter") {
-										// sendMessage();
-										setMessageContent("");
-										// setRefresh(!refresh);
-									}
-								}}
-							/>
+							{/* <textarea
+                value={value}
+                onChange={handleChange}
+                rows={1}
+                type="text"
+                placeholder="Message #General"
+              /> */}
+							<textarea value={value} onChange={handleChange} rows={1} type="text" placeholder="Message #General" />
 							<button type="button" onClick={handleSendMessage}>
 								Send
 							</button>

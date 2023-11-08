@@ -59,12 +59,12 @@ const Discover = () => {
 						{text.map((text, textindex) => (
 							<li key={textindex} style={{ position: "relative" }} className={hiddenText ? "hidden" : ""}>
 								<div className="chat-channels">
-									<div className="chat-channels-2">
+									<div className={"chat-channels-2 " + (mode ? "" : "discover-col")}>
 										<Link to="/channels/testing/" className="link-channels">
 											<div className="link-channels-2" role="img">
 												<HiChatAlt className="type-svg" fill="#96969a" />
 											</div>
-											<div className="channels-list">{text}</div>
+											<div className={"channels-list " + (mode ? "" : "darkfont")}>{text}</div>
 										</Link>
 									</div>
 								</div>
@@ -79,7 +79,7 @@ const Discover = () => {
 										<path fillRule="evenodd" clipRule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
 									</svg>
 									<h3 className="channels-name">
-										<div>Voice Channels</div>
+										<div className={mode ? "" : "darkfont"}>Voice Channels</div>
 									</h3>
 								</div>
 								<div className="channels-add">
@@ -92,12 +92,12 @@ const Discover = () => {
 						{vc.map((vc, vcindex) => (
 							<li key={vcindex} style={{ position: "relative" }} className={hiddenVC ? "hidden" : ""}>
 								<div className="chat-channels">
-									<div className="chat-channels-2">
+									<div className={"chat-channels-2 " + (mode ? "" : "discover-col")}>
 										<Link to="/channels/testing/" className="link-channels">
 											<div className="link-channels-2" role="img">
 												<HiSpeakerWave className="type-svg" fill="#96969a" />
 											</div>
-											<div className="channels-list">{vc}</div>
+											<div className={"channels-list " + (mode ? "" : "channel-list-dark")}>{vc}</div>
 										</Link>
 									</div>
 								</div>
@@ -112,7 +112,7 @@ const Discover = () => {
 										<path fillRule="evenodd" clipRule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
 									</svg>
 									<h3 className="channels-name">
-										<div>Project Files</div>
+										<div className={mode ? "" : "darkfont"}>Project Files</div>
 									</h3>
 								</div>
 								<div className="channels-add ">
@@ -125,12 +125,12 @@ const Discover = () => {
 						{project.map((project, projectindex) => (
 							<li key={projectindex} style={{ position: "relative" }} className={hiddenProject ? "hidden" : ""}>
 								<div className="chat-channels">
-									<div className="chat-channels-2">
+									<div className={"chat-channels-2 " + (mode ? "" : "discover-col")}>
 										<Link to="/channels/testing/" className="link-channels">
 											<div className="link-channels-2" role="img">
 												<HiFolder className="type-svg" fill="#96969a" />
 											</div>
-											<div className="channels-list">{project}</div>
+											<div className={"channels-list " + (mode ? "" : "channel-list-dark")}>{project}</div>
 										</Link>
 									</div>
 								</div>
