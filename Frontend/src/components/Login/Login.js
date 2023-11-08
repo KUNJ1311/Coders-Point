@@ -20,7 +20,7 @@ const Login = ({ OnForget }) => {
 		e.preventDefault();
 		try {
 			const { data } = await verifyPassword(credentials);
-			console.log(data);
+
 			localStorage.setItem("userdata", JSON.stringify(data));
 			Navigate("/mainapp");
 			toast.success("Logged in successfully..!");

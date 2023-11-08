@@ -17,8 +17,7 @@ const Home = () => {
 	useEffect(() => {
 		async function checkToken() {
 			const data = localStorage.getItem("userdata");
-			const userdata = JSON.parse(data);
-			if (userdata.token) {
+			if (data) {
 				Navigate("/mainapp");
 			}
 		}

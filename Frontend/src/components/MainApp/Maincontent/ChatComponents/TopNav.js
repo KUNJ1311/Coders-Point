@@ -48,7 +48,7 @@ const TopNav = (props) => {
 						Home
 					</div>
 					<div data-tooltip-id="my-tooltip" data-tooltip-content={!modeStore ? "Dark Mode" : "Light Mode"} data-tooltip-offset={10} data-tooltip-place="bottom" onClick={handleModeCLick}>
-						{modeStore ? <MdSunny className="big-type-svg" fill={modeStore ? "gray" : "#ffffff"} /> : <BsFillMoonStarsFill className="big-type-svg" fill={modeStore ? "gray" : "white"} />}
+						{modeStore ? <MdSunny className="big-type-svg" fill={modeStore ? "gray" : "gray"} /> : <BsFillMoonStarsFill className="big-type-svg" fill={modeStore ? "gray" : "gray"} />}
 					</div>
 					<div data-tooltip-id="my-tooltip" data-tooltip-offset={10} data-tooltip-place="bottom" onClick={handleUserClick} data-tooltip-content={hideUser ? "Show Member List" : "Hide Member List"}>
 						<ImUsers className={"big-type-svg " + (mode ? "" : "ok")} fill={hideUser ? "#b5bac1" : "#ffffff"} />
