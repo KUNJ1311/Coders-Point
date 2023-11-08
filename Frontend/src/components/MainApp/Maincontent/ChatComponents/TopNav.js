@@ -31,7 +31,7 @@ const TopNav = (props) => {
   //     setMode(!mode);
   //   };
   return (
-    <section className={"align-c d-flex " + (mode ? "" : "jjj")}>
+    <section className={"align-c d-flex " + (mode ? "" : "jjj slect")}>
       <div className={"relative children_nav " + (mode ? "" : "dark")}>
         <div className={"maincontent-title " + (mode ? "" : "dark")}>
           <div>
