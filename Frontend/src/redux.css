@@ -1,19 +1,23 @@
 .dark {
 	background-color: #ffffff !important;
-	color: black;
+	color: #060607;
 }
 
 .dd {
-	color: black !important;
+	color: #060607 !important;
 }
 
 .darkfont {
-	color: black !important;
+	color: #060607 !important;
 }
 
+.members_div_light:hover {
+	background-color: #d7d9dc;
+	color: #060607;
+}
 .darkwhite:hover {
 	background-color: #f7f7f7;
-	color: black;
+	color: #060607;
 }
 
 .name {
@@ -26,18 +30,28 @@
 	/* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-
+.nav_shadow {
+	box-shadow: 0 1px 0 #c5c6c7, 0 1.5px 0 #c5c6c7, 0 2px 0 #c5c6c7 !important;
+}
+.time_color {
+	color: #5c5e66 !important;
+}
 .ok {
 	fill: #4e5058 !important;
 }
-
+.white_sun:hover {
+	fill: white;
+}
+.black_moon:hover {
+	fill: #060607;
+}
 .darkok {
 	background-color: #f2f3f5 !important;
 }
 
 .chat-area-dark {
 	background-color: #ffffff !important;
-	color: black;
+	color: #060607;
 }
 
 .chat-area-dark::-webkit-scrollbar-track {
@@ -72,7 +86,7 @@
 
 .userbox-dark {
 	background-color: #f2f3f5 !important;
-	color: black;
+	color: #060607;
 }
 
 .span-col {
@@ -90,7 +104,7 @@
 
 .jjj {
 	background-color: #ffffff !important;
-	color: black;
+	color: #060607;
 	position: relative;
 	flex: 0 0 auto;
 	height: 48px;
@@ -102,7 +116,7 @@
 
 .discover-col {
 	background-color: #f2f3f5 !important;
-	color: black !important;
+	color: #060607 !important;
 }
 
 .scroll-d::-webkit-scrollbar-track {
@@ -144,7 +158,7 @@
 	font-weight: 400;
 	flex: 1 1 auto;
 	position: relative;
-	color: black !important;
+	color: #060607 !important;
 	text-decoration: none;
 }
 

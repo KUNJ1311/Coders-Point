@@ -8,9 +8,9 @@ const Offline = () => {
 	return (
 		<>
 			<h3>
-				<span>Offline — 2</span>
+				<span className={mode ? "" : "darkfont"}>Offline — 2</span>
 			</h3>
-			<div className={"members_div offline_member " + (mode ? "" : "darkfont")}>
+			<div className={"members_div offline_member" + (mode ? "" : "darkfont members_div_light")}>
 				<div className="members_box">
 					<div className="users_avatar">
 						<div>
@@ -26,8 +26,8 @@ const Offline = () => {
 					</div>
 				</div>
 			</div>
-			<div className="members_div offline_member">
-				<div className={"members_box " + (mode ? "" : "darkfont")}>
+			<div className={"members_div offline_member" + (mode ? "" : "darkfont members_div_light")}>
+				<div className="members_box">
 					<div className="users_avatar">
 						<div>
 							<img src={coder2} alt="" width="32px" height="32px" />

@@ -100,7 +100,7 @@ const ChatArea = () => {
 					<div className="chat-list-div">
 						<ol className={"chat-ol " + (mode ? "" : "dark")}>
 							<div className={"chat-timeline " + (mode ? "" : "dark")}>
-								<span className={"span " + (mode ? "" : "span-col")}>October 1, 2023</span>
+								<span className={"span " + (mode ? "" : "span-col time_color")}>October 1, 2023</span>
 							</div>
 							{messages.map((message, index) => (
 								<ChatMessage key={index} message={message} className={mode ? "" : "dark"} />

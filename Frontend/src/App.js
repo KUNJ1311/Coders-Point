@@ -8,9 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthorizeUser } from "./components/middleware/auth";
 import { Tooltip } from "react-tooltip";
 import MainContent from "./components/MainApp/Maincontent/MainContent";
-import HomeChat from "./components/MainApp/HomeChat/HomeChat";
+import { useSelector } from "react-redux";
 
 function App() {
+	const mode = useSelector((state) => state.themeKey);
+
 	return (
 		<>
 			<UserState>
@@ -18,8 +20,8 @@ function App() {
 					{/* Alert */}
 					<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover theme="light" />
 					{/* Tooltip Component */}
-					<Tooltip id="my-tooltip" />
-					<Tooltip id="my-tooltip-big" />
+					<Tooltip id="my-tooltip" className={mode ? "" : "lightMode"} opacity={1} />
+					<Tooltip id="my-tooltip-big" className={mode ? "" : "lightMode"} opacity={1} />
 					<Routes>
 						<Route exact path="/" element={<Home />} />
 						<Route path="/login" element={<Login />} />

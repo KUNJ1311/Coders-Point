@@ -135,7 +135,7 @@ const Groups = () => {
 					</div>
 					{/* line */}
 					<div className="d-flex justify-c sm-line ">
-						<div className="sm-line-v"></div>
+						<div className={"sm-line-v"} style={{ backgroundColor: mode ? "" : "#ccced3" }}></div>
 					</div>
 					{/* Servers */}
 					<div className="d-flex flex-col w-full align-c ">
@@ -148,7 +148,7 @@ const Groups = () => {
 												style={{
 													height: clickedIndex === index ? "40px" : hoveredIndex === index ? "20px" : "8px",
 												}}
-												className={"side-line-effect " + (mode ? "" : "side-line-dark")}
+												className={"side-line-effect" + (mode ? "" : "side-line-dark")}
 											></span>
 										</div>
 									</div>
@@ -159,17 +159,10 @@ const Groups = () => {
 					</div>
 					{/* Plus */}
 					<div className="d-flex flex-col w-full align-c">
-						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Add Group" data-tooltip-offset={18} data-tooltip-place="right" width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleCreateGroupClick}>
+						<div data-tooltip-id="my-tooltip-big" data-tooltip-content="Add Group" data-tooltip-offset={18} data-tooltip-place="right" width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" style={{ backgroundColor: !mode ? "#ffffff" : "" }} onClick={handleCreateGroupClick}>
 							<HiPlus className="add-svg add-group" width="18px" height="18px" />
 						</div>
 					</div>
-					{/* Logout
-					<div className="d-flex flex-col w-full align-c">
-						<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
-							<IoExitOutline className="logout_btn" />
-							<Tooltip anchorSelect="#logoutsvg-btn" place="right" content="Logout" id="tooltip" />
-						</div>
-					</div> */}
 				</div>
 			</div>
 		</>

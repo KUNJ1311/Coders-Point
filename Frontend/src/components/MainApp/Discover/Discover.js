@@ -32,7 +32,7 @@ const Discover = () => {
 			<div className={"discover " + (mode ? "" : "discover-col")}>
 				<nav className="d-flex discover-nav">
 					<div className="relative cursor-pointer">
-						<header className={mode ? "" : "discover-col"}>
+						<header className={mode ? "" : "discover-col nav_shadow"}>
 							<div className={mode ? "" : "discover-col"}>Group Name</div>
 						</header>
 					</div>

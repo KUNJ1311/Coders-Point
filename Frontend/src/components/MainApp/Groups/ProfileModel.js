@@ -4,8 +4,11 @@ import { TbPhotoEdit } from "react-icons/tb";
 import { userData } from "../../helper/helper";
 import { useNavigate } from "react-router-dom";
 import { IoExitOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 export default function ProfileModel({ onClose }) {
+	const mode = useSelector((state) => state.themeKey);
+
 	const [adduserData, setAddUserData] = useState(null);
 	//* Getting user data
 	useEffect(() => {
@@ -55,7 +58,7 @@ export default function ProfileModel({ onClose }) {
 									</div>
 								</div>
 								<div className="profile-btns">
-									<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
+									<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" style={{ backgroundColor: !mode ? "#ffffff" : "" }} onClick={handleLogout}>
 										<IoExitOutline className="logout_btn" />
 									</div>
 								</div>

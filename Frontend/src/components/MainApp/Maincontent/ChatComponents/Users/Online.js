@@ -7,9 +7,9 @@ const Online = () => {
 	return (
 		<>
 			<h3>
-				<span>Online — 1</span>
+				<span className={mode ? "" : "darkfont"}>Online — 1</span>
 			</h3>
-			<div className={"members_div " + (mode ? "" : "darkfont")}>
+			<div className={"members_div " + (mode ? "" : "darkfont members_div_light")}>
 				<div className="members_box">
 					<div className="users_avatar">
 						<div>
