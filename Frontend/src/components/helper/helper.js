@@ -141,7 +141,7 @@ export const userData = async () => {
 	try {
 		const datauser = JSON.parse(localStorage.getItem("userdata"));
 		const token = datauser.token;
-		const { data, msg, status } = await axios.get("http://localhost:8080/api/userdata", {
+		const { data, msg, status } = await axios.get(`${host}/api/userdata`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},

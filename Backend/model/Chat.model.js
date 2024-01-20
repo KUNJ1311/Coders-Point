@@ -18,6 +18,12 @@ const ChatSchema = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
+		img: {
+			type: String,
+		},
+		color: {
+			type: String,
+		},
 	},
 	{
 		timeStamp: true,

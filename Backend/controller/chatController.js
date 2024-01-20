@@ -70,6 +70,8 @@ export async function createGroupChat(req, res) {
 		const groupChat = await Chat.create({
 			chatName: req.body.name,
 			users: users,
+			img: req.body.img,
+			color: req.body.color,
 			isGroupChat: true,
 			groupAdmin: req.user.userId,
 		});
