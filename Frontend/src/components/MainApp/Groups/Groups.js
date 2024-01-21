@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import img1 from "../../Image/test.jpg";
-// import img2 from "../../Image/test.png";
-// import img3 from "../../Image/facebook.png";
-// import img4 from "../../Image/telegram.png";
-// import img5 from "../../Image/twitter.png";
-// import img6 from "../../Image/instal.webp";
 import "react-tooltip/dist/react-tooltip.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
@@ -12,6 +6,7 @@ import CreateGroups from "./CreateGroup";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { fetchGroups } from "../../helper/helper";
 
 const Groups = () => {
 	const userData = JSON.parse(localStorage.getItem("userdata"));
@@ -75,15 +70,6 @@ const Groups = () => {
 		// setClickedIndex(null);
 	};
 
-	// const groups = [
-	// 	{ name: "Valorant", img: img1 },
-	// 	{ name: "React JS", img: img2 },
-	// 	{ name: "Facebook", img: img3 },
-	// 	{ name: "Telegram", img: img4 },
-	// 	{ name: "Twitter", img: img5 },
-	// 	{ name: "Instagram", img: img6 },
-	// ];
-
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedIndex, setClickedIndex] = useState(null);
 	const [clickedlogo, setClickedlogo] = useState(false);
@@ -121,15 +107,15 @@ const Groups = () => {
 	};
 
 	useEffect(() => {
-		const config = {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
+		const fetchGroupsData = async () => {
+			try {
+				const { data } = await fetchGroups();
+				setGroups(data);
+			} catch (error) {
+				console.log(error);
+			}
 		};
-
-		axios.get("http://localhost:8080/chat/fetchGroups", config).then((response) => {
-			setGroups(response.data);
-		});
+		fetchGroupsData();
 	}, []);
 
 	return (

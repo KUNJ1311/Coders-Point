@@ -1,6 +1,9 @@
 import axios from "axios";
 
 const host = "http://localhost:8080";
+const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+const token = localStorageData.token;
+
 //* Make Api Requests
 
 //? authenticate function
@@ -60,7 +63,6 @@ export const verifyPassword = async ({ email, password }) => {
 //? update user function
 export const updateUser = async (data, msg) => {
 	try {
-		const token = localStorage.getItem("token");
 		const ndata = await axios.post(`${host}/api/updateUser`, data, msg, { headers: { Authorization: `Bearer ${token}` } });
 		return Promise.resolve({ ndata });
 	} catch (error) {
@@ -139,14 +141,66 @@ export const resetPassword = async ({ email, password }) => {
 //? get user data
 export const userData = async () => {
 	try {
-		const datauser = JSON.parse(localStorage.getItem("userdata"));
-		const token = datauser.token;
 		const { data, msg, status } = await axios.get(`${host}/api/userdata`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
 		});
 		return Promise.resolve({ data, msg, status });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? send message
+export const sendMessage = async ({ messageContent, chat_id }) => {
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+		const data = await axios.post(
+			`${host}/message/`,
+			{
+				content: messageContent,
+				chatId: chat_id,
+			},
+			config
+		);
+		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? fetch message
+export const fetchMessage = async (chat_id) => {
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+		const { data } = await axios.get("http://localhost:8080/message/" + chat_id, config);
+		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? fetch groups
+export const fetchGroups = async () => {
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+
+		const { data } = await axios.get(`${host}/chat/fetchGroups`, config);
+		console.log(data);
+		return Promise.resolve({ data });
 	} catch (error) {
 		return Promise.reject({ error });
 	}

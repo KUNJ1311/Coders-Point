@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { BsSendFill } from "react-icons/bs";
 import ChatMessageUser from "./Chat/ChatMessageUser";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
 import RefreshContext from "../../../context/refreshContext";
 import { formatTimeLine } from "../FormateDate";
+import { fetchMessage, sendMessage } from "../../../helper/helper";
 
 const ChatArea = () => {
 	const mode = useSelector((state) => state.themeKey);
@@ -18,44 +18,22 @@ const ChatArea = () => {
 	const dyParams = useParams();
 	const [chat_id, chat_user] = dyParams._id.split("&");
 	const [allMessages, setAllMessages] = useState([]);
-
 	const { refresh, setRefresh } = useContext(RefreshContext);
+
 	const handleSendMessage = () => {
-		const config = {
-			headers: {
-				Authorization: `Bearer ${userData.token}`,
-			},
-		};
-		axios
-			.post(
-				"http://localhost:8080/message/",
-				{
-					content: messageContent,
-					chatId: chat_id,
-				},
-				config
-			)
-			.then(({ data }) => {
-				console.log("Message Fired");
-			});
+		sendMessage(messageContent, chat_id);
 	};
 
 	useEffect(() => {
-		const fetchData = async () => {
+		const GetData = async () => {
 			try {
-				const config = {
-					headers: {
-						Authorization: `Bearer ${userData.token}`,
-					},
-				};
-				const response = await axios.get("http://localhost:8080/message/" + chat_id, config);
+				const response = await fetchMessage(chat_id);
 				setAllMessages(response.data);
 			} catch (error) {
-				console.error("Error fetching messages:", error);
+				console.log(error);
 			}
 		};
-
-		fetchData();
+		GetData();
 	}, [chat_id, userData.token]);
 
 	useEffect(() => {
