@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
+import { BsSendFill } from "react-icons/bs";
 import ChatMessageUser from "./Chat/ChatMessageUser";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -19,7 +20,6 @@ const ChatArea = () => {
 	const [allMessages, setAllMessages] = useState([]);
 
 	const { refresh, setRefresh } = useContext(RefreshContext);
-	const [loaded, setloaded] = useState(false);
 	const handleSendMessage = () => {
 		const config = {
 			headers: {
@@ -39,23 +39,30 @@ const ChatArea = () => {
 				console.log("Message Fired");
 			});
 	};
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
 
 	useEffect(() => {
-		console.log("Users refreshed");
-		const config = {
-			headers: {
-				Authorization: `Bearer ${userData.token}`,
-			},
+		const fetchData = async () => {
+			try {
+				const config = {
+					headers: {
+						Authorization: `Bearer ${userData.token}`,
+					},
+				};
+				const response = await axios.get("http://localhost:8080/message/" + chat_id, config);
+				setAllMessages(response.data);
+			} catch (error) {
+				console.error("Error fetching messages:", error);
+			}
 		};
-		axios.get("http://localhost:8080/message/" + chat_id, config).then(({ data }) => {
-			setAllMessages(data);
-			setloaded(true);
-		});
-		scrollToBottom();
-	}, [refresh, chat_id, userData.token]);
+
+		fetchData();
+	}, [chat_id, userData.token]);
+
+	useEffect(() => {
+		if (messagesEndRef.current) {
+			messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [allMessages]);
 
 	const renderTimeline = (createdAt) => (
 		<div className={"chat-timeline " + (mode ? "" : "dark")}>
@@ -76,15 +83,16 @@ const ChatArea = () => {
 								const isFirstMessageOfDay = index === 0 || !sameDay;
 								const renderTimelineComponent = isFirstMessageOfDay ? renderTimeline(message.createdAt) : null;
 								return (
-									<>
+									<React.Fragment key={index}>
 										{renderTimelineComponent}
-										<li className={"chat-list-item " + (mode ? "" : "darkwhite")} key={index}>
+										<li className={"chat-list-item " + (mode ? "" : "darkwhite")} key={message._id}>
 											{sameSender && sameDay ? <ChatMessageSameUser message={message} className={mode ? "" : "dark"} /> : <ChatMessageUser message={message} className={mode ? "" : "dark"} />}
 										</li>
-									</>
+									</React.Fragment>
 								);
 							})}
-							<div className="invi-block BOTTOM"></div>
+							<div className="invi-block"></div>
+							<div ref={messagesEndRef}></div>
 						</ol>
 					</div>
 				</div>
@@ -113,30 +121,29 @@ const ChatArea = () => {
 								}}
 								onKeyDown={(event) => {
 									if (event.code === "Enter" && !event.shiftKey) {
-										// If Enter is pressed without Shift, send the message
 										handleSendMessage();
 										setMessageContent("");
 										setRefresh(!refresh);
 										const textarea = event.target;
 										textarea.style.height = "auto";
-										event.preventDefault(); // Prevent the default behavior (submitting a form or creating a new line)
+										event.preventDefault();
 									}
 								}}
 								rows={1}
 								type="text"
 								placeholder="Message #General"
 							/>
-							<button
-								type="button"
-								onClick={(event) => {
-									handleSendMessage();
-									setMessageContent("");
-									const textarea = event.target.parentElement.querySelector("textarea");
-									textarea.style.height = "auto";
-									setRefresh(!refresh);
-								}}
-							>
-								Send
+							<button type="button" className="add-btn">
+								<BsSendFill
+									type="button"
+									onClick={(event) => {
+										handleSendMessage();
+										setMessageContent("");
+										const textarea = event.target.parentElement.querySelector("textarea");
+										textarea.style.height = "auto";
+										setRefresh(!refresh);
+									}}
+								/>
 							</button>
 						</div>
 					</div>
