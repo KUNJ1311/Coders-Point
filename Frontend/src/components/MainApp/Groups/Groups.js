@@ -14,8 +14,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const Groups = () => {
-	const token = localStorage.getItem("coderToken");
-
+	const userData = JSON.parse(localStorage.getItem("userdata"));
+	const token = userData.token;
 	const mode = useSelector((state) => state.themeKey);
 
 	const navigate = useNavigate();
