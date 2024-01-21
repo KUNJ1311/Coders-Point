@@ -89,8 +89,8 @@ const Groups = () => {
 	const [clickedlogo, setClickedlogo] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
-	const handleClick = (index) => {
-		navigate(`/mainapp/chat/654ac5dfbb400020f27c3406`);
+	const handleClick = (index, group) => {
+		navigate(`/mainapp/chat/${group._id}&${group.chatName}`);
 		setClickedIndex(index);
 		setHoveredIndex(index);
 		setClickedlogo(false);
@@ -158,7 +158,7 @@ const Groups = () => {
 						{groups &&
 							groups.map((group, index) => (
 								<div key={index} width="48px" height="48px" className="servers">
-									<div data-tooltip-id="my-tooltip-big" data-tooltip-content={group.chatName} data-tooltip-offset={18} data-tooltip-place="right" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
+									<div data-tooltip-id="my-tooltip-big" data-tooltip-content={group.chatName} data-tooltip-offset={18} data-tooltip-place="right" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} onClick={() => handleClick(index, group)} className="cursor-pointer d-flex align-c justify-c mb-2 " width="48px" height="48px">
 										<div height="48px">
 											<div className="side-line">
 												<span

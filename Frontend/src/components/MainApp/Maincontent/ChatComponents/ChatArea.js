@@ -54,15 +54,15 @@ const ChatArea = () => {
 		{
 			sender: "Faladu",
 			messages: [
-				{ text: "nonono", timestamp: new Date() },
-				{ text: "yes", timestamp: new Date() },
-				{ text: "bye by sdad", timestamp: new Date() },
+				{ text: "nonono", timestamp: "Fri Jul 07 2023 13:25:00 GMT+0530 (India Standard Time)" },
+				{ text: "yes", timestamp: "Wed Mar 14 2023 20:15:45 GMT+0530 (India Standard Time)" },
+				{ text: "bye by sdad", timestamp: "Fri Jul 07 2023 14:25:00 GMT+0530 (India Standard Time)" },
 			],
 		},
 		{
 			sender: "Kunj Faladu",
 			messages: [
-				{ text: "jad pro", timestamp: new Date() },
+				{ text: "jad pro", timestamp: "Fri Jul 07 2023 12:25:00 GMT+0530 (India Standard Time)" },
 				// Add more messages for the same sender
 			],
 		},
