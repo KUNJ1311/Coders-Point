@@ -4,7 +4,7 @@ import Chat from "../model/Chat.model.js";
 
 export async function allMessages(req, res) {
 	try {
-		const message = await Message.find({ chat: req.params.chatId }).populate("sender", "name email").populate("reciever").populate("chat");
+		const message = await Message.find({ chat: req.params.chatId }).populate("sender", "username email").populate("reciever").populate("chat");
 		res.json(message);
 	} catch (error) {
 		res.status(400).send(error.message);
@@ -17,17 +17,17 @@ export async function sendMessage(req, res) {
 		return res.status(400).send("Invalid data passed");
 	}
 	var newMessage = {
-		sender: req.user._id,
+		sender: req.user.userId,
 		content: content,
 		chat: chatId,
 	};
 	try {
 		var message = await Message.create(newMessage);
-		message = await message.populate("sender", "name");
+		message = await message.populate("sender", "username");
 		message = await message.populate("chat");
 		message = await message.populate("reciever");
-		message = await User.populate(message, { path: "chat.users", select: "name email" });
-		await Chat.findByIdAndUpdate(req.body.chatId, { letestMessage: message });
+		message = await User.populate(message, { path: "chat.users", select: "username email" });
+		await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message });
 		res.json(message);
 	} catch (error) {
 		res.status(400).send(error.message);

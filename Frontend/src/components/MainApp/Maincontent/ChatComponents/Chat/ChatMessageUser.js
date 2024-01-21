@@ -13,8 +13,8 @@ const ChatMessage = ({ message }) => {
 						<span style={{ marginRight: "0.25rem", cursor: "pointer" }}>
 							<span className={mode ? "" : "name"}>{message.sender.username}</span>
 						</span>
-						<span className={"chat-timestamp " + (mode ? "" : "darkfont")} data-tooltip-id="my-tooltip" data-tooltip-content={formatDateTime(message.timestamp.createdAt)} data-tooltip-offset={10} data-tooltip-delay-show={800} data-tooltip-place="top">
-							{formatDate(message.timestamp.createdAt)}
+						<span className={"chat-timestamp " + (mode ? "" : "darkfont")} data-tooltip-id="my-tooltip" data-tooltip-content={formatDateTime(message.createdAt)} data-tooltip-offset={10} data-tooltip-delay-show={800} data-tooltip-place="top">
+							{formatDate(message.createdAt)}
 						</span>
 					</h3>
 					<div className={"chat-main-user " + (mode ? "" : "darkwhite")}>

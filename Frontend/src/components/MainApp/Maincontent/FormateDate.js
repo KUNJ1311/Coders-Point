@@ -30,3 +30,12 @@ export const formatDateTime = (timestamp) => {
 	};
 	return date.toLocaleDateString("en-US", options);
 };
+
+export const formatTimeLine = (timestamp) => {
+	const formattedDate = new Date(timestamp).toLocaleDateString("en-US", {
+		month: "long", // full month name
+		day: "numeric", // day of the month
+		year: "numeric", // four-digit year
+	});
+	return formattedDate;
+};
