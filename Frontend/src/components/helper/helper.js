@@ -199,7 +199,6 @@ export const fetchGroups = async () => {
 		};
 
 		const { data } = await axios.get(`${host}/chat/fetchGroups`, config);
-		console.log(data);
 		return Promise.resolve({ data });
 	} catch (error) {
 		return Promise.reject({ error });

@@ -3,17 +3,16 @@ import "react-tooltip/dist/react-tooltip.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
 import CreateGroups from "./CreateGroup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { fetchGroups } from "../../helper/helper";
 
 const Groups = () => {
-	const userData = JSON.parse(localStorage.getItem("userdata"));
-	const token = userData.token;
+	const { _id } = useParams();
 	const mode = useSelector((state) => state.themeKey);
 
 	const navigate = useNavigate();
+	const [clickedId, setClickedId] = useState(null);
 	const [showCreateGroup, setShowCreateGroup] = useState(false);
 	const [groups, setGroups] = useState([]);
 
@@ -70,14 +69,17 @@ const Groups = () => {
 		// setClickedIndex(null);
 	};
 
+	useEffect(() => {
+		const result = _id.split("&")[0];
+		setClickedId(result);
+	}, [_id]);
+
 	const [hoveredIndex, setHoveredIndex] = useState(null);
-	const [clickedIndex, setClickedIndex] = useState(null);
 	const [clickedlogo, setClickedlogo] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 
 	const handleClick = (index, group) => {
 		navigate(`/mainapp/chat/${group._id}&${group.chatName}`);
-		setClickedIndex(index);
 		setHoveredIndex(index);
 		setClickedlogo(false);
 	};
@@ -149,21 +151,21 @@ const Groups = () => {
 											<div className="side-line">
 												<span
 													style={{
-														height: clickedIndex === index ? "40px" : hoveredIndex === index ? "20px" : "8px",
+														height: clickedId === group._id ? "40px" : hoveredIndex === index ? "20px" : "8px",
 													}}
 													className={mode ? "side-line-effect" : "side-line-dark"}
 												></span>
 											</div>
 										</div>
 										{group.img ? (
-											<img className=" d-flex object-cover round " style={{ borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group.img} width="48px" height="48px" alt="" />
+											<img className=" d-flex object-cover round " style={{ borderRadius: clickedId === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group.img} width="48px" height="48px" alt="" />
 										) : (
 											<div
 												className="d-flex object-cover round"
 												width="48px"
 												height="48px"
 												style={{
-													borderRadius: clickedIndex === index ? "30%" : hoveredIndex === index ? "30%" : "50%",
+													borderRadius: clickedId === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%",
 													textAlign: "center",
 													lineHeight: "48px",
 													fontSize: "30px",
