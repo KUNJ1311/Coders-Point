@@ -6,6 +6,10 @@ const MessageSchema = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
+		content: {
+			type: String,
+			trim: true,
+		},
 		reciever: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
@@ -16,7 +20,7 @@ const MessageSchema = mongoose.Schema(
 		},
 	},
 	{
-		timeStamp: true,
+		timestamps: true,
 	}
 );
 

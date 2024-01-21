@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
-import ChatMessage from "./Chat/ChatMessage";
+import ChatMessageUser from "./Chat/ChatMessageUser";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
 // import { useDispatch, useSelector } from "react-redux";
 // import { toggleTheme } from "../../../../Features/themeSlice";
 
@@ -52,34 +53,153 @@ const ChatArea = () => {
 	const [value, setValue] = useState("");
 	const [messages, setMessages] = useState([
 		{
-			sender: "Faladu",
-			messages: [
-				{ text: "nonono", timestamp: "Fri Jul 07 2023 13:25:00 GMT+0530 (India Standard Time)" },
-				{ text: "yes", timestamp: "Wed Mar 14 2023 20:15:45 GMT+0530 (India Standard Time)" },
-				{ text: "bye by sdad", timestamp: "Fri Jul 07 2023 14:25:00 GMT+0530 (India Standard Time)" },
-			],
+			sender: {
+				_id: "user_id_1",
+				username: "John Doe",
+				email: "john@example.com",
+			},
+			chat: {
+				_id: "chat_id_1",
+				chatName: "General",
+				isGroupChat: false,
+				users: ["user_id_1", "user_id_2"],
+				latestMessage: null,
+				groupAdmin: null,
+				img: "chat_image_url",
+				color: "#3498db",
+				timestamps: { createdAt: "2023-07-07T13:25:00Z", updatedAt: "2023-07-07T13:25:00Z" },
+			},
+			content: "Hello, how are you?",
+			timestamp: { createdAt: "2023-07-07T13:25:00Z", updatedAt: "2023-07-07T13:25:00Z" },
 		},
 		{
-			sender: "Kunj Faladu",
-			messages: [
-				{ text: "jad pro", timestamp: "Fri Jul 07 2023 12:25:00 GMT+0530 (India Standard Time)" },
-				// Add more messages for the same sender
-			],
+			sender: {
+				_id: "user_id_1",
+				username: "Jane Doe",
+				email: "jane@example.com",
+			},
+			chat: {
+				_id: "chat_id_2",
+				chatName: "Random",
+				isGroupChat: true,
+				users: ["user_id_2", "user_id_3", "user_id_4"],
+				latestMessage: null,
+				groupAdmin: "user_id_2",
+				img: "chat_image_url_random",
+				color: "#e74c3c",
+				timestamps: { createdAt: "2023-07-08T10:30:00Z", updatedAt: "2023-07-08T10:30:00Z" },
+			},
+			content: "Hi there!",
+			timestamp: { createdAt: "2023-07-08T10:30:00Z", updatedAt: "2023-07-08T10:30:00Z" },
 		},
-
-		// Add more message groups
+		{
+			sender: {
+				_id: "user_id_3",
+				username: "Alice Johnson",
+				email: "alice@example.com",
+			},
+			chat: {
+				_id: "chat_id_3",
+				chatName: "Tech Talk",
+				isGroupChat: true,
+				users: ["user_id_3", "user_id_5", "user_id_6"],
+				latestMessage: null,
+				groupAdmin: "user_id_3",
+				img: "chat_image_url_tech",
+				color: "#2ecc71",
+				timestamps: { createdAt: "2023-07-09T08:45:00Z", updatedAt: "2023-07-09T08:45:00Z" },
+			},
+			content: "Discussing the latest tech trends.",
+			timestamp: { createdAt: "2023-07-09T08:45:00Z", updatedAt: "2023-07-09T08:45:00Z" },
+		},
+		{
+			sender: {
+				_id: "user_id_4",
+				username: "Bob Smith",
+				email: "bob@example.com",
+			},
+			chat: {
+				_id: "chat_id_4",
+				chatName: "Project Team",
+				isGroupChat: true,
+				users: ["user_id_4", "user_id_7", "user_id_8"],
+				latestMessage: null,
+				groupAdmin: "user_id_4",
+				img: "chat_image_url_project",
+				color: "#f39c12",
+				timestamps: { createdAt: "2023-07-10T15:20:00Z", updatedAt: "2023-07-10T15:20:00Z" },
+			},
+			content: "Discussing project updates and tasks.",
+			timestamp: { createdAt: "2023-07-10T15:20:00Z", updatedAt: "2023-07-10T15:20:00Z" },
+		},
+		{
+			sender: {
+				_id: "user_id_1",
+				username: "John Doe",
+				email: "john@example.com",
+			},
+			chat: {
+				_id: "chat_id_1",
+				chatName: "General",
+				isGroupChat: false,
+				users: ["user_id_1", "user_id_2"],
+				latestMessage: null,
+				groupAdmin: null,
+				img: "chat_image_url",
+				color: "#3498db",
+				timestamps: { createdAt: "2023-07-07T13:25:00Z", updatedAt: "2023-07-07T13:25:00Z" },
+			},
+			content: "34131111111111111?",
+			timestamp: { createdAt: "2024-07-07T13:25:00Z", updatedAt: "2024-07-07T13:25:00Z" },
+		},
+		{
+			sender: {
+				_id: "user_id_2",
+				username: "Jane Doe",
+				email: "jane@example.com",
+			},
+			chat: {
+				_id: "chat_id_2",
+				chatName: "Random",
+				isGroupChat: true,
+				users: ["user_id_2", "user_id_3", "user_id_4"],
+				latestMessage: null,
+				groupAdmin: "user_id_2",
+				img: "chat_image_url_random",
+				color: "#e74c3c",
+				timestamps: { createdAt: "2023-07-08T10:30:00Z", updatedAt: "2023-07-08T10:30:00Z" },
+			},
+			content: "eeeeeeeeeeeeee!",
+			timestamp: { createdAt: "2024-07-08T10:30:00Z", updatedAt: "2024-07-08T10:30:00Z" },
+		},
+		// Add more messages if needed
 	]);
 
 	const handleSendMessage = () => {
 		const newMessage = {
-			sender: "Kunj Faladu",
-			text: value,
-			timestamp: new Date(),
+			sender: {
+				_id: "user_id_1", // Replace with actual user ID
+				username: "John Doe", // Replace with actual username
+				email: "john@example.com", // Replace with actual email
+			},
+			chat: {
+				_id: "chat_id_1", // Replace with actual chat ID
+				chatName: "General", // Replace with actual chat name
+				isGroupChat: false, // Replace with actual value
+				users: ["user_id_1", "user_id_2"], // Replace with actual user IDs
+				latestMessage: null, // Replace with actual latest message ID if applicable
+				groupAdmin: null, // Replace with actual group admin ID if applicable
+				img: "chat_image_url", // Replace with actual image URL or path
+				color: "#3498db", // Replace with actual color code
+				timestamps: { createdAt: new Date(), updatedAt: new Date() }, // Replace with actual timestamps
+			},
+			content: value,
+			timestamp: { createdAt: new Date(), updatedAt: new Date() },
 		};
 
 		// Find the group with the same sender or create a new one
 		const updatedMessages = [...messages];
-		const groupIndex = updatedMessages.findIndex((group) => group.sender === newMessage.sender);
+		const groupIndex = updatedMessages.findIndex((group) => group.sender._id === newMessage.sender._id);
 
 		if (groupIndex === -1) {
 			updatedMessages.push({ sender: newMessage.sender, messages: [newMessage] });
@@ -102,9 +222,17 @@ const ChatArea = () => {
 							<div className={"chat-timeline " + (mode ? "" : "dark")}>
 								<span className={"span " + (mode ? "" : "span-col time_color")}>October 1, 2023</span>
 							</div>
-							{messages.map((message, index) => (
-								<ChatMessage key={index} message={message} className={mode ? "" : "dark"} />
-							))}
+							{messages.map((message, index) => {
+								const previousMsg = index > 0 ? messages[index - 1] : null;
+								const sameSender = previousMsg && previousMsg.sender._id === message.sender._id;
+								const sameDay = previousMsg && new Date(message.timestamp.createdAt).toDateString() === new Date(previousMsg.timestamp.createdAt).toDateString();
+
+								return (
+									<li className={"chat-list-item " + (mode ? "" : "darkwhite")} key={index}>
+										{sameSender && sameDay ? <ChatMessageSameUser key={index} message={message} className={mode ? "" : "dark"} /> : <ChatMessageUser key={index} message={message} className={mode ? "" : "dark"} />}
+									</li>
+								);
+							})}
 							<div className="invi-block"></div>
 						</ol>
 					</div>
