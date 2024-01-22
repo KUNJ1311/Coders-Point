@@ -2,8 +2,6 @@ import axios from "axios";
 import { getRandomLightColor } from "../../genColor";
 
 const host = "http://localhost:8080";
-const localStorageData = JSON.parse(localStorage.getItem("userdata"));
-const token = localStorageData?.token;
 
 //* Make Api Requests
 
@@ -67,6 +65,8 @@ export const verifyPassword = async ({ email, password }) => {
 
 //? update user function
 export const updateUser = async (data, msg) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
 		const ndata = await axios.post(`${host}/api/updateUser`, data, msg, { headers: { Authorization: `Bearer ${token}` } });
 		return Promise.resolve({ ndata });
@@ -145,6 +145,8 @@ export const resetPassword = async ({ email, password }) => {
 
 //? get user data
 export const userData = async () => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
 		const { data, msg, status } = await axios.get(`${host}/api/userdata`, {
 			headers: {
@@ -159,6 +161,8 @@ export const userData = async () => {
 
 //? send message
 export const sendMessage = async (messageContent, chat_id) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
 		const config = {
 			headers: {
@@ -181,6 +185,8 @@ export const sendMessage = async (messageContent, chat_id) => {
 
 //? fetch message
 export const fetchMessage = async (chat_id) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
 		const config = {
 			headers: {
@@ -196,6 +202,8 @@ export const fetchMessage = async (chat_id) => {
 
 //? fetch groups
 export const fetchGroups = async () => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
 		const config = {
 			headers: {

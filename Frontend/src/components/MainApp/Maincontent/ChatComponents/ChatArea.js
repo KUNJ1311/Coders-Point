@@ -8,33 +8,40 @@ import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
 import RefreshContext from "../../../context/refreshContext";
 import { formatTimeLine } from "../FormateDate";
 import { fetchMessage, sendMessage } from "../../../helper/helper";
+import io from "socket.io-client";
 
+var socket, chat;
 const ChatArea = () => {
 	const mode = useSelector((state) => state.themeKey);
 	const userData = JSON.parse(localStorage.getItem("userdata"));
 
+	const [socketConnectionStatus, setsocketConnectionStatus] = useState(false);
 	const [messageContent, setMessageContent] = useState("");
 	const messagesEndRef = useRef(null);
 	const dyParams = useParams();
 	const [chat_id, chat_user] = dyParams._id.split("&");
 	const [allMessages, setAllMessages] = useState([]);
+	const [allMessagesCopy, setAllMessagesCopy] = useState([]);
 	const { refresh, setRefresh } = useContext(RefreshContext);
 
-	const handleSendMessage = () => {
-		sendMessage(messageContent, chat_id);
+	const handleSendMessage = async () => {
+		const { data } = await sendMessage(messageContent, chat_id);
+		socket.emit("newMessage", data);
 	};
 
 	useEffect(() => {
 		const GetData = async () => {
 			try {
 				const response = await fetchMessage(chat_id);
+				socket.emit("join chat", chat_id);
 				setAllMessages(response.data);
+				setAllMessagesCopy(allMessages);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		GetData();
-	}, [chat_id, userData.token]);
+	}, [refresh, chat_id]);
 
 	useEffect(() => {
 		if (messagesEndRef.current) {
@@ -47,6 +54,24 @@ const ChatArea = () => {
 			<span className={"span " + (mode ? "" : "span-col time_color")}>{formatTimeLine(createdAt)}</span>
 		</div>
 	);
+
+	//? connect to socket
+	useEffect(() => {
+		socket = io("http://localhost:8080/");
+		socket.emit("setup", userData);
+		socket.on("connect", () => {
+			setsocketConnectionStatus(!socketConnectionStatus);
+		});
+	}, []);
+
+	//? new message received
+	useEffect(() => {
+		socket.on("message received", (newMessages) => {
+			if (chat_id === newMessages.data.chat._id) {
+				setAllMessages((prevMessages) => [...prevMessages, newMessages.data]);
+			}
+		});
+	}, []);
 
 	return (
 		<div style={{ overflow: "auto", display: "flex", flex: "1 1 auto", flexDirection: "column" }}>

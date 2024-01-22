@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "react-tooltip/dist/react-tooltip.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
@@ -6,10 +6,13 @@ import CreateGroups from "./CreateGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { fetchGroups } from "../../helper/helper";
+import RefreshContext from "../../context/refreshContext";
 
 const Groups = () => {
 	const { _id } = useParams();
 	const mode = useSelector((state) => state.themeKey);
+
+	const { refresh, setRefresh } = useContext(RefreshContext);
 
 	const navigate = useNavigate();
 	const [clickedId, setClickedId] = useState(null);
