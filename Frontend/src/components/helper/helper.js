@@ -1,8 +1,9 @@
 import axios from "axios";
+import { getRandomLightColor } from "../../genColor";
 
 const host = "http://localhost:8080";
 const localStorageData = JSON.parse(localStorage.getItem("userdata"));
-const token = localStorageData.token;
+const token = localStorageData?.token;
 
 //* Make Api Requests
 
@@ -41,7 +42,11 @@ export const registerUser = async (credentials) => {
 		const {
 			data: { msg },
 			status,
-		} = await axios.post(`${host}/api/register`, credentials);
+		} = await axios.post(`${host}/api/register`, {
+			credentials,
+			avatar: null, // Replace with the image if available
+			color: getRandomLightColor(),
+		});
 		return { msg, status };
 	} catch (error) {
 		return Promise.reject({ error });
@@ -153,7 +158,7 @@ export const userData = async () => {
 };
 
 //? send message
-export const sendMessage = async ({ messageContent, chat_id }) => {
+export const sendMessage = async (messageContent, chat_id) => {
 	try {
 		const config = {
 			headers: {

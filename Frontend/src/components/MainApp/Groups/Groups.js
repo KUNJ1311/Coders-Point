@@ -66,10 +66,12 @@ const Groups = () => {
 	const handleProfileClick = () => {
 		setShowProfileModel(true);
 		setClickedlogo(true);
-		// setClickedIndex(null);
 	};
 
 	useEffect(() => {
+		if (!_id) {
+			return;
+		}
 		const result = _id.split("&")[0];
 		setClickedId(result);
 	}, [_id]);

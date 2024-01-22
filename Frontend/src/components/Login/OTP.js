@@ -37,7 +37,7 @@ const OTP = (props) => {
 	//* Verify OTP
 	const handleVerifyOTP = async (e) => {
 		const code = otp.join("");
-		//? For New user so
+		//? For New user sign up
 		if (props.side === "sign-up-container") {
 			try {
 				e.preventDefault();

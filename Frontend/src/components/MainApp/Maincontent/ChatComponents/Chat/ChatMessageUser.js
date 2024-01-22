@@ -8,7 +8,15 @@ const ChatMessage = ({ message }) => {
 		<>
 			<div className={"chat-list-user " + (mode ? "" : "darkwhite")}>
 				<div className="chat-data">
-					<img src="https://cdn.discordapp.com/avatars/715429945295372329/a977e19af9bf390800ab713f57edb7a1.webp?size=100" className="chat-data-avatar" alt=""></img>
+					{message.sender.avatar ? (
+						<img className="chat-data-avatar" src={message.sender.avatar} alt="" />
+					) : (
+						<span style={{ pointerEvents: "auto", position: "absolute", left: "16px", marginTop: "calc(4px - 0.125rem)", width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden", cursor: "pointer", WebkitUserSelect: "none", MozUserSelect: "none", userSelect: "none", flex: "0 0 auto", zIndex: "1", backgroundColor: message.sender.color }}>
+							<span className="d-flex" style={{ justifyContent: "center", alignItems: "center", width: "40px", height: "40px", fontSize: "30px", fontWeight: "400" }}>
+								{message.sender.username.charAt(0).toUpperCase()}
+							</span>
+						</span>
+					)}
 					<h3 className="chat-data-header">
 						<span style={{ marginRight: "0.25rem", cursor: "pointer" }}>
 							<span className={mode ? "" : "name"}>{message.sender.username}</span>

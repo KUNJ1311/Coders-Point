@@ -103,7 +103,9 @@ const ChatArea = () => {
 										setMessageContent("");
 										setRefresh(!refresh);
 										const textarea = event.target;
-										textarea.style.height = "auto";
+										if (textarea) {
+											textarea.style.height = "auto";
+										}
 										event.preventDefault();
 									}
 								}}
@@ -117,8 +119,10 @@ const ChatArea = () => {
 									onClick={(event) => {
 										handleSendMessage();
 										setMessageContent("");
-										const textarea = event.target.parentElement.querySelector("textarea");
-										textarea.style.height = "auto";
+										const textarea = event.target.parentElement && event.target.parentElement.querySelector("textarea");
+										if (textarea) {
+											textarea.style.height = "auto";
+										}
 										setRefresh(!refresh);
 									}}
 								/>
