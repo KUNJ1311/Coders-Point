@@ -21,7 +21,6 @@ const ChatArea = () => {
 	const dyParams = useParams();
 	const [chat_id, chat_user] = dyParams._id.split("&");
 	const [allMessages, setAllMessages] = useState([]);
-	const [allMessagesCopy, setAllMessagesCopy] = useState([]);
 	const { refresh, setRefresh } = useContext(RefreshContext);
 
 	const handleSendMessage = async () => {
@@ -35,7 +34,6 @@ const ChatArea = () => {
 				const response = await fetchMessage(chat_id);
 				socket.emit("join chat", chat_id);
 				setAllMessages(response.data);
-				setAllMessagesCopy(allMessages);
 			} catch (error) {
 				console.log(error);
 			}

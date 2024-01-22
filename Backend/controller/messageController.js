@@ -23,7 +23,7 @@ export async function sendMessage(req, res) {
 	};
 	try {
 		var message = await Message.create(newMessage);
-		message = await message.populate("sender", "username");
+		message = await message.populate("sender", "username color avatar");
 		message = await message.populate("chat");
 		message = await message.populate("reciever");
 		message = await User.populate(message, { path: "chat.users", select: "username email" });
