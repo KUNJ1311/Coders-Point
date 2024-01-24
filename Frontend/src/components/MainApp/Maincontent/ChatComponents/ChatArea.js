@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import { BsSendFill } from "react-icons/bs";
 import ChatMessageUser from "./Chat/ChatMessageUser";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
-// import RefreshContext from "../../../context/refreshContext";
 import { formatTimeLine } from "../FormateDate";
 import { fetchMessage, sendMessage } from "../../../helper/helper";
 import io from "socket.io-client";
@@ -20,7 +19,6 @@ const ChatArea = () => {
 	const dyParams = useParams();
 	const [chat_id, chat_user] = dyParams._id.split("&");
 	const [allMessages, setAllMessages] = useState([]);
-	// const { refresh, setRefresh } = useContext(RefreshContext);
 
 	const handleSendMessage = async () => {
 		const { data } = await sendMessage(messageContent, chat_id);
@@ -61,8 +59,6 @@ const ChatArea = () => {
 	//? new message received
 	useEffect(() => {
 		socket.on("message received", (newMessages) => {
-			console.log(newMessages);
-			console.log(chat_id, newMessages.data.chat._id);
 			if (chat_id === newMessages.data.chat._id) {
 				setAllMessages((prevMessages) => [...prevMessages, newMessages.data]);
 			}
@@ -122,7 +118,6 @@ const ChatArea = () => {
 									if (event.code === "Enter" && !event.shiftKey) {
 										handleSendMessage();
 										setMessageContent("");
-										// setRefresh(!refresh);
 										const textarea = event.target;
 										if (textarea) {
 											textarea.style.height = "auto";
@@ -144,7 +139,6 @@ const ChatArea = () => {
 										if (textarea) {
 											textarea.style.height = "auto";
 										}
-										// setRefresh(!refresh);
 									}}
 								/>
 							</button>
