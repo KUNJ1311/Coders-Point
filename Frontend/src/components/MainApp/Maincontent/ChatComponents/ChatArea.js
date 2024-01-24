@@ -5,7 +5,7 @@ import ChatMessageUser from "./Chat/ChatMessageUser";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
-import RefreshContext from "../../../context/refreshContext";
+// import RefreshContext from "../../../context/refreshContext";
 import { formatTimeLine } from "../FormateDate";
 import { fetchMessage, sendMessage } from "../../../helper/helper";
 import io from "socket.io-client";
@@ -15,13 +15,12 @@ const ChatArea = () => {
 	const mode = useSelector((state) => state.themeKey);
 	const userData = JSON.parse(localStorage.getItem("userdata"));
 
-	const [socketConnectionStatus, setsocketConnectionStatus] = useState(false);
 	const [messageContent, setMessageContent] = useState("");
 	const messagesEndRef = useRef(null);
 	const dyParams = useParams();
 	const [chat_id, chat_user] = dyParams._id.split("&");
 	const [allMessages, setAllMessages] = useState([]);
-	const { refresh, setRefresh } = useContext(RefreshContext);
+	// const { refresh, setRefresh } = useContext(RefreshContext);
 
 	const handleSendMessage = async () => {
 		const { data } = await sendMessage(messageContent, chat_id);
@@ -39,7 +38,7 @@ const ChatArea = () => {
 			}
 		};
 		GetData();
-	}, [refresh, chat_id]);
+	}, [chat_id]);
 
 	useEffect(() => {
 		if (messagesEndRef.current) {
@@ -57,19 +56,18 @@ const ChatArea = () => {
 	useEffect(() => {
 		socket = io("http://localhost:8080/");
 		socket.emit("setup", userData);
-		socket.on("connect", () => {
-			setsocketConnectionStatus(!socketConnectionStatus);
-		});
 	}, []);
 
 	//? new message received
 	useEffect(() => {
 		socket.on("message received", (newMessages) => {
+			console.log(newMessages);
+			console.log(chat_id, newMessages.data.chat._id);
 			if (chat_id === newMessages.data.chat._id) {
 				setAllMessages((prevMessages) => [...prevMessages, newMessages.data]);
 			}
 		});
-	}, []);
+	}, [chat_id]);
 
 	return (
 		<div style={{ overflow: "auto", display: "flex", flex: "1 1 auto", flexDirection: "column" }}>
@@ -124,7 +122,7 @@ const ChatArea = () => {
 									if (event.code === "Enter" && !event.shiftKey) {
 										handleSendMessage();
 										setMessageContent("");
-										setRefresh(!refresh);
+										// setRefresh(!refresh);
 										const textarea = event.target;
 										if (textarea) {
 											textarea.style.height = "auto";
@@ -146,7 +144,7 @@ const ChatArea = () => {
 										if (textarea) {
 											textarea.style.height = "auto";
 										}
-										setRefresh(!refresh);
+										// setRefresh(!refresh);
 									}}
 								/>
 							</button>

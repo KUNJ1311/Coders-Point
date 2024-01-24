@@ -56,8 +56,8 @@ connect()
 						return console.log("chat.users not defined");
 					}
 					chat.users.forEach((user) => {
-						if (user._id === newMessageStatus.data.sender._id) return;
-						socket.in(user._id).emit("message received", newMessageStatus);
+						// if (user._id === newMessageStatus.data.sender._id) return;
+						io.to(user._id).emit("message received", newMessageStatus);
 					});
 				});
 			});
