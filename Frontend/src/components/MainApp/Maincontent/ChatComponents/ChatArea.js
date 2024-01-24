@@ -36,6 +36,9 @@ const ChatArea = () => {
 			}
 		};
 		GetData();
+		return () => {
+			socket.emit("leave chat", chat_id);
+		};
 	}, [chat_id]);
 
 	useEffect(() => {

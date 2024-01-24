@@ -50,6 +50,9 @@ connect()
 				socket.on("join chat", (room) => {
 					socket.join(room);
 				});
+				socket.on("leave chat", (room) => {
+					socket.leave(room);
+				});
 				socket.on("newMessage", (newMessageStatus) => {
 					var chat = newMessageStatus.data.chat;
 					if (!chat.users) {
