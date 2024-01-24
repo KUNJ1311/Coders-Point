@@ -4,6 +4,7 @@ import { HiFolder } from "react-icons/hi2";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { HiChatAlt, HiPlus } from "react-icons/hi";
 import { useSelector } from "react-redux";
+import "./discover.css";
 
 const Discover = () => {
 	const mode = useSelector((state) => state.themeKey);

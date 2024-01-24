@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "react-tooltip/dist/react-tooltip.css";
+import "./groups.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
 import CreateGroups from "./CreateGroup";

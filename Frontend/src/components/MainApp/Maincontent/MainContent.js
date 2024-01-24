@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./maincontent.css";
 import TopNav from "./ChatComponents/TopNav";
 import ChatArea from "./ChatComponents/ChatArea";
@@ -11,6 +11,7 @@ const MainContent = () => {
 	const handleUserClick = () => {
 		setHideUser(!hideUser);
 	};
+
 	return (
 		<div className="d-flex app-font absolute">
 			<Groups />

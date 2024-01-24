@@ -1,5 +1,5 @@
 import Home from "./components/HomePage/Home";
-import MainApp from "./components/MainApp/MainApp";
+import HomeChat from "./components/MainApp/HomeChat/HomeChat";
 import Login from "./components/Login/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserState from "./components/context/UserState";
@@ -33,11 +33,18 @@ function App() {
 								path="/mainapp"
 								element={
 									<AuthorizeUser>
-										<MainApp />
+										<HomeChat />
 									</AuthorizeUser>
 								}
 							/>
-							<Route path="mainapp/chat/:_id" element={<MainContent />} />
+							<Route
+								path="/mainapp/chat/:_id"
+								element={
+									<AuthorizeUser>
+										<MainContent />
+									</AuthorizeUser>
+								}
+							/>
 						</Routes>
 					</Router>
 				</RefreshState>

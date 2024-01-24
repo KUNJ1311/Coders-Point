@@ -12,6 +12,7 @@ const TopNav = (props) => {
 	const mode = useSelector((state) => state.themeKey);
 	const { hideUser, handleUserClick } = props;
 	const navigate = useNavigate();
+
 	const handleHome = () => {
 		navigate(`/mainapp`);
 	};
