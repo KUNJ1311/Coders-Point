@@ -68,6 +68,6 @@ connect()
 			console.log("Cannot connect to the server");
 		}
 	})
-	.catch(() => {
-		console.log("Invalid Database Connection...!");
+	.catch((error) => {
+		console.log("Invalid Database Connection...!", error);
 	});

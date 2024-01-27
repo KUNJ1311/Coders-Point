@@ -9,14 +9,13 @@ import { useSelector } from "react-redux";
 import { fetchGroups } from "../../helper/helper";
 import RefreshContext from "../../context/refreshContext";
 
-const Groups = () => {
-	const { _id } = useParams();
+const Groups = ({ chat_id }) => {
 	const mode = useSelector((state) => state.themeKey);
 
 	const { refresh, setRefresh } = useContext(RefreshContext);
 
 	const navigate = useNavigate();
-	const [clickedId, setClickedId] = useState(null);
+
 	const [showCreateGroup, setShowCreateGroup] = useState(false);
 	const [groups, setGroups] = useState([]);
 
@@ -71,14 +70,6 @@ const Groups = () => {
 		setShowProfileModel(true);
 		setClickedlogo(true);
 	};
-
-	useEffect(() => {
-		if (!_id) {
-			return;
-		}
-		const result = _id.split("&")[0];
-		setClickedId(result);
-	}, [_id]);
 
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 	const [clickedlogo, setClickedlogo] = useState(false);
@@ -157,21 +148,21 @@ const Groups = () => {
 											<div className="side-line">
 												<span
 													style={{
-														height: clickedId === group._id ? "40px" : hoveredIndex === index ? "20px" : "8px",
+														height: chat_id === group._id ? "40px" : hoveredIndex === index ? "20px" : "8px",
 													}}
 													className={mode ? "side-line-effect" : "side-line-dark"}
 												></span>
 											</div>
 										</div>
 										{group.img ? (
-											<img className=" d-flex object-cover round " style={{ borderRadius: clickedId === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group.img} width="48px" height="48px" alt="" />
+											<img className=" d-flex object-cover round " style={{ borderRadius: chat_id === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%" }} src={group.img} width="48px" height="48px" alt="" />
 										) : (
 											<div
 												className="d-flex object-cover round"
 												width="48px"
 												height="48px"
 												style={{
-													borderRadius: clickedId === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%",
+													borderRadius: chat_id === group._id ? "30%" : hoveredIndex === index ? "30%" : "50%",
 													textAlign: "center",
 													lineHeight: "48px",
 													fontSize: "30px",

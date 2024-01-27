@@ -6,7 +6,7 @@ import { HiChatAlt, HiPlus } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import "./discover.css";
 
-const Discover = () => {
+const Discover = ({ chat_name }) => {
 	const mode = useSelector((state) => state.themeKey);
 
 	const text = ["test", "fun", "General", "Kunj", "rohit2424"];
@@ -34,7 +34,7 @@ const Discover = () => {
 				<nav className="d-flex discover-nav">
 					<div className="relative cursor-pointer">
 						<header className={mode ? "" : "discover-col nav_shadow"}>
-							<div className={mode ? "" : "discover-col"}>Group Name</div>
+							<div className={mode ? "" : "discover-col"}>{chat_name}</div>
 						</header>
 					</div>
 				</nav>
