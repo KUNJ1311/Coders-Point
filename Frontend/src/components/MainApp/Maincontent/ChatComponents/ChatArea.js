@@ -28,7 +28,13 @@ const ChatArea = () => {
 	useEffect(() => {
 		const GetData = async () => {
 			try {
+				if (chat) {
+					console.log("leave", chat);
+					socket.emit("leave room", chat);
+				}
+				console.log(`join ${chat_id}`);
 				const response = await fetchMessage(chat_id);
+				chat = chat_id;
 				socket.emit("join chat", chat_id);
 				setAllMessages(response.data);
 			} catch (error) {
@@ -36,9 +42,6 @@ const ChatArea = () => {
 			}
 		};
 		GetData();
-		return () => {
-			socket.emit("leave chat", chat_id);
-		};
 	}, [chat_id]);
 
 	useEffect(() => {

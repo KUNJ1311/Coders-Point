@@ -41,18 +41,30 @@ connect()
 				},
 				pingTimeout: 60000,
 			});
+			const connectedUsers = [];
 
 			io.on("connection", (socket) => {
 				socket.on("setup", (user) => {
-					socket.join(user._id);
-					socket.emit("Connected");
+					const isUserConnected = connectedUsers.some((connectedUser) => connectedUser._id === user._id);
+
+					if (isUserConnected) {
+						return;
+					} else {
+						// User is not connected, add to the list and join the socket room
+						connectedUsers.push(user);
+						socket.join(user._id);
+						socket.emit("Connected");
+					}
 				});
+
 				socket.on("join chat", (room) => {
 					socket.join(room);
 				});
+
 				socket.on("leave chat", (room) => {
 					socket.leave(room);
 				});
+
 				socket.on("newMessage", (newMessageStatus) => {
 					var chat = newMessageStatus.data.chat;
 					if (!chat.users) {
