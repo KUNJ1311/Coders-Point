@@ -92,10 +92,11 @@
 	z-index: 1;
 	display: flex;
 	position: relative;
-	padding-bottom: 22%;
+	padding-bottom: 20%;
 	font-size: larger;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
+	font-size:xx-large; 
 }
 /* .footer-content{
 	position: relative;
@@ -116,15 +117,15 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
+/* body {
   display: flex;
   background: #333;
   justify-content: flex-end;
   align-items: flex-end;
   min-height: 100vh;
-}
+} */
 
-.footer {
+.footer2 {
   position: relative;
   width: 100%;
   background: #3586ff;

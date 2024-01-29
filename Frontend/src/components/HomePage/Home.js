@@ -51,8 +51,14 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			<div className="lorem">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In perferendis recusandae itaque. Nostrum expedita voluptatibus et corporis quod doloribus nobis optio illum amet. Reiciendis, saepe facilis minima ducimus corrupti cumque!</div>
-			<footer className="footer">
+			<div className="lorem">
+				
+					Want to code together,Ajaoo<br/>
+					Want to chat while Coding, Ajaoo<br/>
+					Want to Share Screen while coding ,Ajaoo<br/>
+					
+			</div>
+			<footer className="footer2">
 				<div className="waves">
 					<div className="wave" id="wave1"></div>
 					<div className="wave" id="wave2"></div>
