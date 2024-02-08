@@ -1,11 +1,12 @@
 import { useState } from "react";
 import UserContext from "./userContext";
-import { checkUser, generateOTPnewUser } from "../helper/helper";
+import { checkUser, fetchGroups, generateOTPnewUser } from "../helper/helper";
 import { toast } from "react-toastify";
 
 const UserState = (props) => {
 	const [credentials, setCredentials] = useState({ email: "", password: "", username: "", repassword: "" });
 	const { email, password, username } = credentials;
+	const [groups, setGroups] = useState([]);
 
 	//* Register user
 	const Register = async ({ OnRegister }) => {
@@ -29,6 +30,16 @@ const UserState = (props) => {
 			return { error };
 		}
 	};
-	return <UserContext.Provider value={{ credentials, setCredentials, Register }}>{props.children}</UserContext.Provider>;
+
+	//* Group Fetch
+	const fetchGroupsData = async () => {
+		try {
+			const { data } = await fetchGroups();
+			setGroups(data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	return <UserContext.Provider value={{ credentials, setCredentials, Register, fetchGroupsData, setGroups, groups }}>{props.children}</UserContext.Provider>;
 };
 export default UserState;

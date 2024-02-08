@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChatMessageSameUser from "./Chat/ChatMessageSameUser";
 import { formatTimeLine } from "../FormateDate";
-import { fetchMessage, sendMessage } from "../../../helper/helper";
+import { connectSocket, fetchMessage, sendHost, sendMessage } from "../../../helper/helper";
 import io from "socket.io-client";
 
 var socket, chat;
@@ -25,14 +25,19 @@ const ChatArea = () => {
 		socket.emit("newMessage", data);
 	};
 
+	//? connect to socket
+	useEffect(() => {
+		const { host } = sendHost();
+		socket = io(`${host}`);
+		socket.emit("setup", userData);
+	}, []);
+
 	useEffect(() => {
 		const GetData = async () => {
 			try {
 				if (chat) {
-					console.log("leave", chat);
 					socket.emit("leave room", chat);
 				}
-				console.log(`join ${chat_id}`);
 				const response = await fetchMessage(chat_id);
 				chat = chat_id;
 				socket.emit("join chat", chat_id);
@@ -56,12 +61,6 @@ const ChatArea = () => {
 		</div>
 	);
 
-	//? connect to socket
-	useEffect(() => {
-		socket = io("http://localhost:8080/");
-		socket.emit("setup", userData);
-	}, []);
-
 	//? new message received
 	useEffect(() => {
 		socket.on("message received", (newMessages) => {
@@ -69,6 +68,9 @@ const ChatArea = () => {
 				setAllMessages((prevMessages) => [...prevMessages, newMessages.data]);
 			}
 		});
+		return () => {
+			socket.off();
+		};
 	}, [chat_id]);
 
 	return (

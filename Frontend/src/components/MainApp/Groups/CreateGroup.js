@@ -1,29 +1,23 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
-import { getRandomLightColor } from "../../../genColor";
+import { createChatGroup } from "../../helper/helper";
+import { toast } from "react-toastify";
+import userContext from "../../context/userContext";
 
 function CreateGroups({ onClose }) {
 	const userData = JSON.parse(localStorage.getItem("userdata"));
 	const [groupName, setGroupName] = useState("");
+	const { fetchGroupsData } = useContext(userContext);
 
-	const createGroup = () => {
-		const config = {
-			headers: {
-				Authorization: `Bearer ${userData.token}`,
-			},
-		};
-
-		axios.post(
-			"http://localhost:8080/chat/createGroup",
-			{
-				name: groupName,
-				img: null, // Replace with the image if available
-				color: getRandomLightColor(),
-				users: ["649126aee67217ae620c4269", "6517d9a37aa4a9847038b65e"],
-			},
-			config
-		);
+	const handleCreateGroup = async () => {
+		const { status } = await createChatGroup(userData, groupName);
+		if (status === 200) {
+			toast.success("Group Created Successfully..!");
+			fetchGroupsData();
+		} else {
+			toast.error("Try Again..!");
+		}
+		onClose();
 	};
 
 	return (
@@ -52,16 +46,7 @@ function CreateGroups({ onClose }) {
 												}}
 											/>
 											<div style={{ display: "flex", alignItems: "flex-start", flex: "0 0 auto" }}>
-												<button
-													type="button"
-													className="add-btn"
-													width="48px"
-													height="48px"
-													onClick={() => {
-														createGroup();
-														onClose();
-													}}
-												>
+												<button type="button" className="add-btn" width="48px" height="48px" onClick={handleCreateGroup}>
 													<IoAddCircle /> <span style={{ color: "white" }}>Create Group</span>
 												</button>
 											</div>

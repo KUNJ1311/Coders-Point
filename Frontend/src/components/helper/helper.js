@@ -1,7 +1,17 @@
 import axios from "axios";
 import { getRandomLightColor } from "../../genColor";
 
-const host = "http://localhost:8080";
+// const host = "http://localhost:8080";
+const host = "http://192.168.202.101:8080";
+
+//? send Host
+export const sendHost = () => {
+	try {
+		return { host };
+	} catch (error) {
+		console.error(error);
+	}
+};
 
 //* Make Api Requests
 
@@ -193,7 +203,7 @@ export const fetchMessage = async (chat_id) => {
 				Authorization: `Bearer ${token}`,
 			},
 		};
-		const { data } = await axios.get("http://localhost:8080/message/" + chat_id, config);
+		const { data } = await axios.get(`${host}/message/` + chat_id, config);
 		return Promise.resolve({ data });
 	} catch (error) {
 		return Promise.reject({ error });
@@ -213,6 +223,31 @@ export const fetchGroups = async () => {
 
 		const { data } = await axios.get(`${host}/chat/fetchGroups`, config);
 		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? create Group
+export const createChatGroup = async (userData, groupName) => {
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userData.token}`,
+			},
+		};
+
+		const { status } = await axios.post(
+			`${host}/chat/createGroup`,
+			{
+				name: groupName,
+				img: null, // Replace with the image if available
+				color: getRandomLightColor(),
+				users: ["649126aee67217ae620c4269", "6517d9a37aa4a9847038b65e"],
+			},
+			config
+		);
+		return Promise.resolve({ status });
 	} catch (error) {
 		return Promise.reject({ error });
 	}

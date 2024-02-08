@@ -21,6 +21,7 @@ const MainContent = () => {
 		}
 		// setClickedId(chat_id);
 	}, [_id]);
+
 	return (
 		<div className="d-flex app-font absolute">
 			<Groups chat_id={chat_id} />

@@ -4,20 +4,17 @@ import "./groups.css";
 import ProfileModel from "./ProfileModel";
 import { HiPlus } from "react-icons/hi2";
 import CreateGroups from "./CreateGroup";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { fetchGroups } from "../../helper/helper";
-import RefreshContext from "../../context/refreshContext";
+import userContext from "../../context/userContext";
 
 const Groups = ({ chat_id }) => {
 	const mode = useSelector((state) => state.themeKey);
 
-	const { refresh, setRefresh } = useContext(RefreshContext);
-
 	const navigate = useNavigate();
 
 	const [showCreateGroup, setShowCreateGroup] = useState(false);
-	const [groups, setGroups] = useState([]);
+	const { groups, fetchGroupsData } = useContext(userContext);
 
 	//* Close Profile page
 	const handleCloseCreateGroup = () => {
@@ -106,14 +103,6 @@ const Groups = ({ chat_id }) => {
 	};
 
 	useEffect(() => {
-		const fetchGroupsData = async () => {
-			try {
-				const { data } = await fetchGroups();
-				setGroups(data);
-			} catch (error) {
-				console.log(error);
-			}
-		};
 		fetchGroupsData();
 	}, []);
 
