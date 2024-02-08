@@ -5,6 +5,7 @@ import "./Home.css";
 import coder from "./g8.svg";
 import { useNavigate } from "react-router-dom";
 import home from "./banner-bg.png"
+import PrinterAnimation from "./PrinterAnimation";
 const Home = () => {
 	const Navigate = useNavigate();
 
@@ -47,10 +48,10 @@ const Home = () => {
 						</div>
 					</div>
 					<div className="coders-image">
-						<img src={coder} width="400px" height="400px" alt="" />
+						{/* <img src={coder} width="400px" height="400px" alt="" /> */
+						<PrinterAnimation/>}
 					</div>
 				</div>
-			</div>
 			<div className="lorem">
 				
 					Want to code together,Ajaoo<br/>
@@ -58,6 +59,7 @@ const Home = () => {
 					Want to Share Screen while coding ,Ajaoo<br/>
 					
 			</div>
+			
 			<footer className="footer2">
 				<div className="waves">
 					<div className="wave" id="wave1"></div>
@@ -89,6 +91,7 @@ const Home = () => {
 				</ul>
 				<p>&copy;2023 CodersPoint | All Rights Reserved</p>
 			</footer>
+			</div>
 		</>
 	);
 };
