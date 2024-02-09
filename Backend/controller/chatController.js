@@ -64,21 +64,21 @@ export async function createGroupChat(req, res) {
 	if (!req.body.users || !req.body.name) {
 		return res.status(400).send({ message: "Data is insufficient" });
 	}
-
-	var users = JSON.parse(req.body.users);
-	console.log("chatController/createGroups:", req);
-	users.push(req.user);
+	var users = req.body.users;
+	users.push(req.user.userId);
 	try {
 		const groupChat = await Chat.create({
 			chatName: req.body.name,
 			users: users,
+			img: req.body.img,
+			color: req.body.color,
 			isGroupChat: true,
-			groupAdmin: req.user,
+			groupAdmin: req.user.userId,
 		});
-
 		const fullGroupChat = await Chat.findOne({ _id: groupChat._id }).populate("users", "-password").populate("groupAdmin", "-password");
 		res.status(200).json(fullGroupChat);
 	} catch (error) {
+		console.log(error);
 		res.status(400).send(error);
 	}
 }
@@ -92,5 +92,18 @@ export async function groupExit(req, res) {
 		res.status(404).send("Chat Not Found");
 	} else {
 		res.json(removed);
+	}
+}
+
+export async function addSelfToGroup(req, res) {
+	const { chatId, userId } = req.body;
+
+	const added = await Chat.findByIdAndUpdate(chatId, { $push: { users: userId } }, { new: true })
+		.populate("users", "-password")
+		.populate("groupAdmin", "-password");
+	if (!added) {
+		res.status(404).send("Chat Not Found");
+	} else {
+		res.json(added);
 	}
 }

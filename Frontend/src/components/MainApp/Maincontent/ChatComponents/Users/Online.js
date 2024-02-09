@@ -1,13 +1,15 @@
 import React from "react";
 import coder from "../../../../Image/facebook.png";
+import { useSelector } from "react-redux";
 
 const Online = () => {
+	const mode = useSelector((state) => state.themeKey);
 	return (
 		<>
 			<h3>
-				<span>Online — 1</span>
+				<span className={mode ? "" : "darkfont"}>Online — 1</span>
 			</h3>
-			<div className="members_div">
+			<div className={"members_div " + (mode ? "" : "darkfont members_div_light")}>
 				<div className="members_box">
 					<div className="users_avatar">
 						<div>

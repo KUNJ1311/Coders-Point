@@ -37,7 +37,7 @@ const OTP = (props) => {
 	//* Verify OTP
 	const handleVerifyOTP = async (e) => {
 		const code = otp.join("");
-		//? For New user so
+		//? For New user sign up
 		if (props.side === "sign-up-container") {
 			try {
 				e.preventDefault();
@@ -47,7 +47,7 @@ const OTP = (props) => {
 					if (status === 201) {
 						const { data, status } = await verifyPassword({ email, password });
 						if (status === 200) {
-							localStorage.setItem("coderToken", data.token);
+							localStorage.setItem("userdata", JSON.stringify(data));
 							Navigate("/mainapp");
 							toast.info("Congratulations! Your account has been created successfully.");
 						}

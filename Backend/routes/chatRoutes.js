@@ -1,14 +1,15 @@
 import { Router } from "express";
-const router = Router();
+const chatRoutes = Router();
 
 //! *** all controllers *** !//
 import * as controller from "../controller/chatController.js";
 import Auth from "../middleware/auth.js";
 
-router.route("/").post(Auth, controller.accessChat);
-router.route("/").get(Auth, controller.fetchChats);
-router.route("/creategroup").post(Auth, controller.createGroupChat);
-router.route("/fetchgroups").get(Auth, controller.fetchGroups);
-router.route("/groupexit").put(Auth, controller.groupExit);
+chatRoutes.route("/").post(Auth, controller.accessChat);
+chatRoutes.route("/").get(Auth, controller.fetchChats);
+chatRoutes.route("/creategroup").post(Auth, controller.createGroupChat);
+chatRoutes.route("/fetchgroups").get(Auth, controller.fetchGroups);
+chatRoutes.route("/groupexit").put(Auth, controller.groupExit);
+chatRoutes.route("/addselftogroup").put(Auth, controller.addSelfToGroup);
 
-module.exports = router;
+export default chatRoutes;
