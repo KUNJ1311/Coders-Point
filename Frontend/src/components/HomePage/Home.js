@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import home from "./img/banner-bg.png";
 import PrinterAnimation from "./PrinterAnimation";
 import { FaFacebook } from "react-icons/fa";
-import { FaSquareXTwitter, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { FaSquareXTwitter, FaLinkedin } from "react-icons/fa6";
+import { RiInstagramFill } from "react-icons/ri";
 
 const Home = () => {
 	const Navigate = useNavigate();
@@ -83,7 +84,8 @@ const Home = () => {
 						</li>
 						<li className="social-icon_item">
 							<a className="social-icon_link" href="https://www.instagram.com/">
-								<FaInstagram className="social-size" />
+							<RiInstagramFill className="social-size"/>
+
 							</a>
 						</li>
 						<li className="social-icon_item">
