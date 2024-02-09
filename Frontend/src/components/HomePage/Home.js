@@ -36,7 +36,7 @@ const Home = () => {
 							<div className="title">{state.title}</div>
 							<div className="title_two">{state.title_two}</div>
 						</h2>
-						<div className="text">
+						<div className="type-text">
 							<Typewriter
 								options={{
 									autoStart: true,
@@ -68,16 +68,16 @@ const Home = () => {
 					<div className="wave" id="wave4"></div>
 				</div>
 				<ul className="social-icon">
-					<li className="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a className="social-icon_link" href="#">
 						<ion-icon name="logo-facebook"></ion-icon>
 					</a></li>
-					<li className="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a className="social-icon_link" href="#">
 						<ion-icon name="logo-twitter" alt="twitter"></ion-icon>
 					</a></li>
-					<li className="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a className="social-icon_link" href="#">
 						<ion-icon name="logo-linkedin"></ion-icon>
 					</a></li>
-					<li className="social-icon_item"><a class="social-icon_link" href="#">
+					<li className="social-icon_item"><a className="social-icon_link" href="#">
 						<ion-icon name="logo-instagram"></ion-icon>
 					</a></li>
 				</ul>
