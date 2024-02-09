@@ -4,8 +4,11 @@ import { TbPhotoEdit } from "react-icons/tb";
 import { userData } from "../../helper/helper";
 import { useNavigate } from "react-router-dom";
 import { IoExitOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 export default function ProfileModel({ onClose }) {
+	const mode = useSelector((state) => state.themeKey);
+
 	const [adduserData, setAddUserData] = useState(null);
 	//* Getting user data
 	useEffect(() => {
@@ -24,7 +27,7 @@ export default function ProfileModel({ onClose }) {
 
 	let Navigate = useNavigate();
 	const handleLogout = () => {
-		localStorage.removeItem("coderToken");
+		localStorage.removeItem("userdata");
 		Navigate("/");
 	};
 	return (
@@ -34,7 +37,7 @@ export default function ProfileModel({ onClose }) {
 					<div className="window4" style={{ borderRadius: ".5rem" }}>
 						<div className="window5">
 							<div className="left-window">
-								<img src="https://cdn.discordapp.com/attachments/1019824561396649994/1170282970616180766/WhatsApp_Image_2023-11-04_at_09.39.26_844c77ef.jpg?ex=655879f3&is=654604f3&hm=6f9c592d062644229a40dbc321b5b92de120a28d27be3098b4c2200e51a9d546&" alt="Avatar" className="profile-img" style={{ width: "230px", height: "230px", borderRadius: "50%" }} />
+								<img src="	https://cdn.discordapp.com/avatars/715429945295372329/a977e19af9bf390800ab713f57edb7a1.webp" alt="Avatar" className="profile-img" style={{ width: "230px", height: "230px", borderRadius: "50%" }} />
 								<div className="edit-icon-area">
 									<TbPhotoEdit className="edit-icon" />
 								</div>
@@ -55,7 +58,7 @@ export default function ProfileModel({ onClose }) {
 									</div>
 								</div>
 								<div className="profile-btns">
-									<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" onClick={handleLogout}>
+									<div id="logoutsvg-btn" data-tooltip-offset={20} width="48px" height="48px" className="mb-2 cursor-pointer groups-svg-border" style={{ backgroundColor: !mode ? "#ffffff" : "" }} onClick={handleLogout}>
 										<IoExitOutline className="logout_btn" />
 									</div>
 								</div>

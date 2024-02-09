@@ -59,7 +59,11 @@ export async function checkUser(req, res) {
 //? POST: http://localhost:8080/api/register
 export async function register(req, res) {
 	try {
-		const { username, email, password } = req.body;
+		const {
+			credentials: { username, email, password },
+			avatar,
+			color,
+		} = req.body;
 		if (password) {
 			const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -73,6 +77,8 @@ export async function register(req, res) {
 				username,
 				password: hashedPassword,
 				email,
+				avatar,
+				color,
 			});
 
 			//* return save result as a response
@@ -104,10 +110,11 @@ export async function login(req, res) {
 			ENV.JWT_SECRET
 		);
 
-		return res.status(200).send({
-			msg: "Login Successful...!",
+		return res.status(200).json({
+			_id: user._id,
 			username: user.username,
 			email: user.email,
+			isAdmin: user.isAdmin,
 			token,
 		});
 	} catch (error) {

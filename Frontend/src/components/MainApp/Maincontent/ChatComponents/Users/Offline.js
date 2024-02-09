@@ -1,14 +1,16 @@
 import React from "react";
 import coder from "../../../../Image/twitter.png";
 import coder2 from "../../../../Image/instal.webp";
+import { useSelector } from "react-redux";
 
 const Offline = () => {
+	const mode = useSelector((state) => state.themeKey);
 	return (
 		<>
 			<h3>
-				<span>Offline — 2</span>
+				<span className={mode ? "" : "darkfont"}>Offline — 2</span>
 			</h3>
-			<div className="members_div offline_member">
+			<div className={"members_div offline_member" + (mode ? "" : "darkfont members_div_light")}>
 				<div className="members_box">
 					<div className="users_avatar">
 						<div>
@@ -24,7 +26,7 @@ const Offline = () => {
 					</div>
 				</div>
 			</div>
-			<div className="members_div offline_member">
+			<div className={"members_div offline_member" + (mode ? "" : "darkfont members_div_light")}>
 				<div className="members_box">
 					<div className="users_avatar">
 						<div>

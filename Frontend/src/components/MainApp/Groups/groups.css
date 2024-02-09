@@ -60,11 +60,11 @@
 
 .groups-svg-border:hover {
 	border-radius: 30%;
-	background-color: #249c57;
+	background-color: #249c57 !important;
 }
 
 .groups-svg-border:hover .plus-svg {
-	fill: #ffffff;
+	fill: #ffffff !important;
 }
 
 .servers .round {
@@ -150,9 +150,9 @@
 	stroke: #249c57;
 }
 .groups-svg-border:hover .logout_btn path {
-	stroke: white;
+	stroke: white !important;
 }
 .groups-svg-border:hover .add-group path {
-	stroke: white;
-	fill: white;
+	stroke: white !important;
+	fill: white !important;
 }

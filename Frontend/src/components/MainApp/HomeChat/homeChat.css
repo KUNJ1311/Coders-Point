@@ -1,0 +1,6 @@
+.home-chat {
+	background-color: black;
+	display: flex;
+	flex: 1 1 auto;
+	color: white;
+}

@@ -1,6 +1,18 @@
 import axios from "axios";
+import { getRandomLightColor } from "../../genColor";
 
-const host = "http://localhost:8080";
+// const host = "http://localhost:8080";
+const host = "http://192.168.202.101:8080";
+
+//? send Host
+export const sendHost = () => {
+	try {
+		return { host };
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 //* Make Api Requests
 
 //? authenticate function
@@ -38,7 +50,11 @@ export const registerUser = async (credentials) => {
 		const {
 			data: { msg },
 			status,
-		} = await axios.post(`${host}/api/register`, credentials);
+		} = await axios.post(`${host}/api/register`, {
+			credentials,
+			avatar: null, // Replace with the image if available
+			color: getRandomLightColor(),
+		});
 		return { msg, status };
 	} catch (error) {
 		return Promise.reject({ error });
@@ -59,8 +75,9 @@ export const verifyPassword = async ({ email, password }) => {
 
 //? update user function
 export const updateUser = async (data, msg) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
-		const token = localStorage.getItem("token");
 		const ndata = await axios.post(`${host}/api/updateUser`, data, msg, { headers: { Authorization: `Bearer ${token}` } });
 		return Promise.resolve({ ndata });
 	} catch (error) {
@@ -138,14 +155,99 @@ export const resetPassword = async ({ email, password }) => {
 
 //? get user data
 export const userData = async () => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
 	try {
-		const token = localStorage.getItem("coderToken");
-		const { data, msg, status } = await axios.get("http://localhost:8080/api/userdata", {
+		const { data, msg, status } = await axios.get(`${host}/api/userdata`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
 		});
 		return Promise.resolve({ data, msg, status });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? send message
+export const sendMessage = async (messageContent, chat_id) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+		const data = await axios.post(
+			`${host}/message/`,
+			{
+				content: messageContent,
+				chatId: chat_id,
+			},
+			config
+		);
+		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? fetch message
+export const fetchMessage = async (chat_id) => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+		const { data } = await axios.get(`${host}/message/` + chat_id, config);
+		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? fetch groups
+export const fetchGroups = async () => {
+	const localStorageData = JSON.parse(localStorage.getItem("userdata"));
+	const token = localStorageData.token;
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+
+		const { data } = await axios.get(`${host}/chat/fetchGroups`, config);
+		return Promise.resolve({ data });
+	} catch (error) {
+		return Promise.reject({ error });
+	}
+};
+
+//? create Group
+export const createChatGroup = async (userData, groupName) => {
+	try {
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userData.token}`,
+			},
+		};
+
+		const { status } = await axios.post(
+			`${host}/chat/createGroup`,
+			{
+				name: groupName,
+				img: null, // Replace with the image if available
+				color: getRandomLightColor(),
+				users: ["649126aee67217ae620c4269", "6517d9a37aa4a9847038b65e"],
+			},
+			config
+		);
+		return Promise.resolve({ status });
 	} catch (error) {
 		return Promise.reject({ error });
 	}

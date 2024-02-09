@@ -433,3 +433,7 @@ input#printer-button {
   .printer-button:hover {
     animation: none;
   }
+.Typewriter {
+	background-color: #202325;
+}
+
