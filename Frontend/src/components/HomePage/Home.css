@@ -69,10 +69,12 @@
 	animation-name: moveLeft;
 	animation-duration: 1s;
 }
-
-.text span {
+.type-text{
+  background-color: transparent !important;
+}
+.type-text span {
 	font-size: 40px;
-	color: #dfe1f5;
+	color: tr;
 	margin-bottom: 20px;
 }
 
@@ -434,6 +436,6 @@ input#printer-button {
     animation: none;
   }
 .Typewriter {
-	background-color: #202325;
+	background-color: transparent;
 }
 
