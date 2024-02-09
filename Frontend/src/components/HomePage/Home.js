@@ -50,7 +50,9 @@ const Home = () => {
 							/>
 						</div>
 					</div>
-					<div className="coders-image">{/* <img src={coder} width="400px" height="400px" alt="" /> */ <PrinterAnimation />}</div>
+					<div className="coders-image">
+						<PrinterAnimation />
+					</div>
 				</div>
 				<div className="lorem">
 					Want to code together,Ajaoo
