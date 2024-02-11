@@ -5,7 +5,7 @@ import { BsFillMoonStarsFill } from "react-icons/bs";
 import { MdSunny } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../../../../Features/themeSlice";
+import { toggleTheme } from "../../../../features/themeSlice";
 const TopNav = (props) => {
 	const [modeStore, setModeStore] = useState(true);
 	const dispatch = useDispatch();
