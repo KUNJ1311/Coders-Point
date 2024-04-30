@@ -2,7 +2,7 @@ import axios from "axios";
 import { getRandomLightColor } from "../../genColor";
 
 // const host = "http://localhost:8080";
-const host = "http://192.168.202.101:8080"; //kunj ip 
+const host = "http://192.168.198.101:8080"; //kunj ip
 // const host ="http://172.20.10.10:8080" //rishi ip
 //? send Host
 export const sendHost = () => {

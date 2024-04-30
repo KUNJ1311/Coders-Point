@@ -54,8 +54,8 @@ export const registerMail = async (req, res) => {
 					<tbody>
 						<tr style="vertical-align: bottom;">
 							<td>
-								<a href="coderspoint.in" target="_blank">
-									<img id="logo" style="background: rgb(40, 40, 53); padding: 15px 55px; border-radius: 100px" src="https://cdn.discordapp.com/attachments/1080048471484157997/1102466976145743892/coders.png" alt="Coders Point" width="200px" height="60px" />
+								<a href="" target="_blank">
+									<img id="logo" style="background: rgb(40, 40, 53); padding: 15px 55px; border-radius: 100px" src="https://cdn.discordapp.com/attachments/1019824883577925703/1234522122437529600/60ce0fb9-998a-4458-ae4c-56236e9d8bdd.png?ex=663109d2&is=662fb852&hm=9719829326f6d2b53d902362bb559b4b4bb883ee90badee5c77e4ca7644e2d7a&" alt="Coders Point" width="200px" height="60px" />
 								</a>
 							</td>
 						</tr>
