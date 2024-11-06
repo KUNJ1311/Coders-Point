@@ -5,7 +5,7 @@ import "./index.css";
 import "./custom.css";
 import "./redux.css";
 import { Provider } from "react-redux";
-import { store } from "./features/store";
+import { store } from "./Features/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
